@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Ticket, Calendar } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -26,7 +27,13 @@ export const App: React.FC = () => {
   const handleExploreSpeakers = () => {
     const el = document.getElementById('speakers');
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const offset = 70;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -67,6 +74,34 @@ export const App: React.FC = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Mobile Sticky Bottom CTA Bar */}
+      <div className="mobile-bottom-bar">
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontSize: '0.72rem', color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: '3px' }}>
+            <Calendar size={11} color="#EB0028" />
+            <span>Nov 21 &bull; 200 Seats</span>
+          </div>
+          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#FFFFFF' }}>
+            From ₦10,000
+          </div>
+        </div>
+
+        <button
+          onClick={() => handleOpenRegister()}
+          className="btn btn-primary"
+          style={{
+            padding: '0.65rem 1.35rem',
+            fontSize: '0.88rem',
+            minHeight: '42px',
+            width: 'auto',
+            borderRadius: '9999px',
+          }}
+        >
+          <Ticket size={15} />
+          <span>Get Pass</span>
+        </button>
+      </div>
 
       {/* Registration & Digital Pass Modal */}
       <RegistrationModal

@@ -51,15 +51,13 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
     e.preventDefault();
     if (!validate()) return;
 
-    // Generate unique TEDx Ticket ID
     const randomCode = 'TEDX-TU-' + Math.random().toString(36).substring(2, 7).toUpperCase();
     setTicketId(randomCode);
     setIsSubmitted(true);
 
-    // Trigger celebration confetti
     confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 80,
+      spread: 60,
       origin: { y: 0.6 },
       colors: ['#EB0028', '#FFFFFF', '#00C853', '#FFD700'],
     });
@@ -68,16 +66,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="glass-card"
+        className="glass-card modal-container"
         style={{
-          maxWidth: '680px',
           width: '100%',
+          maxWidth: '640px',
           maxHeight: '92vh',
           overflowY: 'auto',
           background: 'rgba(12, 12, 16, 0.98)',
-          border: '1px solid rgba(235, 0, 40, 0.35)',
-          padding: '2.5rem',
+          border: '1px solid rgba(235, 0, 40, 0.4)',
+          padding: '1.75rem 1.25rem',
           position: 'relative',
+          borderRadius: '1.25rem 1.25rem 0 0',
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -86,12 +85,12 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '1.25rem',
-            right: '1.25rem',
+            top: '1rem',
+            right: '1rem',
             width: '36px',
             height: '36px',
             borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.08)',
+            background: 'rgba(255, 255, 255, 0.1)',
             border: '1px solid rgba(255, 255, 255, 0.15)',
             color: '#FFFFFF',
             display: 'flex',
@@ -114,26 +113,26 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
         ) : (
           <div>
             {/* Modal Header */}
-            <div style={{ marginBottom: '2rem' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#EB0028', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                <Ticket size={14} />
-                <span>OFFICIAL REGISTRATION PORTAL</span>
+            <div style={{ marginBottom: '1.5rem', paddingRight: '2rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#EB0028', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <Ticket size={13} />
+                <span>REGISTRATION &bull; 200 SEATS</span>
               </div>
-              <h2 style={{ fontSize: '1.85rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
-                Reserve Your Delegate Pass
+              <h2 style={{ fontSize: '1.55rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
+                Reserve Your Pass
               </h2>
-              <p style={{ color: '#9CA3AF', fontSize: '0.92rem', marginTop: '0.25rem' }}>
-                {EVENT_DETAILS.dateFormatted} &bull; 9:00 AM &ndash; 12:00 PM &bull; {EVENT_DETAILS.venue.name} (Strict 200 Cap)
+              <p style={{ color: '#9CA3AF', fontSize: '0.85rem', marginTop: '0.2rem' }}>
+                {EVENT_DETAILS.dateFormatted} &bull; {EVENT_DETAILS.venue.name}
               </p>
             </div>
 
-            {/* Step 1: Select Tier */}
-            <div style={{ marginBottom: '1.75rem' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#E4E4E7', marginBottom: '0.75rem' }}>
-                Select Your Pass Tier:
+            {/* Step 1: Select Tier (Stacked for Mobile) */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#E4E4E7', marginBottom: '0.65rem' }}>
+                Select Pass Option:
               </label>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 {TICKET_TIERS.map((tier) => (
                   <button
                     key={tier.id}
@@ -143,137 +142,130 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                       setFormData({ ...formData, tier: tier.id });
                     }}
                     style={{
-                      padding: '1.15rem 1rem',
+                      padding: '1rem',
                       borderRadius: '12px',
                       textAlign: 'left',
-                      background: selectedTierId === tier.id ? 'rgba(235, 0, 40, 0.15)' : 'rgba(255, 255, 255, 0.03)',
-                      border: selectedTierId === tier.id ? '2px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.08)',
+                      background: selectedTierId === tier.id ? 'rgba(235, 0, 40, 0.16)' : 'rgba(255, 255, 255, 0.04)',
+                      border: selectedTierId === tier.id ? '2px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.1)',
                       transition: 'all 0.2s ease',
                       position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      width: '100%',
                     }}
                   >
-                    {selectedTierId === tier.id && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '0.65rem',
-                          right: '0.65rem',
-                          width: '18px',
-                          height: '18px',
-                          borderRadius: '50%',
-                          background: '#EB0028',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#FFFFFF',
-                        }}
-                      >
-                        <Check size={12} />
+                    <div>
+                      <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF' }}>
+                        {tier.name}
                       </div>
-                    )}
-                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF' }}>
-                      {tier.name}
+                      <div style={{ fontSize: '0.75rem', color: '#9CA3AF', marginTop: '0.15rem' }}>
+                        Total {tier.totalSeats} seats allotted
+                      </div>
                     </div>
-                    <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#EB0028', marginTop: '0.25rem', fontFamily: 'Space Grotesk' }}>
-                      {tier.currency}{tier.price.toLocaleString()}
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: '#9CA3AF', marginTop: '0.2rem' }}>
-                      Total {tier.totalSeats} seats allotted
+
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#EB0028', fontFamily: 'Space Grotesk' }}>
+                        {tier.currency}{tier.price.toLocaleString()}
+                      </div>
+                      {selectedTierId === tier.id && (
+                        <span style={{ fontSize: '0.68rem', color: '#00C853', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '2px' }}>
+                          <Check size={11} /> Selected
+                        </span>
+                      )}
                     </div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Step 2: Form Fields */}
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {/* Step 2: Form Inputs */}
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
                   Full Name *
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. David Bassey"
+                  placeholder="Your Full Name"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.85rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: errors.fullName ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '10px',
+                    padding: '0.8rem 0.95rem',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: errors.fullName ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.14)',
+                    borderRadius: '8px',
                     color: '#FFFFFF',
-                    fontSize: '0.95rem',
+                    fontSize: '16px',
                     outline: 'none',
                   }}
                 />
-                {errors.fullName && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.3rem' }}>{errors.fullName}</div>}
+                {errors.fullName && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>{errors.fullName}</div>}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="you@domain.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.85rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: errors.email ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '10px',
-                      color: '#FFFFFF',
-                      fontSize: '0.95rem',
-                      outline: 'none',
-                    }}
-                  />
-                  {errors.email && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.3rem' }}>{errors.email}</div>}
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                    Phone Number (WhatsApp) *
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+234 800 000 0000"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.85rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: errors.phone ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '10px',
-                      color: '#FFFFFF',
-                      fontSize: '0.95rem',
-                      outline: 'none',
-                    }}
-                  />
-                  {errors.phone && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.3rem' }}>{errors.phone}</div>}
-                </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  placeholder="you@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.8rem 0.95rem',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: errors.email ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.14)',
+                    borderRadius: '8px',
+                    color: '#FFFFFF',
+                    fontSize: '16px',
+                    outline: 'none',
+                  }}
+                />
+                {errors.email && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>{errors.email}</div>}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
+                  WhatsApp / Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+234 800 000 0000"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.8rem 0.95rem',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: errors.phone ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.14)',
+                    borderRadius: '8px',
+                    color: '#FFFFFF',
+                    fontSize: '16px',
+                    outline: 'none',
+                  }}
+                />
+                {errors.phone && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>{errors.phone}</div>}
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                    Attendee Category
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
+                    Attendee Role
                   </label>
                   <select
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value as any })}
                     style={{
                       width: '100%',
-                      padding: '0.85rem 1rem',
+                      padding: '0.8rem 0.95rem',
                       background: '#121218',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '10px',
+                      border: '1px solid rgba(255, 255, 255, 0.14)',
+                      borderRadius: '8px',
                       color: '#FFFFFF',
-                      fontSize: '0.95rem',
+                      fontSize: '16px',
                       outline: 'none',
                     }}
                   >
@@ -286,8 +278,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                    Institution / University / Organization *
+                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
+                    Institution / University / Company *
                   </label>
                   <input
                     type="text"
@@ -296,40 +288,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.85rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: errors.institution ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '10px',
+                      padding: '0.8rem 0.95rem',
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      border: errors.institution ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.14)',
+                      borderRadius: '8px',
                       color: '#FFFFFF',
-                      fontSize: '0.95rem',
+                      fontSize: '16px',
                       outline: 'none',
                     }}
                   />
-                  {errors.institution && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.3rem' }}>{errors.institution}</div>}
+                  {errors.institution && <div style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: '0.25rem' }}>{errors.institution}</div>}
                 </div>
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                  What inspires you to attend TRANSCEND? (Optional)
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="Share what ideas you are eager to discover or contribute..."
-                  value={formData.motivation}
-                  onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '10px',
-                    color: '#FFFFFF',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                    resize: 'none',
-                  }}
-                />
               </div>
 
               {/* Submit CTA */}
@@ -338,19 +307,28 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 className="btn btn-primary"
                 style={{
                   width: '100%',
-                  padding: '1rem',
+                  padding: '0.95rem',
                   fontSize: '1rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   marginTop: '0.5rem',
                 }}
               >
-                <Sparkles size={18} />
+                <Sparkles size={17} />
                 <span>Confirm Pass ({selectedTier.currency}{selectedTier.price.toLocaleString()})</span>
               </button>
             </form>
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (min-width: 640px) {
+          .modal-container {
+            padding: 2.5rem !important;
+            border-radius: 1.25rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
