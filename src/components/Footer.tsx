@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUp, Send, CheckCircle2 } from 'lucide-react';
+import { ArrowUp, Send, CheckCircle2, ExternalLink } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
 
 export const Footer: React.FC = () => {
@@ -34,24 +34,29 @@ export const Footer: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '3rem',
             marginBottom: '4rem',
           }}
         >
           {/* Col 1: Brand & Mandatory TEDx Statement */}
           <div>
-            <div className="ted-logo-wrap" style={{ marginBottom: '1.25rem' }}>
-              <div className="ted-logo-main" style={{ fontSize: '1.85rem' }}>
-                <span className="ted-red">TED</span>
-                <span className="ted-x">x</span>
-                <span className="ted-event-name">TopfaithUniversity</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <a href="https://topfaith.edu.ng" target="_blank" rel="noreferrer" title="Topfaith University">
+                <img src="/logo.png" alt="Topfaith Logo" style={{ height: '38px', width: 'auto' }} />
+              </a>
+              <div className="ted-logo-wrap">
+                <div className="ted-logo-main" style={{ fontSize: '1.45rem' }}>
+                  <span className="ted-red">TED</span>
+                  <span className="ted-x">x</span>
+                  <span className="ted-event-name">TopfaithUniversity</span>
+                </div>
+                <span className="ted-tagline">x = independently organized TED event</span>
               </div>
-              <span className="ted-tagline">x = independently organized TED event</span>
             </div>
 
             <p style={{ color: '#9CA3AF', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-              {EVENT_DETAILS.theme} &mdash; {EVENT_DETAILS.tagline}. Igniting groundbreaking ideas at Topfaith University, Mkpatak, Akwa Ibom State, Nigeria.
+              {EVENT_DETAILS.theme} &mdash; {EVENT_DETAILS.tagline}. Igniting transformative ideas at Topfaith University, Mkpatak, Akwa Ibom State, Nigeria.
             </p>
 
             <div
@@ -72,43 +77,47 @@ export const Footer: React.FC = () => {
           {/* Col 2: Navigation Links */}
           <div>
             <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.25rem' }}>
-              Explore Event
+              Event Directory
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.9rem', color: '#A1A1AA' }}>
               <li><a href="#about" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>About TEDx & Topfaith</a></li>
-              <li><a href="#theme" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>The 2026 Theme: Transcend</a></li>
-              <li><a href="#speakers" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Distinguished Speakers</a></li>
-              <li><a href="#schedule" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Event Program & Schedule</a></li>
-              <li><a href="#venue" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Law Auditorium Complex Tour</a></li>
+              <li><a href="#theme" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Theme: Transcend</a></li>
+              <li><a href="#speakers" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Speaker Unveils</a></li>
+              <li><a href="#schedule" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Agenda (9 AM &ndash; 12 PM)</a></li>
+              <li><a href="#venue" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>The Law Auditorium</a></li>
+              <li><a href="#partners" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Partners & The Centrestage Co.</a></li>
               <li><a href="#tickets" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Reserve Delegate Pass</a></li>
             </ul>
           </div>
 
-          {/* Col 3: University Info & Venue */}
+          {/* Col 3: University Info & Global Producer */}
           <div>
             <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.25rem' }}>
-              Host Venue
+              Host & Producer
             </h4>
-            <div style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-              <div style={{ color: '#FFFFFF', fontWeight: 600 }}>The Law Auditorium Complex</div>
+            <div style={{ color: '#A1A1AA', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+              <div style={{ color: '#FFFFFF', fontWeight: 600 }}>The Law Auditorium</div>
               <div>Topfaith University Campus</div>
               <div>Mkpatak, Essien Udim LGA</div>
               <div>Akwa Ibom State, Nigeria</div>
             </div>
 
-            <div style={{ fontSize: '0.85rem', color: '#9CA3AF' }}>
-              <div>Email: <a href="mailto:info@tedxtopfaithuni.com" style={{ color: '#EB0028' }}>info@tedxtopfaithuni.com</a></div>
-              <div>Web: <a href="https://topfaith.edu.ng" target="_blank" rel="noreferrer" style={{ color: '#D1D5DB' }}>topfaith.edu.ng</a></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+              <img src="/the_centrestage_company_logo.jpg" alt="The Centrestage Company" style={{ height: '30px', borderRadius: '4px' }} />
+              <div style={{ fontSize: '0.75rem', color: '#D1D5DB' }}>
+                <div style={{ fontWeight: 700, color: '#FFFFFF' }}>The Centrestage Company</div>
+                <div>Global Consultant & Producer</div>
+              </div>
             </div>
           </div>
 
           {/* Col 4: Newsletter & Stay Updated */}
           <div>
             <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.25rem' }}>
-              Stay Inspired
+              Speaker Drop Alerts
             </h4>
             <p style={{ color: '#9CA3AF', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-              Subscribe to get exclusive talk releases, speaker announcements, and backstage insights.
+              Subscribe to receive instant announcements when speakers and talk titles are revealed.
             </p>
 
             <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
@@ -177,7 +186,7 @@ export const Footer: React.FC = () => {
           }}
         >
           <div>
-            &copy; {new Date().getFullYear()} TEDxTopfaithUniversity. All rights reserved. Organized under official license from TED.
+            &copy; 2026 TEDxTopfaithUniversity. All rights reserved. Operated under official license from TED.
           </div>
 
           <button

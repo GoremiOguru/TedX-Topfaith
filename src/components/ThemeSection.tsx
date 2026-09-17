@@ -1,30 +1,26 @@
 import React from 'react';
-import { Sparkles, Cpu, Globe, Zap, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Cpu, Globe, Zap, ArrowRight, Layers } from 'lucide-react';
 import { THEME_PILLARS, EVENT_DETAILS } from '../data/eventData';
 
-interface ThemeSectionProps {
-  onExploreTheme: () => void;
-}
-
-export const ThemeSection: React.FC<ThemeSectionProps> = ({ onExploreTheme }) => {
+export const ThemeSection: React.FC = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Cpu':
-        return <Cpu size={24} color="#EB0028" />;
+        return <Cpu size={26} color="#EB0028" />;
       case 'Globe':
-        return <Globe size={24} color="#00C853" />;
+        return <Globe size={26} color="#00E676" />;
       case 'Zap':
-        return <Zap size={24} color="#FF9100" />;
+        return <Zap size={26} color="#FFAB00" />;
       default:
-        return <Sparkles size={24} color="#FF334B" />;
+        return <Sparkles size={26} color="#FF3366" />;
     }
   };
 
   return (
-    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(10, 10, 14, 0.5)' }}>
+    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.7)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <div className="section-badge">
             <Sparkles size={14} />
             <span>Theme 2026</span>
@@ -37,38 +33,40 @@ export const ThemeSection: React.FC<ThemeSectionProps> = ({ onExploreTheme }) =>
           </p>
         </div>
 
-        {/* Central Theme Manifesto Showcase */}
+        {/* Central Theme Statement */}
         <div
           className="glass-card"
           style={{
             padding: '3rem 2.5rem',
-            marginBottom: '3.5rem',
-            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.08) 0%, rgba(18, 18, 24, 0.9) 100%)',
-            border: '1px solid rgba(235, 0, 40, 0.25)',
+            marginBottom: '4rem',
+            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.12) 0%, rgba(18, 18, 24, 0.95) 100%)',
+            border: '1px solid rgba(235, 0, 40, 0.35)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(235, 0, 40, 0.15)',
           }}
         >
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
             <div
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(1.25rem, 2.5vw, 1.85rem)',
-                fontWeight: 600,
+                fontSize: 'clamp(1.3rem, 2.8vw, 2rem)',
+                fontWeight: 700,
                 color: '#FFFFFF',
-                lineHeight: 1.5,
+                lineHeight: 1.45,
                 marginBottom: '1.5rem',
               }}
             >
               "True innovation doesn't ask for permission to cross borders. When a solution is deeply rooted in human truth, its resonance is inevitably global."
             </div>
-            <div style={{ color: '#EB0028', fontWeight: 700, letterSpacing: '0.08em', fontSize: '0.85rem', textTransform: 'uppercase' }}>
-              &mdash; {EVENT_DETAILS.name} Curatorial Statement
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#EB0028', fontWeight: 800, letterSpacing: '0.1em', fontSize: '0.85rem', textTransform: 'uppercase' }}>
+              <Layers size={14} />
+              <span>{EVENT_DETAILS.name} Curatorial Vision &bull; Nov 21, 2026</span>
             </div>
           </div>
         </div>
 
-        {/* 4 Theme Pillars Grid */}
-        <div className="grid-2" style={{ gap: '2rem' }}>
-          {THEME_PILLARS.map((pillar) => (
+        {/* Exciting 4 Theme Pillars Grid */}
+        <div className="grid-2" style={{ gap: '2.5rem' }}>
+          {THEME_PILLARS.map((pillar, idx) => (
             <div
               key={pillar.id}
               className="glass-card"
@@ -77,64 +75,112 @@ export const ThemeSection: React.FC<ThemeSectionProps> = ({ onExploreTheme }) =>
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                background: pillar.gradient,
+                border: `1px solid ${pillar.borderGlow}`,
+                boxShadow: `0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px ${pillar.accentColor}18`,
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.35s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px ${pillar.accentColor}35`;
+                e.currentTarget.style.borderColor = pillar.accentColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = `0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px ${pillar.accentColor}18`;
+                e.currentTarget.style.borderColor = pillar.borderGlow;
               }}
             >
+              {/* Pillar Number Watermark in Background */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-15px',
+                  right: '15px',
+                  fontSize: '6.5rem',
+                  fontWeight: 900,
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  color: 'rgba(255, 255, 255, 0.03)',
+                  pointerEvents: 'none',
+                  lineHeight: 1,
+                }}
+              >
+                0{idx + 1}
+              </div>
+
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                {/* Top Row: Icon + Metric Tag */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
                   <div
                     style={{
-                      width: '54px',
-                      height: '54px',
-                      borderRadius: '14px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      width: '60px',
+                      height: '60px',
+                      borderRadius: '16px',
+                      background: 'rgba(0, 0, 0, 0.4)',
+                      border: `1px solid ${pillar.accentColor}50`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      boxShadow: `0 0 25px ${pillar.accentColor}30`,
                     }}
                   >
                     {getIcon(pillar.iconName)}
                   </div>
-                  <span
+
+                  <div
                     style={{
                       fontSize: '0.75rem',
                       fontWeight: 700,
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      color: pillar.color,
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      padding: '0.35rem 0.75rem',
+                      letterSpacing: '0.06em',
+                      color: pillar.accentColor,
+                      background: 'rgba(0, 0, 0, 0.5)',
+                      padding: '0.4rem 0.9rem',
                       borderRadius: '9999px',
-                      border: `1px solid ${pillar.color}40`,
+                      border: `1px solid ${pillar.accentColor}40`,
+                      backdropFilter: 'blur(8px)',
                     }}
                   >
-                    Pillar
-                  </span>
+                    <span dangerouslySetInnerHTML={{ __html: pillar.metrics }} />
+                  </div>
                 </div>
 
-                <h3 style={{ fontSize: '1.45rem', fontWeight: 700, marginBottom: '0.5rem', color: '#FFFFFF' }}>
+                {/* Pillar Header */}
+                <h3 style={{ fontSize: '1.55rem', fontWeight: 800, marginBottom: '0.4rem', color: '#FFFFFF', lineHeight: 1.25 }}>
                   {pillar.title}
                 </h3>
-                <div style={{ fontSize: '0.9rem', color: '#EB0028', fontWeight: 600, marginBottom: '1rem' }}>
+                <div style={{ fontSize: '0.92rem', color: pillar.accentColor, fontWeight: 700, marginBottom: '1.25rem', letterSpacing: '0.02em' }}>
                   {pillar.subtitle}
                 </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.95rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+
+                <p style={{ color: '#D1D5DB', fontSize: '0.96rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
                   {pillar.description}
                 </p>
               </div>
 
+              {/* Tag Badges */}
               <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255, 255, 255, 0.07)' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.5rem',
+                    paddingTop: '1.25rem',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.09)',
+                  }}
+                >
                   {pillar.tags.map((tag) => (
                     <span
                       key={tag}
                       style={{
-                        fontSize: '0.78rem',
-                        color: '#D1D5DB',
-                        background: 'rgba(255, 255, 255, 0.04)',
-                        padding: '0.25rem 0.65rem',
-                        borderRadius: '6px',
-                        border: '1px solid rgba(255, 255, 255, 0.06)',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        color: '#F3F4F6',
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        padding: '0.35rem 0.75rem',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
                       }}
                     >
                       #{tag}

@@ -14,7 +14,7 @@ import { RegistrationModal } from './components/RegistrationModal';
 
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [selectedTierId, setSelectedTierId] = useState<string>('standard-delegate');
+  const [selectedTierId, setSelectedTierId] = useState<string>('student-pass');
 
   const handleOpenRegister = (tierId?: string) => {
     if (tierId) {
@@ -25,13 +25,6 @@ export const App: React.FC = () => {
 
   const handleExploreSpeakers = () => {
     const el = document.getElementById('speakers');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleExploreTheme = () => {
-    const el = document.getElementById('theme');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -52,9 +45,9 @@ export const App: React.FC = () => {
       <AboutSection />
 
       {/* Theme Section */}
-      <ThemeSection onExploreTheme={handleExploreTheme} />
+      <ThemeSection />
 
-      {/* Speakers Lineup */}
+      {/* Speakers Unveiling Section */}
       <SpeakersSection />
 
       {/* Agenda & Schedule */}

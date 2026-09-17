@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, ArrowRight, Play, Sparkles, Flame } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Play, Sparkles, Flame, Users, Clock } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
 
 interface HeroProps {
@@ -8,7 +8,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers }) => {
-  // Live Countdown Timer
+  // Live Countdown Timer to Nov 21, 2026
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -47,12 +47,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '7.5rem',
-        paddingBottom: '5rem',
+        paddingTop: '8rem',
+        paddingBottom: '5.5rem',
         overflow: 'hidden',
       }}
     >
-      {/* Background Image with Cinematic Dark Gradient Overlays */}
+      {/* Background Image with Cinematic Dark Masking */}
       <div
         style={{
           position: 'absolute',
@@ -62,8 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
           opacity: 0.38,
-          transform: 'scale(1.03)',
-          transition: 'transform 10s ease-out',
+          transform: 'scale(1.02)',
           zIndex: 0,
         }}
       />
@@ -74,80 +73,97 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           position: 'absolute',
           inset: 0,
           background: `
-            linear-gradient(to bottom, rgba(6, 6, 8, 0.75) 0%, rgba(6, 6, 8, 0.88) 60%, rgba(6, 6, 8, 1) 100%),
-            radial-gradient(circle at 50% 30%, rgba(235, 0, 40, 0.22) 0%, transparent 65%),
-            radial-gradient(circle at 10% 80%, rgba(0, 0, 0, 0.8) 0%, transparent 70%)
+            linear-gradient(to bottom, rgba(6, 6, 9, 0.75) 0%, rgba(6, 6, 9, 0.9) 60%, rgba(6, 6, 9, 1) 100%),
+            radial-gradient(circle at 50% 25%, rgba(235, 0, 40, 0.24) 0%, transparent 65%),
+            radial-gradient(circle at 15% 85%, rgba(0, 0, 0, 0.85) 0%, transparent 70%)
           `,
           zIndex: 1,
         }}
       />
 
-      {/* Subtle stage spotlight beam */}
+      {/* Stage spotlight glow */}
       <div
         style={{
           position: 'absolute',
-          top: '-15%',
+          top: '-10%',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '600px',
-          height: '600px',
+          width: '700px',
+          height: '700px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.18) 0%, transparent 70%)',
-          filter: 'blur(60px)',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.2) 0%, transparent 70%)',
+          filter: 'blur(70px)',
           zIndex: 1,
           pointerEvents: 'none',
         }}
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
-        {/* Top Badge */}
-        <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-          <div className="section-badge" style={{ gap: '0.6rem' }}>
-            <Flame size={15} color="#EB0028" />
+        {/* Top Badges */}
+        <div style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.65rem', marginBottom: '1.5rem' }}>
+          <div className="section-badge" style={{ gap: '0.5rem', margin: 0 }}>
+            <Flame size={14} color="#EB0028" />
             <span>Official TEDx Event &bull; Topfaith University</span>
+          </div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              padding: '0.4rem 0.9rem',
+              borderRadius: '9999px',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              background: 'rgba(255, 255, 255, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              color: '#FFD700',
+            }}
+          >
+            <Users size={13} color="#FFD700" />
+            <span>Strictly 200 Exclusive Seats</span>
           </div>
         </div>
 
-        {/* Main Logo & Theme Lockup */}
+        {/* Theme Title Lockup */}
         <div style={{ marginBottom: '1.25rem' }}>
           <h1
             style={{
-              fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
+              fontSize: 'clamp(2.75rem, 8vw, 5.8rem)',
               fontWeight: 900,
-              lineHeight: 1.05,
-              letterSpacing: '-0.035em',
+              lineHeight: 1.02,
+              letterSpacing: '-0.04em',
               textTransform: 'uppercase',
               color: '#FFFFFF',
-              textShadow: '0 4px 30px rgba(0,0,0,0.8)',
+              textShadow: '0 4px 35px rgba(0,0,0,0.85)',
             }}
           >
             TRANSCEND
           </h1>
           <div
             style={{
-              fontSize: 'clamp(1.2rem, 3.5vw, 2.2rem)',
-              fontWeight: 700,
+              fontSize: 'clamp(1.2rem, 3.8vw, 2.35rem)',
+              fontWeight: 800,
               color: '#EB0028',
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
-              marginTop: '0.4rem',
+              marginTop: '0.45rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.75rem',
-              textShadow: '0 0 25px rgba(235, 0, 40, 0.5)',
+              textShadow: '0 0 30px rgba(235, 0, 40, 0.55)',
             }}
           >
             <span>Moving Local to Global</span>
           </div>
         </div>
 
-        {/* Description / Mission */}
+        {/* Subtitle / Description */}
         <p
           style={{
             maxWidth: '780px',
             margin: '0 auto 2.5rem auto',
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontSize: 'clamp(1.02rem, 1.8vw, 1.25rem)',
             color: '#D1D5DB',
             lineHeight: 1.65,
             fontWeight: 400,
@@ -157,14 +173,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           {EVENT_DETAILS.description}
         </p>
 
-        {/* Event Key Meta Pills */}
+        {/* Key Event Metadata Pills */}
         <div
           style={{
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '1.25rem',
+            gap: '1rem',
             marginBottom: '3rem',
           }}
         >
@@ -172,9 +188,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.6rem',
+              gap: '0.55rem',
               background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.14)',
               backdropFilter: 'blur(12px)',
               padding: '0.65rem 1.25rem',
               borderRadius: '9999px',
@@ -182,18 +198,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               color: '#F3F4F6',
             }}
           >
-            <Calendar size={18} color="#EB0028" />
-            <span style={{ fontWeight: 600 }}>{EVENT_DETAILS.date}</span>
-            <span style={{ color: '#9CA3AF' }}>&bull; {EVENT_DETAILS.time}</span>
+            <Calendar size={17} color="#EB0028" />
+            <span style={{ fontWeight: 700 }}>{EVENT_DETAILS.dateFormatted}</span>
           </div>
 
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.6rem',
+              gap: '0.55rem',
               background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.14)',
               backdropFilter: 'blur(12px)',
               padding: '0.65rem 1.25rem',
               borderRadius: '9999px',
@@ -201,8 +216,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               color: '#F3F4F6',
             }}
           >
-            <MapPin size={18} color="#EB0028" />
-            <span style={{ fontWeight: 600 }}>{EVENT_DETAILS.venue.name}</span>
+            <Clock size={17} color="#EB0028" />
+            <span style={{ fontWeight: 600 }}>{EVENT_DETAILS.time}</span>
+            <span style={{ color: '#9CA3AF', fontSize: '0.82rem' }}>({EVENT_DETAILS.durationText})</span>
+          </div>
+
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.55rem',
+              background: 'rgba(255, 255, 255, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.14)',
+              backdropFilter: 'blur(12px)',
+              padding: '0.65rem 1.25rem',
+              borderRadius: '9999px',
+              fontSize: '0.92rem',
+              color: '#F3F4F6',
+            }}
+          >
+            <MapPin size={17} color="#EB0028" />
+            <span style={{ fontWeight: 700 }}>{EVENT_DETAILS.venue.name}</span>
             <span style={{ color: '#9CA3AF' }}>&bull; {EVENT_DETAILS.venue.institution}</span>
           </div>
         </div>
@@ -227,7 +261,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               fontWeight: 700,
             }}
           >
-            <span>Reserve Your Delegate Seat</span>
+            <span>Reserve Delegate Pass</span>
             <ArrowRight size={18} />
           </button>
 
@@ -240,22 +274,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               fontWeight: 600,
             }}
           >
-            <Play size={16} fill="white" />
-            <span>Discover Speakers</span>
+            <Play size={15} fill="white" />
+            <span>Speaker Unveils</span>
           </button>
         </div>
 
-        {/* Live Countdown Timer Grid */}
+        {/* Live Countdown Grid to Nov 21 */}
         <div
           style={{
             maxWidth: '680px',
             margin: '0 auto',
-            background: 'rgba(12, 12, 16, 0.75)',
-            border: '1px solid rgba(255, 255, 255, 0.09)',
+            background: 'rgba(12, 12, 16, 0.8)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '1.25rem',
             backdropFilter: 'blur(16px)',
             padding: '1.5rem 1.75rem',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(235, 0, 40, 0.1)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(235, 0, 40, 0.12)',
           }}
         >
           <div
@@ -273,7 +307,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             }}
           >
             <Sparkles size={14} color="#EB0028" />
-            <span>Countdown to the Red Dot Stage</span>
+            <span>Countdown to November 21st, 2026</span>
           </div>
 
           <div

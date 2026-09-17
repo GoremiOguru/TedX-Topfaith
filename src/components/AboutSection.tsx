@@ -16,7 +16,7 @@ export const AboutSection: React.FC = () => {
             Where Curiosity Meets <span className="highlight">Global Impact</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            In the spirit of TED's mission, "Ideas Worth Spreading," TEDxTopfaithUniversity is an independently organized event bringing together the sharpest thinkers, disruptors, and visionaries to inspire purposeful action.
+            In the spirit of TED's mission, "Ideas Worth Spreading," TEDxTopfaithUniversity is an independently organized gathering bringing together visionary minds for 3 electrifying hours (9:00 AM &ndash; 12:00 PM) on Saturday, November 21st, 2026.
           </p>
         </div>
 
@@ -46,14 +46,14 @@ export const AboutSection: React.FC = () => {
                 Local Voices. Global Resonance.
               </h3>
               <p style={{ color: '#A1A1AA', fontSize: '0.98rem', marginBottom: '1.25rem', lineHeight: 1.7 }}>
-                TEDx is a grassroots initiative created in the spirit of TED’s overarching mission to research and discover “ideas worth spreading.” TEDx brings the spirit of TED to local communities around the globe through TEDx events organized by passionate individuals who seek to uncover new ideas and to share the latest research in their local areas that spark conversations in their communities.
+                TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At TEDxTopfaithUniversity, live talks and deep discussions spark authentic connections and ideas that cross geographic borders.
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {[
-                  'Independently licensed by TED Conferences LLC',
-                  'Multidisciplinary focus: Science, Tech, Arts, Leadership & Humanities',
+                  'Independently organized under official TED license',
+                  'Multidisciplinary focus: Tech & AI, Global Leadership, Science, Arts',
                   'Zero commercial pitches, 100% intellectual passion',
-                  'World-wide dissemination via the official TEDx YouTube channel'
+                  'Strictly 200 seats for intimate, high-octane delegate networking'
                 ].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#D1D5DB', fontSize: '0.9rem' }}>
                     <CheckCircle size={16} color="#EB0028" style={{ flexShrink: 0 }} />
@@ -121,14 +121,14 @@ export const AboutSection: React.FC = () => {
                 Topfaith University: Beacon of Innovation
               </h3>
               <p style={{ color: '#A1A1AA', fontSize: '0.98rem', marginBottom: '1.25rem', lineHeight: 1.7 }}>
-                Situated in Mkpatak, Topfaith University stands at the vanguard of academic distinction, technological research, and character formation in West Africa. Known for state-of-the-art infrastructure, advanced robotics labs, and forward-thinking faculties, Topfaith is a breeding ground for thinkers who do not conform to limitations.
+                Situated in Mkpatak, Topfaith University stands at the vanguard of academic distinction, technological research, and character formation. With the prestigious Law Auditorium and smart campus infrastructure, Topfaith provides the ideal stage for transcendence.
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {[
-                  'World-Class Law Auditorium Complex with acoustic excellence',
-                  'Nurturing next-generation scientists, jurists, and tech innovators',
-                  'Pioneering African indigenous solutions with global standards',
-                  'Safe, serene, and intellectually vibrant smart campus environment'
+                  'The Law Auditorium: World-class acoustic amphitheater',
+                  'Nurturing next-generation scientists, jurists, and entrepreneurs',
+                  'Strategic production with The Centrestage Company',
+                  'Serene, secure, and intellectually vibrant smart campus'
                 ].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#D1D5DB', fontSize: '0.9rem' }}>
                     <Compass size={16} color="#3B82F6" style={{ flexShrink: 0 }} />
@@ -148,23 +148,11 @@ export const AboutSection: React.FC = () => {
                 gap: '1rem',
               }}
             >
-              <div
-                style={{
-                  width: '45px',
-                  height: '45px',
-                  borderRadius: '10px',
-                  background: 'rgba(59, 130, 246, 0.15)',
-                  border: '1px solid rgba(59, 130, 246, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#60A5FA',
-                  fontWeight: 800,
-                  fontSize: '1rem',
-                }}
-              >
-                TU
-              </div>
+              <img
+                src="/logo.png"
+                alt="Topfaith University"
+                style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+              />
               <div>
                 <div style={{ fontWeight: 600, color: '#FFFFFF', fontSize: '0.92rem' }}>Topfaith University, Mkpatak</div>
                 <div style={{ fontSize: '0.8rem', color: '#71717A' }}>Excellence, Character & Global Competence</div>

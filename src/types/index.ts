@@ -1,30 +1,22 @@
-export interface Speaker {
+export interface SpeakerTeaser {
   id: string;
-  name: string;
-  role: string;
-  organization: string;
-  topic: string;
-  talkDuration: string;
-  bio: string;
-  keyTakeaway: string;
-  category: 'Tech & AI' | 'Global Leadership' | 'Creative Arts' | 'Social Impact' | 'Science & Health';
-  image: string;
-  socials?: {
-    twitter?: string;
-    linkedin?: string;
-    website?: string;
-  };
-  quote: string;
+  field: string;
+  codename: string;
+  category: 'Tech & AI' | 'Global Leadership' | 'Creative Arts' | 'Science & Health' | 'Student Innovator';
+  teaserQuote: string;
+  hint: string;
+  silhouetteColor: string;
+  revealed: boolean;
 }
 
 export interface ScheduleItem {
   id: string;
   time: string;
-  period: 'Morning' | 'Midday' | 'Afternoon' | 'Evening';
+  period: 'Morning' | 'Midday';
   title: string;
   speaker?: string;
   speakerRole?: string;
-  type: 'talk' | 'keynote' | 'break' | 'performance' | 'networking' | 'workshop';
+  type: 'talk' | 'keynote' | 'break' | 'performance' | 'networking' | 'unveiling';
   description: string;
   location: string;
 }
@@ -35,8 +27,11 @@ export interface ThemePillar {
   subtitle: string;
   description: string;
   iconName: string;
-  color: string;
+  accentColor: string;
+  gradient: string;
+  borderGlow: string;
   tags: string[];
+  metrics: string;
 }
 
 export interface VenueGalleryItem {
@@ -59,6 +54,7 @@ export interface TicketTier {
   features: string[];
   popular?: boolean;
   color: string;
+  totalSeats: number;
   spotsLeft: number;
 }
 
@@ -73,7 +69,7 @@ export interface RegistrationFormData {
   fullName: string;
   email: string;
   phone: string;
-  role: 'Student' | 'Faculty' | 'Professional' | 'Guest' | 'Innovator';
+  role: 'Student' | 'Faculty' | 'Professional' | 'Executive' | 'Guest';
   institution: string;
   tier: string;
   dietaryNotes?: string;

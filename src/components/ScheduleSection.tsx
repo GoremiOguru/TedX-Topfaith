@@ -1,16 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Calendar, Clock, MapPin, Coffee, Mic, Sparkles, Users, Award } from 'lucide-react';
-import { SCHEDULE_ITEMS } from '../data/eventData';
+import { SCHEDULE_ITEMS, EVENT_DETAILS } from '../data/eventData';
 
 export const ScheduleSection: React.FC = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState<string>('All');
-
-  const periods = ['All', 'Morning', 'Midday', 'Afternoon', 'Evening'];
-
-  const filteredSchedule = selectedPeriod === 'All'
-    ? SCHEDULE_ITEMS
-    : SCHEDULE_ITEMS.filter(item => item.period === selectedPeriod);
-
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'keynote':
@@ -29,70 +21,38 @@ export const ScheduleSection: React.FC = () => {
   const getTypeBadge = (type: string) => {
     switch (type) {
       case 'keynote':
-        return { label: 'Keynote Address', bg: 'rgba(235, 0, 40, 0.15)', text: '#FF4A61' };
+        return { label: 'Opening Address', bg: 'rgba(235, 0, 40, 0.15)', text: '#FF4A61' };
       case 'talk':
-        return { label: 'TEDx Talk', bg: 'rgba(235, 0, 40, 0.15)', text: '#FF4A61' };
+        return { label: 'TEDx Talk Block', bg: 'rgba(235, 0, 40, 0.15)', text: '#FF4A61' };
       case 'performance':
-        return { label: 'Live Performance', bg: 'rgba(255, 51, 75, 0.15)', text: '#FF8093' };
+        return { label: 'Live Sonic Arts', bg: 'rgba(255, 51, 75, 0.15)', text: '#FF8093' };
       case 'break':
-        return { label: 'Networking & Lunch', bg: 'rgba(0, 200, 83, 0.15)', text: '#69F0AE' };
+        return { label: 'Refreshments', bg: 'rgba(0, 200, 83, 0.15)', text: '#69F0AE' };
       default:
-        return { label: 'Interactive Panel', bg: 'rgba(59, 130, 246, 0.15)', text: '#93C5FD' };
+        return { label: 'Delegation Networking', bg: 'rgba(59, 130, 246, 0.15)', text: '#93C5FD' };
     }
   };
 
   return (
-    <section id="schedule" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.6)' }}>
+    <section id="schedule" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.65)' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <div className="section-badge">
             <Calendar size={14} />
-            <span>Event Agenda & Flow</span>
+            <span>Event Agenda &bull; 9:00 AM &ndash; 12:00 PM</span>
           </div>
           <h2 className="section-title">
-            The Flow of <span className="highlight">Inspiration</span>
+            The Flow of <span className="highlight">Transcendence</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            A meticulously designed single-day journey through thought-provoking presentations, immersive cultural showcases, and high-impact delegate networking.
+            A concentrated 3-hour power journey on {EVENT_DETAILS.dateFormatted} inside {EVENT_DETAILS.venue.name}, maximizing every minute for high-impact talks, artistic performances, and executive networking.
           </p>
-        </div>
-
-        {/* Period Filter Buttons */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.65rem',
-            marginBottom: '3.5rem',
-          }}
-        >
-          {periods.map((p) => (
-            <button
-              key={p}
-              onClick={() => setSelectedPeriod(p)}
-              style={{
-                padding: '0.55rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                transition: 'all 0.25s ease',
-                backgroundColor: selectedPeriod === p ? '#EB0028' : 'rgba(255, 255, 255, 0.05)',
-                color: selectedPeriod === p ? '#FFFFFF' : '#9CA3AF',
-                border: selectedPeriod === p ? '1px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.1)',
-                boxShadow: selectedPeriod === p ? '0 0 20px rgba(235, 0, 40, 0.35)' : 'none',
-              }}
-            >
-              {p === 'All' ? 'Full Day Program' : `${p} Session`}
-            </button>
-          ))}
         </div>
 
         {/* Timeline Stack */}
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          {filteredSchedule.map((item) => {
+          {SCHEDULE_ITEMS.map((item) => {
             const badge = getTypeBadge(item.type);
             return (
               <div
@@ -103,6 +63,7 @@ export const ScheduleSection: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.75rem',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
               >
                 {/* Meta Header */}
@@ -154,14 +115,6 @@ export const ScheduleSection: React.FC = () => {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#FFFFFF' }}>
                   {item.title}
                 </h3>
-
-                {/* Speaker tag if any */}
-                {item.speaker && (
-                  <div style={{ fontSize: '0.88rem', color: '#E4E4E7', fontWeight: 600 }}>
-                    Featured: <span style={{ color: '#FF4A61' }}>{item.speaker}</span>
-                    {item.speakerRole && <span style={{ color: '#9CA3AF', fontWeight: 400 }}> &bull; {item.speakerRole}</span>}
-                  </div>
-                )}
 
                 {/* Session Description */}
                 <p style={{ color: '#A1A1AA', fontSize: '0.92rem', lineHeight: 1.6 }}>

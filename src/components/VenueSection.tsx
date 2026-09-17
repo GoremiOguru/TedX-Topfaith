@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Wifi, Sparkles } from 'lucide-react';
+import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Users, Sparkles, ExternalLink } from 'lucide-react';
 import { VENUE_GALLERY, EVENT_DETAILS } from '../data/eventData';
 
 export const VenueSection: React.FC = () => {
@@ -15,13 +15,13 @@ export const VenueSection: React.FC = () => {
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <div className="section-badge">
             <MapPin size={14} />
-            <span>The Venue Experience</span>
+            <span>The Host Venue</span>
           </div>
           <h2 className="section-title">
-            The Law Auditorium <span className="highlight">Complex</span>
+            The Law <span className="highlight">Auditorium</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            A state-of-the-art architectural masterpiece designed for acoustic brilliance, pristine visibility, and unforgettable immersive experiences on the Topfaith University campus.
+            An architecturally distinguished amphitheater on the Topfaith University campus, acoustically engineered for crystal-clear talk delivery to an exclusive audience of 200 seated delegates.
           </p>
         </div>
 
@@ -31,14 +31,15 @@ export const VenueSection: React.FC = () => {
           style={{
             overflow: 'hidden',
             marginBottom: '2.5rem',
-            border: '1px solid rgba(235, 0, 40, 0.3)',
+            border: '1px solid rgba(235, 0, 40, 0.35)',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(235, 0, 40, 0.15)',
           }}
         >
           <div
             style={{
               position: 'relative',
               width: '100%',
-              height: 'clamp(320px, 50vw, 550px)',
+              height: 'clamp(340px, 50vw, 560px)',
               cursor: 'pointer',
               overflow: 'hidden',
             }}
@@ -62,11 +63,11 @@ export const VenueSection: React.FC = () => {
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to top, rgba(6, 6, 8, 0.95) 0%, rgba(6, 6, 8, 0.3) 50%, transparent 100%)',
+                background: 'linear-gradient(to top, rgba(6, 6, 9, 0.95) 0%, rgba(6, 6, 9, 0.3) 50%, transparent 100%)',
               }}
             />
 
-            {/* Top Badge */}
+            {/* Top Badges */}
             <div
               style={{
                 position: 'absolute',
@@ -75,11 +76,11 @@ export const VenueSection: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                padding: '0.4rem 0.9rem',
+                padding: '0.4rem 0.95rem',
                 borderRadius: '9999px',
                 background: 'rgba(235, 0, 40, 0.9)',
                 color: '#FFFFFF',
-                fontSize: '0.8rem',
+                fontSize: '0.82rem',
                 fontWeight: 700,
                 boxShadow: '0 4px 15px rgba(235, 0, 40, 0.4)',
               }}
@@ -101,7 +102,7 @@ export const VenueSection: React.FC = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: '50%',
-                background: 'rgba(6, 6, 8, 0.75)',
+                background: 'rgba(6, 6, 9, 0.8)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 backdropFilter: 'blur(8px)',
                 color: '#FFFFFF',
@@ -167,7 +168,7 @@ export const VenueSection: React.FC = () => {
                   style={{
                     position: 'absolute',
                     inset: 0,
-                    background: 'rgba(0, 0, 0, 0.3)',
+                    background: 'rgba(0, 0, 0, 0.35)',
                     display: 'flex',
                     alignItems: 'flex-end',
                     padding: '0.4rem',
@@ -190,12 +191,12 @@ export const VenueSection: React.FC = () => {
                 <Compass size={20} color="#EB0028" />
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Campus Location</h4>
-                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Essien Udim LGA</div>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Topfaith University Campus</h4>
+                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Mkpatak, Essien Udim LGA</div>
               </div>
             </div>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              Topfaith University is situated along the serene Mkpatak corridor, easily accessible via modern highways with dedicated delegate security corridors.
+              Located in the serene educational haven of Mkpatak, easily accessible via regional transit corridors with dedicated security checkpoints.
             </p>
             <a
               href={EVENT_DETAILS.venue.mapsUrl}
@@ -211,31 +212,31 @@ export const VenueSection: React.FC = () => {
 
           <div className="glass-card" style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ShieldCheck size={20} color="#60A5FA" />
+              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Users size={20} color="#EB0028" />
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Security & Hospitality</h4>
-                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>24/7 Gated Smart Campus</div>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Strict 200 Seating Quota</h4>
+                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Intimate & Immersive</div>
               </div>
             </div>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Comprehensive campus security protocol, accredited delegate checkpoints, dedicated medical first-responder teams, and reserved VIP escort services.
+              In compliance with TED's university license standards, attendance is strictly capped at 200 seats (170 Delegates + 10 VIP/Executives + 20 Official Delegation).
             </p>
           </div>
 
           <div className="glass-card" style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(0, 200, 83, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Wifi size={20} color="#00C853" />
+              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ShieldCheck size={20} color="#60A5FA" />
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>High-Speed Tech Hub</h4>
-                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Gigabit Fiber WiFi</div>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Production & Security</h4>
+                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>The Centrestage Company</div>
               </div>
             </div>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Complimentary high-speed WiFi for all registered attendees, live-tweet lounges, and charging hubs situated throughout the Law Auditorium concourse.
+              Executive production overseen by The Centrestage Company alongside Topfaith campus security and protocol teams.
             </p>
           </div>
         </div>

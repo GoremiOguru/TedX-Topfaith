@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { X, Ticket, Sparkles, Check, AlertCircle } from 'lucide-react';
+import { X, Ticket, Sparkles, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { TICKET_TIERS } from '../data/eventData';
+import { TICKET_TIERS, EVENT_DETAILS } from '../data/eventData';
 import type { RegistrationFormData } from '../types';
 import { TicketBadge } from './TicketBadge';
 
@@ -17,7 +17,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
   onClose,
 }) => {
   const [selectedTierId, setSelectedTierId] = useState<string>(
-    initialTierId || 'standard-delegate'
+    initialTierId || 'student-pass'
   );
   const [formData, setFormData] = useState<RegistrationFormData>({
     fullName: '',
@@ -35,7 +35,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
 
   if (!isOpen) return null;
 
-  const selectedTier = TICKET_TIERS.find((t) => t.id === selectedTierId) || TICKET_TIERS[1];
+  const selectedTier = TICKET_TIERS.find((t) => t.id === selectedTierId) || TICKET_TIERS[0];
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -120,27 +120,30 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 <span>OFFICIAL REGISTRATION PORTAL</span>
               </div>
               <h2 style={{ fontSize: '1.85rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
-                Reserve Your Delegate Seat
+                Reserve Your Delegate Pass
               </h2>
               <p style={{ color: '#9CA3AF', fontSize: '0.92rem', marginTop: '0.25rem' }}>
-                Join 1,200+ leaders and thinkers at Topfaith University Law Auditorium.
+                {EVENT_DETAILS.dateFormatted} &bull; 9:00 AM &ndash; 12:00 PM &bull; {EVENT_DETAILS.venue.name} (Strict 200 Cap)
               </p>
             </div>
 
             {/* Step 1: Select Tier */}
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#E4E4E7', marginBottom: '0.75rem' }}>
-                Select Your Access Pass:
+                Select Your Pass Tier:
               </label>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
                 {TICKET_TIERS.map((tier) => (
                   <button
                     key={tier.id}
                     type="button"
-                    onClick={() => setSelectedTierId(tier.id)}
+                    onClick={() => {
+                      setSelectedTierId(tier.id);
+                      setFormData({ ...formData, tier: tier.id });
+                    }}
                     style={{
-                      padding: '1rem',
+                      padding: '1.15rem 1rem',
                       borderRadius: '12px',
                       textAlign: 'left',
                       background: selectedTierId === tier.id ? 'rgba(235, 0, 40, 0.15)' : 'rgba(255, 255, 255, 0.03)',
@@ -153,8 +156,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                       <div
                         style={{
                           position: 'absolute',
-                          top: '0.5rem',
-                          right: '0.5rem',
+                          top: '0.65rem',
+                          right: '0.65rem',
                           width: '18px',
                           height: '18px',
                           borderRadius: '50%',
@@ -168,14 +171,14 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                         <Check size={12} />
                       </div>
                     )}
-                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF' }}>
                       {tier.name}
                     </div>
-                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#EB0028', marginTop: '0.25rem', fontFamily: 'Space Grotesk' }}>
-                      {tier.price === 0 ? 'FREE' : `${tier.currency}${tier.price.toLocaleString()}`}
+                    <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#EB0028', marginTop: '0.25rem', fontFamily: 'Space Grotesk' }}>
+                      {tier.currency}{tier.price.toLocaleString()}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#9CA3AF', marginTop: '0.2rem' }}>
-                      {tier.spotsLeft} seats remaining
+                    <div style={{ fontSize: '0.75rem', color: '#9CA3AF', marginTop: '0.2rem' }}>
+                      Total {tier.totalSeats} seats allotted
                     </div>
                   </button>
                 ))}
@@ -277,14 +280,14 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                     <option value="Student">Topfaith Student</option>
                     <option value="Faculty">Faculty / Staff Member</option>
                     <option value="Professional">Industry Professional</option>
-                    <option value="Innovator">Tech Founder / Innovator</option>
+                    <option value="Executive">Corporate Executive / Leader</option>
                     <option value="Guest">Guest Delegate</option>
                   </select>
                 </div>
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                    Institution / University / Company *
+                    Institution / University / Organization *
                   </label>
                   <input
                     type="text"
@@ -308,11 +311,11 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.4rem' }}>
-                  What idea or ambition do you hope to Transcend this year? (Optional)
+                  What inspires you to attend TRANSCEND? (Optional)
                 </label>
                 <textarea
                   rows={2}
-                  placeholder="Tell us what excites you about moving local innovation to the global stage..."
+                  placeholder="Share what ideas you are eager to discover or contribute..."
                   value={formData.motivation}
                   onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
                   style={{
@@ -342,7 +345,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 }}
               >
                 <Sparkles size={18} />
-                <span>Complete Registration & Generate Pass</span>
+                <span>Confirm Pass ({selectedTier.currency}{selectedTier.price.toLocaleString()})</span>
               </button>
             </form>
           </div>
