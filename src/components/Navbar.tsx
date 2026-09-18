@@ -72,84 +72,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
           
-          {/* Brand Area: Topfaith University Logo (links to school website) + TEDx White Logo + Tagline */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-            {/* Topfaith University Logo (Tapping opens school website) */}
-            <a
-              href="https://topfaith.edu.ng"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Visit Topfaith University Official Website"
+          {/* Brand Area: Official TEDx White Logo + Mandatory Tagline */}
+          <a
+            href="#"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              transition: 'opacity 0.2s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            <img
+              src="/tedxtopfaithlogo(white).png"
+              alt="TEDxTopfaithUniversity"
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '0.2rem 0.4rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                transition: 'all 0.2s ease',
-                flexShrink: 0,
+                height: 'clamp(28px, 4.2vw, 36px)',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-                e.currentTarget.style.transform = 'scale(1.04)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                e.currentTarget.style.transform = 'scale(1)';
+            />
+            <span
+              style={{
+                fontSize: '0.54rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                color: '#9CA3AF',
+                marginTop: '2px',
+                whiteSpace: 'nowrap',
               }}
             >
-              <img
-                src="/logo.png"
-                alt="Topfaith University"
-                style={{
-                  height: 'clamp(26px, 3.5vw, 32px)',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
-              />
-            </a>
-
-            {/* Vertical Divider */}
-            <div style={{ width: '1px', height: '24px', background: 'rgba(255, 255, 255, 0.18)', flexShrink: 0 }} />
-
-            {/* TEDx Logo & Mandatory Tagline */}
-            <a
-              href="#"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textDecoration: 'none',
-                minWidth: 0,
-              }}
-            >
-              <img
-                src="/tedxtopfaithlogo(white).png"
-                alt="TEDxTopfaithUniversity"
-                style={{
-                  height: 'clamp(22px, 3vw, 28px)',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
-              />
-              <span
-                style={{
-                  fontSize: '0.52rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  color: '#9CA3AF',
-                  marginTop: '1px',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                x = an independently organized TED event
-              </span>
-            </a>
-          </div>
+              x = an independently organized TED event
+            </span>
+          </a>
 
           {/* Desktop Nav Links (Hidden on Mobile) */}
           <nav style={{ display: 'none', alignItems: 'center', gap: '1.5rem' }} className="desktop-nav">
@@ -255,22 +214,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <a
-                  href="https://topfaith.edu.ng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', padding: '0.2rem 0.35rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '6px' }}
-                >
-                  <img src="/logo.png" alt="Topfaith University" style={{ height: '26px', width: 'auto' }} />
-                </a>
-                <div style={{ width: '1px', height: '20px', background: 'rgba(255, 255, 255, 0.15)' }} />
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <img src="/tedxtopfaithlogo(white).png" alt="TEDxTopfaithUniversity" style={{ height: '20px', width: 'auto' }} />
-                  <span style={{ fontSize: '0.48rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '1px' }}>
-                    x = an independently organized TED event
-                  </span>
-                </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <img src="/tedxtopfaithlogo(white).png" alt="TEDxTopfaithUniversity" style={{ height: '24px', width: 'auto' }} />
+                <span style={{ fontSize: '0.5rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '2px' }}>
+                  x = an independently organized TED event
+                </span>
               </div>
               <span style={{ fontSize: '0.72rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>SAT, NOV 21</span>
             </div>

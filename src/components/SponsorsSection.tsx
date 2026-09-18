@@ -20,190 +20,158 @@ export const SponsorsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 2 Flagship Institution & Producer Cards */}
-        <div className="grid-2" style={{ gap: '2rem', marginBottom: '4rem' }}>
-          {/* Card 1: Topfaith University */}
+        {/* Horizontal Patrons & Partners Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3.5rem' }}>
+          {/* Partner 1: Topfaith University (Horizontal Banner) */}
           <div
             className="glass-card"
             style={{
-              padding: '2.5rem',
+              padding: '1.75rem 2rem',
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignItems: 'center',
               justifyContent: 'space-between',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(12, 12, 16, 0.95) 100%)',
+              gap: '1.5rem',
+              border: '1px solid rgba(59, 130, 246, 0.25)',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(12, 12, 18, 0.95) 100%)',
+              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.5)',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.25)';
             }}
           >
-            <div>
-              {/* Header Row */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
-                <div
-                  style={{
-                    background: '#FFFFFF',
-                    padding: '0.6rem 1rem',
-                    borderRadius: '10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  }}
-                >
-                  <img
-                    src={PARTNERS_DATA.host.logo}
-                    alt={PARTNERS_DATA.host.name}
-                    style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
-                  />
-                </div>
-
-                <a
-                  href={PARTNERS_DATA.host.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary"
-                  style={{ padding: '0.45rem 0.9rem', fontSize: '0.78rem', minHeight: '34px' }}
-                >
-                  <span>Visit Website</span>
-                  <ExternalLink size={12} />
-                </a>
-              </div>
-
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: '1 1 500px', minWidth: '280px' }}>
               <div
                 style={{
-                  display: 'inline-flex',
+                  background: '#FFFFFF',
+                  padding: '0.6rem 1rem',
+                  borderRadius: '12px',
+                  display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  fontSize: '0.78rem',
-                  fontWeight: 800,
-                  color: '#60A5FA',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  padding: '0.35rem 0.85rem',
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(59, 130, 246, 0.3)',
-                  marginBottom: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  flexShrink: 0,
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
                 }}
               >
-                <Building2 size={13} />
-                <span>{PARTNERS_DATA.host.title}</span>
+                <img
+                  src={PARTNERS_DATA.host.logo}
+                  alt={PARTNERS_DATA.host.name}
+                  style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+                />
               </div>
 
-              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem' }}>
-                {PARTNERS_DATA.host.name}
-              </h3>
-
-              <p style={{ color: '#A1A1AA', fontSize: '0.92rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-                {PARTNERS_DATA.host.description}
-              </p>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontWeight: 800, color: '#60A5FA', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem' }}>
+                  <Building2 size={12} />
+                  <span>{PARTNERS_DATA.host.title}</span>
+                </div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>
+                  {PARTNERS_DATA.host.name}
+                </h3>
+                <p style={{ color: '#D1D5DB', fontSize: '0.88rem', lineHeight: 1.55, maxWidth: '620px' }}>
+                  {PARTNERS_DATA.host.description}
+                </p>
+              </div>
             </div>
 
-            <div>
-              <div
-                style={{
-                  fontSize: '0.82rem',
-                  color: '#93C5FD',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  padding: '0.75rem',
-                  borderRadius: '8px',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  border: '1px solid rgba(59, 130, 246, 0.25)',
-                }}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+              <span style={{ fontSize: '0.75rem', color: '#93C5FD', fontWeight: 700, padding: '0.45rem 0.85rem', background: 'rgba(59, 130, 246, 0.12)', borderRadius: '9999px', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+                Host Campus &bull; Mkpatak
+              </span>
+              <a
+                href={PARTNERS_DATA.host.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{ padding: '0.55rem 1.15rem', fontSize: '0.82rem', minHeight: '38px', width: 'auto' }}
               >
-                Host Campus &middot; Mkpatak, Akwa Ibom State
-              </div>
+                <span>Visit Portal</span>
+                <ExternalLink size={13} />
+              </a>
             </div>
           </div>
 
-          {/* Card 2: The Centrestage Company */}
+          {/* Partner 2: The Centrestage Company (Horizontal Banner) */}
           <div
             className="glass-card"
             style={{
-              padding: '2.5rem',
+              padding: '1.75rem 2rem',
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignItems: 'center',
               justifyContent: 'space-between',
+              gap: '1.5rem',
               border: '1px solid rgba(235, 0, 40, 0.3)',
-              background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(12, 12, 16, 0.95) 100%)',
+              background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(12, 12, 18, 0.95) 100%)',
+              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.5)',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.borderColor = 'rgba(235, 0, 40, 0.55)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.borderColor = 'rgba(235, 0, 40, 0.3)';
             }}
           >
-            <div>
-              {/* Header Row */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
-                <div
-                  style={{
-                    background: '#FFFFFF',
-                    padding: '0.4rem 0.8rem',
-                    borderRadius: '10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  }}
-                >
-                  <img
-                    src={PARTNERS_DATA.producer.logo}
-                    alt={PARTNERS_DATA.producer.name}
-                    style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
-                  />
-                </div>
-
-                <div
-                  style={{
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    color: '#EB0028',
-                    background: 'rgba(235, 0, 40, 0.15)',
-                    padding: '0.35rem 0.75rem',
-                    borderRadius: '9999px',
-                    border: '1px solid rgba(235, 0, 40, 0.3)',
-                  }}
-                >
-                  Strategic Partner
-                </div>
-              </div>
-
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: '1 1 500px', minWidth: '280px' }}>
               <div
                 style={{
-                  display: 'inline-flex',
+                  background: '#FFFFFF',
+                  padding: '0.5rem 0.85rem',
+                  borderRadius: '12px',
+                  display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  fontSize: '0.78rem',
-                  fontWeight: 800,
-                  color: '#FFD700',
-                  background: 'rgba(255, 215, 0, 0.1)',
-                  padding: '0.35rem 0.85rem',
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(255, 215, 0, 0.3)',
-                  marginBottom: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  flexShrink: 0,
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
                 }}
               >
-                <Globe2 size={13} />
-                <span>{PARTNERS_DATA.producer.title}</span>
+                <img
+                  src={PARTNERS_DATA.producer.logo}
+                  alt={PARTNERS_DATA.producer.name}
+                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
+                />
               </div>
 
-              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem' }}>
-                {PARTNERS_DATA.producer.name}
-              </h3>
-
-              <p style={{ color: '#A1A1AA', fontSize: '0.92rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-                {PARTNERS_DATA.producer.description}
-              </p>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontWeight: 800, color: '#FFD700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem' }}>
+                  <Globe2 size={12} />
+                  <span>{PARTNERS_DATA.producer.title}</span>
+                </div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>
+                  {PARTNERS_DATA.producer.name}
+                </h3>
+                <p style={{ color: '#D1D5DB', fontSize: '0.88rem', lineHeight: 1.55, maxWidth: '620px' }}>
+                  {PARTNERS_DATA.producer.description}
+                </p>
+              </div>
             </div>
 
-            <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+              <span style={{ fontSize: '0.75rem', color: '#FFD700', fontWeight: 700, padding: '0.45rem 0.85rem', background: 'rgba(255, 215, 0, 0.1)', borderRadius: '9999px', border: '1px solid rgba(255, 215, 0, 0.3)' }}>
+                Global Consultant &bull; Executive Producer
+              </span>
               <a
                 href={PARTNERS_DATA.producer.url || "https://thecentrestagecompany.com"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
-                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem' }}
+                style={{ padding: '0.55rem 1.15rem', fontSize: '0.82rem', minHeight: '38px', width: 'auto' }}
               >
-                <span>Visit Centrestage</span>
-                <ArrowRight size={15} />
+                <span>Visit Agency</span>
+                <ArrowRight size={13} />
               </a>
             </div>
           </div>

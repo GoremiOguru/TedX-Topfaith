@@ -41,62 +41,25 @@ export const Footer: React.FC = () => {
         >
           {/* Col 1: Brand & Mandatory TEDx Statement */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
-              {/* Topfaith University Logo (opens school website) */}
-              <a
-                href="https://topfaith.edu.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Topfaith University — Official Institution Website"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '0.3rem 0.5rem',
-                  borderRadius: '8px',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-                  e.currentTarget.style.transform = 'scale(1.04)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-              >
+            <div style={{ marginBottom: '1.25rem' }}>
+              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
                 <img
-                  src="/logo.png"
-                  alt="Topfaith University"
+                  src="/tedxtopfaithlogo(white).png"
+                  alt="TEDxTopfaithUniversity"
                   style={{ height: '36px', width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
               </a>
-
-              {/* Divider */}
-              <div style={{ width: '1px', height: '30px', background: 'rgba(255, 255, 255, 0.18)' }} />
-
-              {/* TEDx White Logo & Tagline */}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <a href="#" style={{ display: 'inline-block' }}>
-                  <img
-                    src="/tedxtopfaithlogo(white).png"
-                    alt="TEDxTopfaithUniversity"
-                    style={{ height: '30px', width: 'auto', objectFit: 'contain', display: 'block' }}
-                  />
-                </a>
-                <span
-                  style={{
-                    fontSize: '0.58rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    color: '#9CA3AF',
-                    marginTop: '2px',
-                  }}
-                >
-                  x = an independently organized TED event
-                </span>
+              <div
+                style={{
+                  fontSize: '0.62rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: '#9CA3AF',
+                  marginTop: '4px',
+                }}
+              >
+                x = an independently organized TED event
               </div>
             </div>
 
