@@ -7,7 +7,7 @@ export const EVENT_DETAILS = {
   tagline: "Exceeding Limitations",
   fullTheme: "TRANSCEND: Exceeding Limitations",
   description: "Bridging indigenous heritage, cultural power, creative enterprise, and transformative governance with global resonance. An intense, high-impact gathering of fearless creators, jurists, culinary artists, diaspora voices, and student catalysts exceeding all limitations.",
-  date: "November 21, 2026",
+  date: "Saturday November 21, 2026",
   dateFormatted: "Saturday, November 21st, 2026",
   time: "09:00 AM - 12:00 PM (WAT)",
   durationText: "3 Hours of Pure Transformation",
@@ -25,7 +25,7 @@ export const EVENT_DETAILS = {
   stats: [
     { value: "Curated", label: "Exclusive Quota", suffix: "" },
     { value: "3", label: "Hours of Power (9AM - 12PM)", suffix: "h" },
-    { value: "Nov 21", label: "Event Date 2026", suffix: "" },
+    { value: "Sat, Nov 21", label: "Event Date 2026", suffix: "" },
     { value: "100%", label: "Ideas Worth Spreading", suffix: "" }
   ],
   socials: {

@@ -72,53 +72,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
           
-          {/* Brand Area: Topfaith Logo + TEDx Lockup */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-            {/* Topfaith University Logo */}
-            <a
-              href="https://topfaith.edu.ng"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Visit Topfaith University"
+          {/* Brand Area: Official TEDxTopfaith Logo */}
+          <a
+            href="#"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+              transition: 'opacity 0.2s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.88')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            <img
+              src="/tedxtopfaithlogo(white).png"
+              alt="TEDxTopfaithUniversity"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0.2rem 0.35rem',
-                borderRadius: '6px',
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                flexShrink: 0,
+                height: 'clamp(28px, 4vw, 36px)',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
               }}
-            >
-              <img
-                src="/logo.png"
-                alt="Topfaith University Logo"
-                style={{
-                  height: '30px',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
-              />
-            </a>
-
-            {/* Divider */}
-            <div style={{ width: '1px', height: '22px', background: 'rgba(255, 255, 255, 0.18)', flexShrink: 0 }} />
-
-            {/* TEDx Lockup */}
-            <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', minWidth: 0 }}>
-              <div className="ted-logo-wrap">
-                <div className="ted-logo-main">
-                  <span className="ted-red">TED</span>
-                  <span className="ted-x">x</span>
-                  <span className="ted-event-name" style={{ fontSize: '0.95em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    TopfaithUni
-                  </span>
-                </div>
-                <span className="ted-tagline">x = independently organized TED event</span>
-              </div>
-            </a>
-          </div>
+            />
+          </a>
 
           {/* Desktop Nav Links (Hidden on Mobile) */}
           <nav style={{ display: 'none', alignItems: 'center', gap: '1.5rem' }} className="desktop-nav">
@@ -224,19 +200,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <a
-                href="https://topfaith.edu.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}
-              >
-                <img src="/logo.png" alt="Topfaith Logo" style={{ height: '30px' }} />
-                <span style={{ fontSize: '0.82rem', color: '#D1D5DB', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>topfaith.edu.ng</span>
-                  <ExternalLink size={11} />
-                </span>
-              </a>
-              <span style={{ fontSize: '0.75rem', color: '#EB0028', fontWeight: 700 }}>NOV 21, 2026</span>
+              <img src="/tedxtopfaithlogo(white).png" alt="TEDxTopfaithUniversity" style={{ height: '28px', width: 'auto' }} />
+              <span style={{ fontSize: '0.75rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>SAT, NOV 21, 2026</span>
             </div>
 
             {/* Navigation Links */}

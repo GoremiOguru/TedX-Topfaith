@@ -52,30 +52,48 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         overflow: 'hidden',
       }}
     >
-      {/* Background Image */}
+      {/* Luxury Cinematic Lighting & Ambient Halos */}
       <div
         style={{
           position: 'absolute',
-          inset: 0,
-          backgroundImage: `url('/background_image.jpeg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.38,
+          top: '-15%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: 'clamp(320px, 80vw, 850px)',
+          height: 'clamp(280px, 50vw, 550px)',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.22) 0%, rgba(235, 0, 40, 0.08) 45%, transparent 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
           zIndex: 0,
         }}
       />
-
-      {/* Multi-layered cinematic gradient overlays */}
       <div
         style={{
           position: 'absolute',
-          inset: 0,
-          background: `
-            linear-gradient(to bottom, rgba(6, 6, 9, 0.75) 0%, rgba(6, 6, 9, 0.92) 55%, rgba(6, 6, 9, 1) 100%),
-            radial-gradient(circle at 50% 20%, rgba(235, 0, 40, 0.28) 0%, transparent 65%)
-          `,
-          zIndex: 1,
+          bottom: '-10%',
+          right: '5%',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.08) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          left: '5%',
+          width: '350px',
+          height: '350px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255, 215, 0, 0.04) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          zIndex: 0,
         }}
       />
 
@@ -293,7 +311,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               marginBottom: '0.85rem',
             }}
           >
-            COUNTDOWN TO NOVEMBER 21ST
+            COUNTDOWN TO SATURDAY, NOVEMBER 21ST
           </div>
 
           <div

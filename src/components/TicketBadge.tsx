@@ -86,21 +86,11 @@ export const TicketBadge: React.FC<TicketBadgeProps> = ({
         <div style={{ padding: '1.75rem' }}>
           {/* Header Branding */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <img src="/logo.png" alt="Topfaith Logo" style={{ height: '32px', width: 'auto' }} />
-              <div className="ted-logo-wrap">
-                <div className="ted-logo-main" style={{ fontSize: '1.2rem' }}>
-                  <span className="ted-red">TED</span>
-                  <span className="ted-x">x</span>
-                  <span className="ted-event-name" style={{ fontSize: '1.05rem' }}>TopfaithUni</span>
-                </div>
-                <span className="ted-tagline" style={{ fontSize: '0.5rem' }}>independently organized TED event</span>
-              </div>
-            </div>
+            <img src="/tedxtopfaithlogo(white).png" alt="TEDxTopfaithUniversity" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
             <div
               style={{
-                width: '30px',
-                height: '30px',
+                width: '28px',
+                height: '28px',
                 borderRadius: '50%',
                 background: '#EB0028',
                 display: 'flex',

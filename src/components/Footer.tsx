@@ -41,18 +41,12 @@ export const Footer: React.FC = () => {
         >
           {/* Col 1: Brand & Mandatory TEDx Statement */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <a href="https://topfaith.edu.ng" target="_blank" rel="noreferrer" title="Topfaith University">
-                <img src="/logo.png" alt="Topfaith Logo" style={{ height: '38px', width: 'auto' }} />
-              </a>
-              <div className="ted-logo-wrap">
-                <div className="ted-logo-main" style={{ fontSize: '1.45rem' }}>
-                  <span className="ted-red">TED</span>
-                  <span className="ted-x">x</span>
-                  <span className="ted-event-name">TopfaithUniversity</span>
-                </div>
-                <span className="ted-tagline">x = independently organized TED event</span>
-              </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <img
+                src="/tedxtopfaithlogo(white).png"
+                alt="TEDxTopfaithUniversity Logo"
+                style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+              />
             </div>
 
             <p style={{ color: '#9CA3AF', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
