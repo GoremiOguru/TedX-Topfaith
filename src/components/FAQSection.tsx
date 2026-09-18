@@ -22,7 +22,7 @@ export const FAQSection: React.FC = () => {
             Frequently Asked <span className="highlight">Questions</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Essential details regarding attendance, pass pricing, the 200 seating quota at The Law Auditorium, and event day procedures.
+            Essential details regarding attendance, pass pricing, admission guidelines at The Law Auditorium, and event day procedures.
           </p>
         </div>
 

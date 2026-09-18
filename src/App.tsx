@@ -80,7 +80,7 @@ export const App: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: '0.72rem', color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: '3px' }}>
             <Calendar size={11} color="#EB0028" />
-            <span>Nov 21 &bull; 200 Seats</span>
+            <span>Nov 21 &bull; Limited Passes</span>
           </div>
           <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#FFFFFF' }}>
             From ₦10,000

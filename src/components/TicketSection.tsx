@@ -17,10 +17,10 @@ export const TicketSection: React.FC<TicketSectionProps> = ({ onSelectTier }) =>
             <span>Passes & Registration</span>
           </div>
           <h2 className="section-title">
-            Claim Your <span className="highlight">Delegate Seat</span>
+            Claim Your <span className="highlight">Delegate Pass</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Seats at {EVENT_DETAILS.venue.name} are strictly limited to 200 attendees (170 Delegates &bull; 10 VIP Executives) under TED quota regulations.
+            Passes for {EVENT_DETAILS.venue.name} are strictly limited under TED university license regulations to preserve an intimate, world-class experience.
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export const TicketSection: React.FC<TicketSectionProps> = ({ onSelectTier }) =>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.8rem', color: '#FF4A61', fontWeight: 700, marginBottom: '0.85rem' }}>
                   <AlertTriangle size={14} />
-                  <span>Strict limit: Total {tier.totalSeats} seats allotted</span>
+                  <span>Strict limit: Early reservation advised</span>
                 </div>
 
                 <button

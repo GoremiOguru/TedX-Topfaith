@@ -75,7 +75,7 @@ export const TicketBadge: React.FC<TicketBadgeProps> = ({
           }}
         >
           <span style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF' }}>
-            OFFICIAL DELEGATE PASS &bull; 200 SEAT QUOTA
+            OFFICIAL DELEGATE PASS &bull; EXCLUSIVE ACCESS
           </span>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, background: 'rgba(0,0,0,0.4)', padding: '0.2rem 0.55rem', borderRadius: '9999px', color: '#FFFFFF' }}>
             {tierName}
@@ -179,7 +179,7 @@ export const TicketBadge: React.FC<TicketBadgeProps> = ({
               </div>
               <div style={{ fontSize: '0.72rem', color: '#00C853', marginTop: '0.2rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                 <Sparkles size={11} />
-                <span>Verified 200 Quota Entry</span>
+                <span>Verified Official Entry Pass</span>
               </div>
             </div>
 

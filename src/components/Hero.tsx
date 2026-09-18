@@ -82,26 +82,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
       <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
         {/* Top Badges */}
         <div style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
-          <div className="section-badge" style={{ margin: 0 }}>
+          <div className="section-badge animate-float" style={{ margin: 0 }}>
             <Flame size={13} color="#EB0028" />
             <span>Official TEDx &bull; Topfaith Uni</span>
           </div>
           <div
+            className="radar-ping"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.35rem',
-              padding: '0.35rem 0.75rem',
+              padding: '0.35rem 0.85rem',
               borderRadius: '9999px',
               fontSize: '0.75rem',
               fontWeight: 700,
-              background: 'rgba(255, 215, 0, 0.1)',
-              border: '1px solid rgba(255, 215, 0, 0.3)',
+              background: 'rgba(255, 215, 0, 0.12)',
+              border: '1px solid rgba(255, 215, 0, 0.4)',
               color: '#FFD700',
             }}
           >
             <Users size={12} color="#FFD700" />
-            <span>Strictly 200 Seats</span>
+            <span>Exclusive Delegate Quota</span>
           </div>
         </div>
 

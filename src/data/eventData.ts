@@ -17,13 +17,13 @@ export const EVENT_DETAILS = {
     institution: "Topfaith University",
     city: "Mkpatak, Akwa Ibom State",
     country: "Nigeria",
-    hallCapacity: "200 Exclusive Seats",
+    hallCapacity: "Exclusive Curated Quota",
     address: "Topfaith University Campus, Mkpatak, Essien Udim LGA, Akwa Ibom State",
     mapsUrl: "https://maps.google.com/?q=Topfaith+University+Nigeria",
     websiteUrl: "https://topfaith.edu.ng"
   },
   stats: [
-    { value: "200", label: "Exclusive Seats", suffix: "" },
+    { value: "Curated", label: "Exclusive Quota", suffix: "" },
     { value: "3", label: "Hours of Power (9AM - 12PM)", suffix: "h" },
     { value: "Nov 21", label: "Event Date 2026", suffix: "" },
     { value: "100%", label: "Ideas Worth Spreading", suffix: "" }
@@ -284,7 +284,7 @@ export const VENUE_GALLERY: VenueGalleryItem[] = [
     caption: "The majestic main auditorium featuring acoustically tuned architectural tiers, sweeping stage visibility, and state-of-the-art audiovisual rigging.",
     category: "Auditorium",
     image: "/what_the_hall_looks_like.jpeg",
-    badge: "Main Stage (200 Seats)"
+    badge: "Main Stage Arena"
   },
   {
     id: "v2",
@@ -300,7 +300,7 @@ export const VENUE_GALLERY: VenueGalleryItem[] = [
     caption: "Plush, high-comfort auditorium seating designed for immersive viewing and clear sightlines from every angle.",
     category: "Seating",
     image: "/what_the_hall_looks_like_part2.jpeg",
-    badge: "Exclusive 200 Capacity"
+    badge: "Plush Tiered Seating"
   },
   {
     id: "v4",
@@ -316,11 +316,11 @@ export const TICKET_TIERS: TicketTier[] = [
   {
     id: "student-pass",
     name: "Student / Delegate Pass",
-    badge: "Strictly 170 Seats",
+    badge: "Standard Delegate Pass",
     price: 10000,
     originalPrice: 15000,
     currency: "₦",
-    description: "Standard access pass for university students, young innovators, researchers, and emerging changemakers.",
+    description: "Official access pass for university students, young innovators, researchers, and emerging changemakers.",
     features: [
       "Access to all 3 hours of live TEDx Talks",
       "Official Digital Delegate Badge & Verified QR Code",
@@ -336,7 +336,7 @@ export const TICKET_TIERS: TicketTier[] = [
   {
     id: "vip-executive",
     name: "VIP / Executive Pass",
-    badge: "Exclusive 10 Seats Only",
+    badge: "Exclusive VIP Access",
     price: 25000,
     currency: "₦",
     description: "Premium VIP pass exclusively for faculty executives, corporate patrons, visionary founders, and special guests.",
@@ -364,14 +364,14 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
   {
     id: "faq-2",
-    question: "Where is the event venue and what is the seating capacity?",
-    answer: "The event is held at The Law Auditorium, Topfaith University Campus, Mkpatak, Akwa Ibom State. Seating is strictly capped at 200 seats (170 Delegate seats and 10 VIP/Executive seats) in strict accordance with TED quota guidelines.",
+    question: "Where is the event venue and what is the admission policy?",
+    answer: "The event is held at The Law Auditorium, Topfaith University Campus, Mkpatak, Akwa Ibom State. Admission is strictly curated and managed under official TED university license guidelines. Registration is mandatory and passes are allocated on a first-confirmed basis.",
     category: "Event Day"
   },
   {
     id: "faq-3",
     question: "How much are tickets and what does the pass cover?",
-    answer: "The Student/Delegate Pass is ₦10,000 (170 seats available) and the VIP/Executive Pass is ₦25,000 (strictly 10 seats). Both passes provide full live access to all talks, the official delegate kit, morning refreshments, verified attendance certificate, and media assets.",
+    answer: "The Student/Delegate Pass is ₦10,000 and the VIP/Executive Pass is ₦25,000. Both passes provide full live access to all talks, the official delegate kit, morning refreshments, verified attendance certificate, and media assets.",
     category: "Tickets"
   },
   {

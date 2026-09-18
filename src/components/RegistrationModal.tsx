@@ -116,7 +116,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
             <div style={{ marginBottom: '1.5rem', paddingRight: '2rem' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#EB0028', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                 <Ticket size={13} />
-                <span>REGISTRATION &bull; 200 SEATS</span>
+                <span>OFFICIAL REGISTRATION &bull; LIMITED PASSES</span>
               </div>
               <h2 style={{ fontSize: '1.55rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
                 Reserve Your Pass
@@ -160,7 +160,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                         {tier.name}
                       </div>
                       <div style={{ fontSize: '0.75rem', color: '#9CA3AF', marginTop: '0.15rem' }}>
-                        Total {tier.totalSeats} seats allotted
+                        {tier.badge}
                       </div>
                     </div>
 

@@ -53,7 +53,7 @@ export const AboutSection: React.FC = () => {
                   'Independently organized under official TED license',
                   'Multidisciplinary focus across arts, law, fashion, food heritage, enterprise & self-mastery',
                   'Zero commercial pitches, 100% intellectual passion',
-                  'Strictly 200 seats for intimate, high-octane delegate networking'
+                  'Curated delegate cohort for intimate, high-octane networking'
                 ].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#D1D5DB', fontSize: '0.9rem' }}>
                     <CheckCircle size={16} color="#EB0028" style={{ flexShrink: 0 }} />

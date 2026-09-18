@@ -31,7 +31,7 @@ export const VenueSection: React.FC = () => {
             The Law <span className="highlight">Auditorium</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            An architecturally distinguished amphitheater on the Topfaith University campus, acoustically engineered for crystal-clear talk delivery to an exclusive audience of 200 seated delegates.
+            An architecturally distinguished amphitheater on the Topfaith University campus, acoustically engineered for crystal-clear talk delivery to a curated cohort of seated delegates.
           </p>
         </div>
 
@@ -226,12 +226,12 @@ export const VenueSection: React.FC = () => {
                 <Users size={20} color="#EB0028" />
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Strict 200 Seating Quota</h4>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Strict License Quota</h4>
                 <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Intimate & Immersive</div>
               </div>
             </div>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              In compliance with TED's university license standards, attendance is strictly capped at 200 seats (170 Delegates + 10 VIP/Executives + 20 Official Delegation).
+              In compliance with TED's university license standards, attendance is strictly capped to ensure an intimate, high-impact delegate experience.
             </p>
           </div>
 
