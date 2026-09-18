@@ -3,8 +3,8 @@ export interface SpeakerTeaser {
   field: string;
   codename: string;
   category: 'Tech & AI' | 'Global Leadership' | 'Creative Arts' | 'Science & Health' | 'Student Innovator';
-  teaserQuote: string;
-  hint: string;
+  status: string;
+  curatorialNote: string;
   silhouetteColor: string;
   revealed: boolean;
 }

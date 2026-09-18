@@ -365,7 +365,7 @@ button {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
-  align-items: flex-end; /* Mobile bottom sheet look */
+  align-items: flex-end; /* Mobile bottom sheet look for registration */
   justify-content: center;
   padding: 0;
   overflow-y: auto;
@@ -377,6 +377,81 @@ button {
     align-items: center;
     padding: 1.5rem;
   }
+}
+
+/* ====================================================
+   LIGHTBOX OVERLAY (Fullscreen & Centered on Mobile & Desktop)
+   ==================================================== */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  animation: fadeIn 0.25s ease-out;
+  overflow-y: auto;
+}
+
+.lightbox-card {
+  position: relative;
+  max-width: 1050px;
+  width: 100%;
+  max-height: 94vh;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(10, 10, 14, 0.98);
+  border: 1px solid rgba(235, 0, 40, 0.4);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(235, 0, 40, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-img-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 52vh, 520px);
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(12, 12, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(235, 0, 40, 0.9);
+  border-color: #EB0028;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-nav-prev {
+  left: 0.65rem;
+}
+
+.lightbox-nav-next {
+  right: 0.65rem;
 }
 
 @keyframes fadeIn {
@@ -410,3 +485,121 @@ button {
     display: none !important;
   }
 }
+
+/* ====================================================
+   INFINITE HORIZONTAL MARQUEE / CAROUSEL
+   ==================================================== */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  padding: 0.75rem 0;
+}
+
+.marquee-row {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+}
+
+.marquee-left {
+  animation: scrollLeft 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee-right {
+  animation: scrollRight 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-left,
+.marquee-container:hover .marquee-right {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.thematic-pill-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 9999px;
+  background: rgba(18, 18, 24, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  user-select: none;
+}
+
+.thematic-pill-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(235, 0, 40, 0.6);
+  background: rgba(26, 18, 22, 0.95);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(235, 0, 40, 0.35);
+}
+
+/* ====================================================
+   SPEAKER AUTO-LOOPING CAROUSEL
+   ==================================================== */
+.speaker-carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  padding: 1rem 0 2.5rem 0;
+}
+
+.speaker-carousel-track {
+  display: flex;
+  width: max-content;
+  gap: 1.75rem;
+  animation: scrollSpeakers 38s linear infinite;
+  will-change: transform;
+}
+
+.speaker-carousel-wrapper:hover .speaker-carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollSpeakers {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.speaker-carousel-card {
+  width: 320px;
+  max-width: 85vw;
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+

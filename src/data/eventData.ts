@@ -4,9 +4,9 @@ export const EVENT_DETAILS = {
   name: "TEDxTopfaithUniversity",
   subName: "Topfaith University",
   theme: "TRANSCEND",
-  tagline: "Moving Local to Global",
-  fullTheme: "TRANSCEND: Moving Local to Global",
-  description: "Bridging indigenous ingenuity with global relevance. An intense, high-impact gathering of fearless innovators, researchers, artists, and student catalysts igniting ideas that transcend geographical and intellectual boundaries.",
+  tagline: "Exceeding Limitations",
+  fullTheme: "TRANSCEND: Exceeding Limitations",
+  description: "Bridging indigenous ingenuity with global relevance. An intense, high-impact gathering of fearless innovators, researchers, artists, and student catalysts igniting ideas that exceed all boundaries and limitations.",
   date: "November 21, 2026",
   dateFormatted: "Saturday, November 21st, 2026",
   time: "09:00 AM - 12:00 PM (WAT)",
@@ -38,46 +38,46 @@ export const EVENT_DETAILS = {
 
 export const THEME_PILLARS: ThemePillar[] = [
   {
-    id: "grassroots-ai",
-    title: "Grassroots Tech & Frontier AI",
-    subtitle: "Solving local realities with world-class engineering",
-    description: "Unleashing African artificial intelligence, indigenous language computation, and decentralized systems designed from local constraints that scale into global technology infrastructure.",
+    id: "grassroots-tech",
+    title: "Technological Breakthroughs",
+    subtitle: "Exceeding conventional boundaries through engineering",
+    description: "Unleashing artificial intelligence, indigenous computation, and decentralized systems designed to transcend constraints.",
     iconName: "Cpu",
     accentColor: "#EB0028",
     gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.25) 0%, rgba(20, 10, 15, 0.95) 100%)",
     borderGlow: "rgba(235, 0, 40, 0.5)",
-    tags: ["Decentralized AI", "African Multimodal LLMs", "Grassroots Robotics"],
-    metrics: "Local Roots &bull; Global Scale"
+    tags: ["Tech Innovation", "Frontier Systems", "Global Relevance"],
+    metrics: "Exceeding Boundaries"
   },
   {
     id: "creative-renaissance",
-    title: "Afro-Futurism & Creative Exports",
+    title: "Afro-Futurism & Creative Power",
     subtitle: "Amplifying authentic African narratives globally",
-    description: "How our music, spatial audio, digital visual arts, and transmedia literature are commanding the world stage without losing an ounce of indigenous soul.",
+    description: "How music, digital arts, and transmedia storytelling command the world stage while exceeding artistic expectations.",
     iconName: "Sparkles",
     accentColor: "#FF3366",
     gradient: "linear-gradient(135deg, rgba(255, 51, 102, 0.25) 0%, rgba(25, 10, 20, 0.95) 100%)",
     borderGlow: "rgba(255, 51, 102, 0.5)",
-    tags: ["Creative Economy", "Spatial Sound", "Global Galleries"],
+    tags: ["Creative Economy", "Spatial Sound", "Global Expression"],
     metrics: "Authentic &bull; Borderless"
   },
   {
-    id: "bio-mimicry-climate",
-    title: "Bio-Engineering & Ecological Wisdom",
-    subtitle: "Planetary climate answers from ancient systems",
-    description: "Re-imagining sustainable urbanization, zero-electricity architecture, and agricultural biotechnology developed from native soil biology for planetary survival.",
+    id: "sustainable-future",
+    title: "Science, Ecology & Energy",
+    subtitle: "Reimagining sustainability from indigenous wisdom",
+    description: "Pioneering climate solutions, biological innovation, and sustainable systems built for planetary impact.",
     iconName: "Globe",
     accentColor: "#00E676",
     gradient: "linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(10, 25, 15, 0.95) 100%)",
     borderGlow: "rgba(0, 230, 118, 0.5)",
-    tags: ["Bio-polymers", "Passive Cooling", "Circular Economy"],
+    tags: ["Sustainability", "Clean Systems", "Ecosystem Wisdom"],
     metrics: "Planetary Impact"
   },
   {
-    id: "disruptive-youth-leadership",
-    title: "Youth Audacity & Global Governance",
+    id: "audacious-leadership",
+    title: "Youth Audacity & Leadership",
     subtitle: "Shattering ceilings from within university walls",
-    description: "Equipping young leaders with radical problem-solving agility, venture building tenacity, and international diplomatic acumen to influence multinational policy.",
+    description: "Equipping young leaders with radical problem-solving agility and venture tenacity to influence global governance.",
     iconName: "Zap",
     accentColor: "#FFAB00",
     gradient: "linear-gradient(135deg, rgba(255, 171, 0, 0.22) 0%, rgba(25, 20, 10, 0.95) 100%)",
@@ -90,61 +90,61 @@ export const THEME_PILLARS: ThemePillar[] = [
 export const SPEAKER_TEASERS: SpeakerTeaser[] = [
   {
     id: "speaker-1",
-    field: "Frontier Artificial Intelligence & Dialects",
-    codename: "The Language Pioneer",
+    field: "Frontier AI & Emerging Technologies",
+    codename: "Speaker Drop #1",
     category: "Tech & AI",
-    teaserQuote: "When machines understand our 2,000+ African dialects, the architecture of global thought transforms forever.",
-    hint: "Pioneering neuromorphic researcher connecting African oral histories to global neural networks.",
+    status: "CONFIDENTIAL REVIEW",
+    curatorialNote: "Speaker profile and talk title currently undergoing curatorial review. Official announcement coming soon.",
     silhouetteColor: "#EB0028",
     revealed: false
   },
   {
     id: "speaker-2",
-    field: "Venture Architecture & Cross-Border Capital",
-    codename: "The Market Catalyst",
+    field: "Venture Architecture & Global Leadership",
+    codename: "Speaker Drop #2",
     category: "Global Leadership",
-    teaserQuote: "If your solution works in rural Africa, it possesses the antifragility to conquer London and Tokyo.",
-    hint: "Serial tech founder turned VC backing high-growth pan-African companies scaling internationally.",
+    status: "CONFIDENTIAL REVIEW",
+    curatorialNote: "Speaker profile and talk title currently undergoing curatorial review. Official announcement coming soon.",
     silhouetteColor: "#FFAB00",
     revealed: false
   },
   {
     id: "speaker-3",
-    field: "Bio-Mimetic Architecture & Energy",
-    codename: "The Ecological Architect",
+    field: "Science, Health & Ecological Innovation",
+    codename: "Speaker Drop #3",
     category: "Science & Health",
-    teaserQuote: "Nature had a billion-year head start on thermodynamic engineering. We just need the humility to study it.",
-    hint: "Renowned researcher in zero-electricity passive cooling systems inspired by tropical biology.",
+    status: "CONFIDENTIAL REVIEW",
+    curatorialNote: "Speaker profile and talk title currently undergoing curatorial review. Official announcement coming soon.",
     silhouetteColor: "#00E676",
     revealed: false
   },
   {
     id: "speaker-4",
-    field: "Spatial Art, XR & Global Storytelling",
-    codename: "The Afro-Futurist",
+    field: "Creative Arts, Storytelling & Culture",
+    codename: "Speaker Drop #4",
     category: "Creative Arts",
-    teaserQuote: "Our heritage was never a museum artifact; it is living software updating the global imagination.",
-    hint: "Internationally exhibited transmedia artist featured across leading global biennial showcases.",
+    status: "CONFIDENTIAL REVIEW",
+    curatorialNote: "Speaker profile and talk title currently undergoing curatorial review. Official announcement coming soon.",
     silhouetteColor: "#FF3366",
     revealed: false
   },
   {
     id: "speaker-5",
-    field: "Autonomous Drone Robotics & Logistics",
-    codename: "The Student Prodigy",
+    field: "Topfaith Student Catalyst & Engineering",
+    codename: "Speaker Drop #5",
     category: "Student Innovator",
-    teaserQuote: "The sky above our campus is not a ceiling—it is a runway to the entire world.",
-    hint: "Topfaith student engineer developing autonomous lightweight fixed-wing UAVs for medical transport.",
+    status: "AUDITIONS IN PROGRESS",
+    curatorialNote: "Student innovator auditions and pitch submissions currently under review by the university board.",
     silhouetteColor: "#3B82F6",
     revealed: false
   },
   {
     id: "speaker-6",
-    field: "Sentinel Genomics & Decentralized Medicine",
-    codename: "The Health Defender",
-    category: "Science & Health",
-    teaserQuote: "Global biosecurity is only as strong as the most remote village clinic.",
-    hint: "Advancing portable gene sequencers predicting emerging global mutations in real-time.",
+    field: "Global Perspectives & Transformation",
+    codename: "Speaker Drop #6",
+    category: "Global Leadership",
+    status: "CONFIDENTIAL REVIEW",
+    curatorialNote: "Speaker profile and talk title currently undergoing curatorial review. Official announcement coming soon.",
     silhouetteColor: "#A855F7",
     revealed: false
   }
@@ -168,16 +168,16 @@ export const SCHEDULE_ITEMS: ScheduleItem[] = [
     type: "keynote",
     speaker: "TEDxTopfaithUniversity Convener & Leadership",
     speakerRole: "Convener & Curatorial Board",
-    description: "Setting the stage for 'TRANSCEND: Moving Local to Global' and official TED licensing opening protocol.",
+    description: "Setting the stage for 'TRANSCEND: Exceeding Limitations' and official TED licensing opening protocol.",
     location: "Main Stage - The Law Auditorium"
   },
   {
     id: "s3",
     time: "09:20 AM - 10:20 AM",
     period: "Morning",
-    title: "Session 1: The Frontier of Grassroots Brilliance",
+    title: "Session 1: Curated TEDx Talks (Part 1)",
     type: "talk",
-    description: "Back-to-back presentations exploring localized multimodal AI, autonomous drone systems, and native ecological materials.",
+    description: "High-impact TEDx talks by visionary thinkers exploring ideas that challenge assumptions and exceed limitations.",
     location: "Main Stage - The Law Auditorium"
   },
   {
@@ -186,16 +186,16 @@ export const SCHEDULE_ITEMS: ScheduleItem[] = [
     period: "Morning",
     title: "Live Cultural Performance: The Transcend Sonic Showcase",
     type: "performance",
-    description: "An awe-inspiring live sonic blend of traditional African percussion and modern synthesizer acoustics.",
+    description: "An inspiring live sonic showcase blending cultural rhythm and contemporary performance art.",
     location: "Main Stage - The Law Auditorium"
   },
   {
     id: "s5",
     time: "10:45 AM - 11:40 AM",
     period: "Midday",
-    title: "Session 2: Shattering Borders — Venture, Art & Global Influence",
+    title: "Session 2: Curated TEDx Talks (Part 2)",
     type: "talk",
-    description: "Masterclasses on taking African startups to global venture dominance and spatial XR art on international stages.",
+    description: "Second block of transformative talks igniting deep discussions and bold ideas worth spreading.",
     location: "Main Stage - The Law Auditorium"
   },
   {
@@ -204,7 +204,7 @@ export const SCHEDULE_ITEMS: ScheduleItem[] = [
     period: "Midday",
     title: "Grand Finale, Official Delegation Photo & Closing Reflections",
     type: "networking",
-    description: "Curator's closing remarks, celebrating speaker unveils, certificate presentation, and executive networking.",
+    description: "Curator's closing remarks, celebrating speaker reveals, certificate presentations, and executive networking.",
     location: "The Law Auditorium"
   }
 ];
@@ -291,7 +291,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id: "faq-1",
     question: "What is TEDxTopfaithUniversity?",
-    answer: "TEDxTopfaithUniversity is an independently organized, officially licensed TED event hosted at Topfaith University, Mkpatak on Saturday, November 21st, 2026. Guided by the theme 'TRANSCEND: Moving Local to Global', it features a curated 3-hour power lineup (9:00 AM - 12:00 PM) of world-changing ideas.",
+    answer: "TEDxTopfaithUniversity is an independently organized, officially licensed TED event hosted at Topfaith University, Mkpatak on Saturday, November 21st, 2026. Guided by the theme 'TRANSCEND: Exceeding Limitations', it features a curated 3-hour power lineup (9:00 AM - 12:00 PM) of world-changing ideas.",
     category: "General"
   },
   {
@@ -332,6 +332,7 @@ export const PARTNERS_DATA = {
     name: "The Centrestage Company",
     title: "Global Consultant & Producer",
     logo: "/the_centrestage_company_logo.jpg",
+    url: "https://thecentrestagecompany.com",
     description: "World-class live event producers, branding strategists, and executive experience architects consulting for landmark global gatherings."
   }
 };

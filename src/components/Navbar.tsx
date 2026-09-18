@@ -28,11 +28,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
+    { label: 'The Auditorium', href: '#venue' },
     { label: 'About', href: '#about' },
     { label: 'Theme', href: '#theme' },
     { label: 'Speaker Reveal', href: '#speakers' },
     { label: 'Schedule', href: '#schedule' },
-    { label: 'The Auditorium', href: '#venue' },
     { label: 'Passes', href: '#tickets' },
     { label: 'Partners', href: '#partners' },
     { label: 'FAQ', href: '#faq' },

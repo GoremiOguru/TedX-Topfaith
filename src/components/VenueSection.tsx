@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Users, Sparkles, ExternalLink } from 'lucide-react';
+import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Users, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { VENUE_GALLERY, EVENT_DETAILS } from '../data/eventData';
 
 export const VenueSection: React.FC = () => {
@@ -7,6 +7,16 @@ export const VenueSection: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
 
   const activeVenue = VENUE_GALLERY[activeImageIndex];
+
+  const handlePrevImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev === 0 ? VENUE_GALLERY.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev === VENUE_GALLERY.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section id="venue" className="section-padding" style={{ position: 'relative' }}>
@@ -242,50 +252,151 @@ export const VenueSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Centered Fullscreen Lightbox Modal (Mobile & Desktop Fixed) */}
       {lightboxOpen && (
-        <div className="modal-overlay" onClick={() => setLightboxOpen(false)}>
+        <div className="lightbox-overlay" onClick={() => setLightboxOpen(false)}>
           <div
-            style={{
-              position: 'relative',
-              maxWidth: '1100px',
-              width: '95%',
-              maxHeight: '90vh',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95)',
-            }}
+            className="lightbox-card"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setLightboxOpen(false)}
+            {/* Top Modal Navigation Header */}
+            <div
               style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
-                background: 'rgba(0, 0, 0, 0.8)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#FFFFFF',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
+                justifyContent: 'space-between',
+                padding: '1rem 1.25rem',
+                background: 'rgba(12, 12, 16, 0.98)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
               }}
-              aria-label="Close"
             >
-              <X size={20} />
-            </button>
-            <img
-              src={activeVenue.image}
-              alt={activeVenue.title}
-              style={{ width: '100%', maxHeight: '85vh', objectFit: 'contain', background: '#000000' }}
-            />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '9999px',
+                    background: 'rgba(235, 0, 40, 0.15)',
+                    border: '1px solid rgba(235, 0, 40, 0.4)',
+                    color: '#FF4A61',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Sparkles size={11} />
+                  <span>{activeVenue.badge}</span>
+                </div>
+                <span
+                  style={{
+                    fontSize: '0.88rem',
+                    fontWeight: 700,
+                    color: '#FFFFFF',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {activeVenue.title}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+                <span style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 600 }}>
+                  {activeImageIndex + 1} / {VENUE_GALLERY.length}
+                </span>
+                <button
+                  onClick={() => setLightboxOpen(false)}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: '#FFFFFF',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                  }}
+                  aria-label="Close Lightbox"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Main Centered Image Frame with Prev/Next Controls */}
+            <div className="lightbox-img-wrap">
+              <button
+                onClick={handlePrevImage}
+                className="lightbox-nav-btn lightbox-nav-prev"
+                aria-label="Previous Image"
+              >
+                <ChevronLeft size={22} />
+              </button>
+
+              <img
+                src={activeVenue.image}
+                alt={activeVenue.title}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  background: '#000000',
+                  userSelect: 'none',
+                }}
+              />
+
+              <button
+                onClick={handleNextImage}
+                className="lightbox-nav-btn lightbox-nav-next"
+                aria-label="Next Image"
+              >
+                <ChevronRight size={22} />
+              </button>
+            </div>
+
+            {/* Bottom Caption & Thumbnail Switcher */}
+            <div
+              style={{
+                padding: '1rem 1.25rem',
+                background: 'rgba(12, 12, 16, 0.98)',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              }}
+            >
+              <p style={{ color: '#D1D5DB', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>
+                {activeVenue.caption}
+              </p>
+
+              {/* Quick Jump Thumbnails */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                {VENUE_GALLERY.map((item, idx) => (
+                  <button
+                    key={`lightbox-thumb-${item.id}`}
+                    onClick={() => setActiveImageIndex(idx)}
+                    style={{
+                      height: '46px',
+                      borderRadius: '6px',
+                      overflow: 'hidden',
+                      border: activeImageIndex === idx ? '2px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.1)',
+                      opacity: activeImageIndex === idx ? 1 : 0.5,
+                      transition: 'all 0.2s ease',
+                      padding: 0,
+                    }}
+                  >
+                    <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}
     </section>
   );
 };
+

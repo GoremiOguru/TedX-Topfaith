@@ -135,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               textShadow: '0 0 25px rgba(235, 0, 40, 0.6)',
             }}
           >
-            <span>Moving Local to Global</span>
+            <span>Exceeding Limitations</span>
           </div>
         </div>
 
@@ -200,7 +200,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             <span style={{ fontWeight: 600 }}>9:00 AM &ndash; 12:00 PM</span>
           </div>
 
-          <div
+          <a
+            href="#venue"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -212,11 +213,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               borderRadius: '9999px',
               fontSize: '0.84rem',
               color: '#F3F4F6',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#EB0028';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+              e.currentTarget.style.color = '#F3F4F6';
             }}
           >
             <MapPin size={15} color="#EB0028" />
             <span style={{ fontWeight: 700 }}>{EVENT_DETAILS.venue.name}</span>
-          </div>
+          </a>
         </div>
 
         {/* Action Buttons (Full width on mobile) */}

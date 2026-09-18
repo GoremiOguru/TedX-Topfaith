@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic2, Lock, Sparkles, Bell, ArrowRight, CheckCircle2, UserCheck, Eye } from 'lucide-react';
+import { Mic2, Lock, Sparkles, Bell, ArrowRight, CheckCircle2, UserCheck, ShieldAlert, Info } from 'lucide-react';
 import { SPEAKER_TEASERS } from '../data/eventData';
 import type { SpeakerTeaser } from '../types';
 
@@ -30,33 +30,54 @@ export const SpeakersSection: React.FC = () => {
             The Speaker <span className="highlight">Unveiling</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Our curatorial board is currently reviewing confidential speaker submissions across technology, global finance, bio-science, arts, and student innovation. Official speaker profiles will be unveiled in upcoming drops!
+            Our curatorial board is actively reviewing speaker submissions across multidisciplinary domains in accordance with official TED licensing guidelines. Official speaker profiles and talk announcements will be revealed in curated drops!
           </p>
         </div>
 
-        {/* Mystery Teaser Cards Grid */}
-        <div className="grid-3" style={{ gap: '2rem', marginBottom: '4rem' }}>
-          {SPEAKER_TEASERS.map((teaser, idx) => (
+        {/* Subtle Carousel Control Prompt */}
+        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.76rem',
+              color: '#9CA3AF',
+              background: 'rgba(255, 255, 255, 0.04)',
+              padding: '0.3rem 0.8rem',
+              borderRadius: '9999px',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            <Sparkles size={12} color="#EB0028" />
+            <span>Auto-playing Lineup &bull; Hover or tap to pause &bull; Tap card for details</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Auto-looping Speaker Carousel (Mobile & Desktop) */}
+      <div className="speaker-carousel-wrapper">
+        <div className="speaker-carousel-track">
+          {[...SPEAKER_TEASERS, ...SPEAKER_TEASERS].map((teaser, idx) => (
             <div
-              key={teaser.id}
-              className="glass-card"
+              key={`speaker-carousel-${teaser.id}-${idx}`}
+              className="glass-card speaker-carousel-card"
               style={{
-                padding: '2rem',
+                padding: '2rem 1.75rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'rgba(14, 14, 18, 0.85)',
+                background: 'rgba(14, 14, 18, 0.9)',
                 position: 'relative',
                 overflow: 'hidden',
-                cursor: 'pointer',
                 transition: 'all 0.35s ease',
               }}
               onClick={() => setActiveTeaser(teaser)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = teaser.silhouetteColor;
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = `0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px ${teaser.silhouetteColor}25`;
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = `0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px ${teaser.silhouetteColor}30`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
@@ -69,7 +90,7 @@ export const SpeakersSection: React.FC = () => {
                 <div
                   style={{
                     position: 'relative',
-                    height: '220px',
+                    height: '190px',
                     borderRadius: '16px',
                     background: `radial-gradient(circle at 50% 40%, ${teaser.silhouetteColor}25 0%, rgba(6, 6, 10, 0.95) 75%)`,
                     border: `1px solid ${teaser.silhouetteColor}35`,
@@ -77,98 +98,101 @@ export const SpeakersSection: React.FC = () => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1.25rem',
                     overflow: 'hidden',
                   }}
                 >
-                  {/* Glowing Silhouette Outline */}
+                  {/* Glowing Lock Outline */}
                   <div
                     style={{
-                      width: '90px',
-                      height: '90px',
+                      width: '75px',
+                      height: '75px',
                       borderRadius: '50%',
                       background: 'rgba(255, 255, 255, 0.05)',
                       border: `2px dashed ${teaser.silhouetteColor}80`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: '0.75rem',
+                      marginBottom: '0.65rem',
                     }}
                   >
-                    <Lock size={32} color={teaser.silhouetteColor} />
+                    <Lock size={28} color={teaser.silhouetteColor} />
                   </div>
 
                   <div
                     style={{
-                      fontSize: '0.75rem',
+                      fontSize: '0.7rem',
                       fontWeight: 800,
-                      letterSpacing: '0.12em',
+                      letterSpacing: '0.1em',
                       textTransform: 'uppercase',
                       color: teaser.silhouetteColor,
-                      background: 'rgba(0,0,0,0.6)',
-                      padding: '0.3rem 0.8rem',
+                      background: 'rgba(0,0,0,0.65)',
+                      padding: '0.25rem 0.75rem',
                       borderRadius: '9999px',
                       border: `1px solid ${teaser.silhouetteColor}40`,
                     }}
                   >
-                    UNVEILING IN DROP {idx + 1}
+                    DROP {(idx % SPEAKER_TEASERS.length) + 1}
                   </div>
                 </div>
 
-                {/* Category & Codename */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: teaser.silhouetteColor, fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-                  <Mic2 size={13} />
-                  <span>{teaser.category}</span>
+                {/* Category & Status */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: teaser.silhouetteColor, fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase' }}>
+                    <Mic2 size={12} />
+                    <span>{teaser.category}</span>
+                  </div>
+
+                  <span
+                    style={{
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      color: '#9CA3AF',
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      padding: '0.2rem 0.5rem',
+                      borderRadius: '4px',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    {teaser.status}
+                  </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.5rem' }}>
-                  {teaser.codename}
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem', lineHeight: 1.3 }}>
+                  {teaser.field}
                 </h3>
 
-                <div style={{ fontSize: '0.86rem', color: '#9CA3AF', marginBottom: '1.25rem', fontWeight: 500 }}>
-                  {teaser.field}
-                </div>
-
-                {/* Teaser Quote preview */}
-                <div
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    padding: '1rem',
-                    borderRadius: '10px',
-                    borderLeft: `3px solid ${teaser.silhouetteColor}`,
-                    fontStyle: 'italic',
-                    color: '#D1D5DB',
-                    fontSize: '0.88rem',
-                    lineHeight: 1.55,
-                  }}
-                >
-                  "{teaser.teaserQuote}"
-                </div>
+                <p style={{ fontSize: '0.84rem', color: '#9CA3AF', lineHeight: 1.55, marginBottom: '1.25rem' }}>
+                  {teaser.curatorialNote}
+                </p>
               </div>
 
               {/* Reveal Clue CTA */}
               <div
                 style={{
-                  marginTop: '1.5rem',
-                  paddingTop: '1rem',
+                  marginTop: '0.5rem',
+                  paddingTop: '0.85rem',
                   borderTop: '1px solid rgba(255, 255, 255, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   color: teaser.silhouetteColor,
-                  fontSize: '0.85rem',
+                  fontSize: '0.82rem',
                   fontWeight: 600,
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <Eye size={15} />
-                  <span>View Curatorial Clue</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Info size={14} />
+                  <span>Curatorial Review Details</span>
                 </div>
-                <ArrowRight size={15} />
+                <ArrowRight size={14} />
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="container">
 
         {/* Drop Notification & Speaker Audition Callout */}
         <div
@@ -190,10 +214,10 @@ export const SpeakersSection: React.FC = () => {
               <span>BE FIRST IN THE KNOW</span>
             </div>
             <h3 style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.5rem' }}>
-              Get Instant Speaker Drop Alerts
+              Get Priority Speaker Drop Alerts
             </h3>
             <p style={{ color: '#A1A1AA', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              Receive priority alerts as each visionary speaker is officially unveiled ahead of November 21st, 2026.
+              Receive priority notifications as each confirmed speaker and talk title is officially unveiled ahead of November 21st, 2026.
             </p>
 
             <form onSubmit={handleNotify} style={{ display: 'flex', gap: '0.5rem' }}>
@@ -241,7 +265,7 @@ export const SpeakersSection: React.FC = () => {
               Have an Idea Worth Spreading?
             </h3>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              Topfaith students and faculty innovators are invited to submit a 3-minute video pitch to be considered for the student innovator stage.
+              Topfaith students, researchers, and innovators are invited to submit talk pitches for curatorial review for the student catalyst stage.
             </p>
 
             <a
@@ -256,7 +280,7 @@ export const SpeakersSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Clue Modal */}
+      {/* Curatorial Status Modal */}
       {activeTeaser && (
         <div className="modal-overlay" onClick={() => setActiveTeaser(null)}>
           <div
@@ -290,10 +314,10 @@ export const SpeakersSection: React.FC = () => {
             </div>
 
             <div style={{ fontSize: '0.8rem', fontWeight: 800, color: activeTeaser.silhouetteColor, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-              {activeTeaser.category} &bull; CODENAME: {activeTeaser.codename}
+              {activeTeaser.category} &bull; {activeTeaser.status}
             </div>
 
-            <h3 style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem' }}>
+            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem' }}>
               {activeTeaser.field}
             </h3>
 
@@ -303,20 +327,16 @@ export const SpeakersSection: React.FC = () => {
                 padding: '1.25rem',
                 borderRadius: '12px',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                marginBottom: '1.5rem',
+                marginBottom: '1.75rem',
                 textAlign: 'left',
               }}
             >
               <div style={{ fontSize: '0.75rem', color: '#EB0028', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                Curatorial Clue
+                Curatorial Protocol
               </div>
-              <p style={{ color: '#E4E4E7', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                {activeTeaser.hint}
+              <p style={{ color: '#E4E4E7', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Under official TED guidelines, speaker confirmations and talk narratives undergo strict curatorial vetting. The confirmed speaker profile for this session will be officially announced in upcoming reveal drops.
               </p>
-            </div>
-
-            <div style={{ fontStyle: 'italic', color: '#A1A1AA', fontSize: '0.92rem', marginBottom: '1.75rem', lineHeight: 1.6 }}>
-              "{activeTeaser.teaserQuote}"
             </div>
 
             <button
@@ -324,7 +344,7 @@ export const SpeakersSection: React.FC = () => {
               className="btn btn-primary"
               style={{ width: '100%', padding: '0.8rem' }}
             >
-              <span>Close Clue</span>
+              <span>Close Information</span>
             </button>
           </div>
         </div>
@@ -332,3 +352,4 @@ export const SpeakersSection: React.FC = () => {
     </section>
   );
 };
+

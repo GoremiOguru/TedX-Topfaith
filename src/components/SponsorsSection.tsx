@@ -1,22 +1,8 @@
-import React, { useState } from 'react';
-import { Award, CheckCircle2, ArrowRight, Sparkles, Building2, Globe2, Briefcase, Mail } from 'lucide-react';
+import React from 'react';
+import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck, CheckCircle } from 'lucide-react';
 import { PARTNERS_DATA } from '../data/eventData';
 
 export const SponsorsSection: React.FC = () => {
-  const [partnerEmail, setPartnerEmail] = useState('');
-  const [organizationName, setOrganizationName] = useState('');
-  const [inquirySent, setInquirySent] = useState(false);
-
-  const handlePartnerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (partnerEmail.trim()) {
-      setInquirySent(true);
-      setPartnerEmail('');
-      setOrganizationName('');
-      setTimeout(() => setInquirySent(false), 6000);
-    }
-  };
-
   return (
     <section id="partners" className="section-padding" style={{ position: 'relative', background: 'rgba(10, 10, 14, 0.55)' }}>
       <div className="container">
@@ -30,41 +16,55 @@ export const SponsorsSection: React.FC = () => {
             Patrons & <span className="highlight">Partners</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Powered by visionary academic leadership and world-class live production consulting to deliver an unforgettable TEDx experience.
+            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University and world-class executive consulting with The Centrestage Company.
           </p>
         </div>
 
-        {/* Official Host & Global Producer Showcase */}
-        <div className="grid-2" style={{ maxWidth: '980px', margin: '0 auto 3.5rem auto', gap: '2rem' }}>
-          {/* Topfaith University Card */}
+        {/* 2 Flagship Institution & Producer Cards */}
+        <div className="grid-2" style={{ gap: '2rem', marginBottom: '4rem' }}>
+          {/* Card 1: Topfaith University */}
           <div
             className="glass-card"
             style={{
-              padding: '2.5rem 2rem',
+              padding: '2.5rem',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              background: 'rgba(15, 15, 22, 0.85)',
-              position: 'relative',
-              textAlign: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(12, 12, 16, 0.95) 100%)',
             }}
           >
             <div>
-              <div
-                style={{
-                  height: '75px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.25rem',
-                }}
-              >
-                <img
-                  src={PARTNERS_DATA.host.logo}
-                  alt={PARTNERS_DATA.host.name}
-                  style={{ maxHeight: '60px', maxWidth: '100%', objectFit: 'contain' }}
-                />
+              {/* Header Row */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
+                <div
+                  style={{
+                    background: '#FFFFFF',
+                    padding: '0.6rem 1rem',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                  }}
+                >
+                  <img
+                    src={PARTNERS_DATA.host.logo}
+                    alt={PARTNERS_DATA.host.name}
+                    style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+                  />
+                </div>
+
+                <a
+                  href={PARTNERS_DATA.host.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{ padding: '0.45rem 0.9rem', fontSize: '0.78rem', minHeight: '34px' }}
+                >
+                  <span>Visit Website</span>
+                  <ExternalLink size={12} />
+                </a>
               </div>
 
               <div
@@ -74,11 +74,11 @@ export const SponsorsSection: React.FC = () => {
                   gap: '0.4rem',
                   fontSize: '0.78rem',
                   fontWeight: 800,
-                  color: '#EB0028',
-                  background: 'rgba(235, 0, 40, 0.1)',
+                  color: '#60A5FA',
+                  background: 'rgba(59, 130, 246, 0.1)',
                   padding: '0.35rem 0.85rem',
                   borderRadius: '9999px',
-                  border: '1px solid rgba(235, 0, 40, 0.25)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
                   marginBottom: '0.75rem',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
@@ -98,55 +98,70 @@ export const SponsorsSection: React.FC = () => {
             </div>
 
             <div>
-              <a
-                href={PARTNERS_DATA.host.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem' }}
+              <div
+                style={{
+                  fontSize: '0.82rem',
+                  color: '#93C5FD',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  padding: '0.75rem',
+                  borderRadius: '8px',
+                  background: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.25)',
+                }}
               >
-                <span>Visit Topfaith University</span>
-                <ArrowRight size={15} />
-              </a>
+                Host Campus &middot; Mkpatak, Akwa Ibom State
+              </div>
             </div>
           </div>
 
-          {/* The Centrestage Company Card */}
+          {/* Card 2: The Centrestage Company */}
           <div
             className="glass-card"
             style={{
-              padding: '2.5rem 2rem',
+              padding: '2.5rem',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              border: '2px solid rgba(235, 0, 40, 0.4)',
-              background: 'linear-gradient(145deg, rgba(25, 12, 18, 0.9) 0%, rgba(12, 12, 18, 0.95) 100%)',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(235, 0, 40, 0.2)',
-              position: 'relative',
-              textAlign: 'center',
+              border: '1px solid rgba(235, 0, 40, 0.3)',
+              background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(12, 12, 16, 0.95) 100%)',
             }}
           >
             <div>
-              <div
-                style={{
-                  height: '75px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.25rem',
-                }}
-              >
-                <img
-                  src={PARTNERS_DATA.producer.logo}
-                  alt={PARTNERS_DATA.producer.name}
+              {/* Header Row */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.75rem' }}>
+                <div
                   style={{
-                    maxHeight: '62px',
-                    maxWidth: '100%',
-                    objectFit: 'contain',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                    background: '#FFFFFF',
+                    padding: '0.4rem 0.8rem',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
                   }}
-                />
+                >
+                  <img
+                    src={PARTNERS_DATA.producer.logo}
+                    alt={PARTNERS_DATA.producer.name}
+                    style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+                  />
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    color: '#EB0028',
+                    background: 'rgba(235, 0, 40, 0.15)',
+                    padding: '0.35rem 0.75rem',
+                    borderRadius: '9999px',
+                    border: '1px solid rgba(235, 0, 40, 0.3)',
+                  }}
+                >
+                  Strategic Partner
+                </div>
               </div>
 
               <div
@@ -180,26 +195,21 @@ export const SponsorsSection: React.FC = () => {
             </div>
 
             <div>
-              <div
-                style={{
-                  fontSize: '0.82rem',
-                  color: '#FF4A61',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  padding: '0.75rem',
-                  borderRadius: '8px',
-                  background: 'rgba(235, 0, 40, 0.1)',
-                  border: '1px solid rgba(235, 0, 40, 0.25)',
-                }}
+              <a
+                href={PARTNERS_DATA.producer.url || "https://thecentrestagecompany.com"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem' }}
               >
-                Official Production & Curation Partner
-              </div>
+                <span>Visit Centrestage</span>
+                <ArrowRight size={15} />
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Responsive Advertisement: Desktop 2-Col / Mobile Centered Stack */}
+        {/* Responsive Advertisement & Official Partnership Desk */}
         <div
           className="glass-card sponsor-ad-card"
           style={{
@@ -269,78 +279,64 @@ export const SponsorsSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column (Desktop) / Bottom (Mobile): Sponsor Deck Request Form */}
+            {/* Right Column (Desktop) / Bottom (Mobile): Sponsor Deck Request Action */}
             <div className="sponsor-form-wrap">
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  color: '#EB0028',
+                  fontSize: '0.78rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  marginBottom: '0.75rem',
+                  background: 'rgba(235, 0, 40, 0.12)',
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(235, 0, 40, 0.35)',
+                }}
+              >
+                <Sparkles size={13} color="#EB0028" />
+                <span>OFFICIAL PARTNERSHIP DESK</span>
+              </div>
+
+              <h4 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.5rem', lineHeight: 1.3 }}>
                 Request Official Partnership Deck
               </h4>
-              <p style={{ color: '#9CA3AF', fontSize: '0.86rem', marginBottom: '1.5rem' }}>
-                Receive our comprehensive tiered sponsorship packages and brand activation roadmap.
+              <p style={{ color: '#D1D5DB', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                Complete our brief sponsorship inquiry to receive the official TEDxTopfaithUniversity 2026 Partnership Deck and connect directly with our convener team.
               </p>
 
-              <form onSubmit={handlePartnerSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
-                    Company / Organization Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Apex Global Technologies"
-                    value={organizationName}
-                    onChange={(e) => setOrganizationName(e.target.value)}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.8rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: '1px solid rgba(255, 255, 255, 0.14)',
-                      borderRadius: '8px',
-                      color: '#FFFFFF',
-                      fontSize: '16px',
-                      outline: 'none',
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#D1D5DB', marginBottom: '0.35rem' }}>
-                    Corporate Email Address
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="partnerships@company.com"
-                    value={partnerEmail}
-                    onChange={(e) => setPartnerEmail(e.target.value)}
-                    required
-                    style={{
-                      width: '100%',
-                      padding: '0.8rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: '1px solid rgba(255, 255, 255, 0.14)',
-                      borderRadius: '8px',
-                      color: '#FFFFFF',
-                      fontSize: '16px',
-                      outline: 'none',
-                    }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <a
+                  href="https://forms.gle/MzzRgTwccJo9qUUX7"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary"
-                  style={{ width: '100%', padding: '0.9rem', fontSize: '0.95rem', fontWeight: 700, marginTop: '0.4rem' }}
+                  style={{
+                    width: '100%',
+                    padding: '1rem 1.5rem',
+                    fontSize: '0.96rem',
+                    fontWeight: 800,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.55rem',
+                    boxShadow: '0 8px 25px rgba(235, 0, 40, 0.45)',
+                  }}
                 >
-                  <Mail size={16} />
-                  <span>Send Sponsorship Deck</span>
-                </button>
+                  <span>Open Partnership Application</span>
+                  <ExternalLink size={16} />
+                </a>
 
-                {inquirySent && (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', color: '#00C853', fontSize: '0.85rem', fontWeight: 600, marginTop: '0.5rem' }}>
-                    <CheckCircle2 size={16} />
-                    <span>Inquiry received! Our sponsorship desk will contact you within 24 hours.</span>
-                  </div>
-                )}
-              </form>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', color: '#9CA3AF', fontSize: '0.78rem' }}>
+                  <ShieldCheck size={13} color="#00E676" />
+                  <span>Official Google Form &bull; Quick 2-Minute Review</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
