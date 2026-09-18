@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Calendar, MapPin, ArrowRight, Play, Flame, Users, Clock } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
 
@@ -47,13 +48,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '6rem',
+        paddingTop: '6.5rem',
         paddingBottom: '3.5rem',
         overflow: 'hidden',
+        background: '#070709',
       }}
     >
       {/* Luxury Cinematic Lighting & Ambient Halos */}
-      <div
+      <motion.div
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.2, 0.28, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
         style={{
           position: 'absolute',
           top: '-15%',
@@ -62,8 +73,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           width: 'clamp(320px, 80vw, 850px)',
           height: 'clamp(280px, 50vw, 550px)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.22) 0%, rgba(235, 0, 40, 0.08) 45%, transparent 70%)',
-          filter: 'blur(60px)',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.3) 0%, rgba(235, 0, 40, 0.08) 45%, transparent 70%)',
+          filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -76,22 +87,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.12) 0%, transparent 70%)',
           filter: 'blur(80px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          top: '30%',
-          left: '5%',
-          width: '350px',
-          height: '350px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 215, 0, 0.04) 0%, transparent 70%)',
-          filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -99,7 +96,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
 
       <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
         {/* Top Badges */}
-        <div style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}
+        >
           <div className="section-badge animate-float" style={{ margin: 0 }}>
             <Flame size={13} color="#EB0028" />
             <span>Official TEDx &bull; Topfaith Uni</span>
@@ -114,27 +116,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               borderRadius: '9999px',
               fontSize: '0.75rem',
               fontWeight: 700,
-              background: 'rgba(255, 215, 0, 0.12)',
-              border: '1px solid rgba(255, 215, 0, 0.4)',
-              color: '#FFD700',
+              background: 'rgba(235, 0, 40, 0.15)',
+              border: '1px solid rgba(235, 0, 40, 0.45)',
+              color: '#FFFFFF',
             }}
           >
-            <Users size={12} color="#FFD700" />
+            <Users size={12} color="#EB0028" />
             <span>Exclusive Delegate Quota</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Theme Title */}
-        <div style={{ marginBottom: '1rem' }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          style={{ marginBottom: '1rem' }}
+        >
           <h1
             style={{
-              fontSize: 'clamp(2.5rem, 11vw, 5.5rem)',
+              fontSize: 'clamp(2.5rem, 11vw, 5.8rem)',
               fontWeight: 900,
               lineHeight: 1,
               letterSpacing: '-0.04em',
               textTransform: 'uppercase',
               color: '#FFFFFF',
-              textShadow: '0 4px 30px rgba(0,0,0,0.9)',
+              textShadow: '0 4px 30px rgba(0,0,0,0.9), 0 0 40px rgba(235, 0, 40, 0.25)',
             }}
           >
             TRANSCEND
@@ -156,10 +163,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           >
             <span>Exceeding Limitations</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Description / Mission */}
-        <p
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           style={{
             maxWidth: '720px',
             margin: '0 auto 1.75rem auto',
@@ -170,10 +180,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           }}
         >
           {EVENT_DETAILS.description}
-        </p>
+        </motion.p>
 
-        {/* Event Meta Pills (Stacked/Flexible on Mobile) */}
-        <div
+        {/* Event Meta Pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -189,12 +202,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               alignItems: 'center',
               gap: '0.45rem',
               background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(10px)',
               padding: '0.55rem 0.95rem',
               borderRadius: '9999px',
               fontSize: '0.84rem',
-              color: '#F3F4F6',
+              color: '#FFFFFF',
             }}
           >
             <Calendar size={15} color="#EB0028" />
@@ -207,12 +220,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               alignItems: 'center',
               gap: '0.45rem',
               background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(10px)',
               padding: '0.55rem 0.95rem',
               borderRadius: '9999px',
               fontSize: '0.84rem',
-              color: '#F3F4F6',
+              color: '#FFFFFF',
             }}
           >
             <Clock size={15} color="#EB0028" />
@@ -226,31 +239,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               alignItems: 'center',
               gap: '0.45rem',
               background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(10px)',
               padding: '0.55rem 0.95rem',
               borderRadius: '9999px',
               fontSize: '0.84rem',
-              color: '#F3F4F6',
+              color: '#FFFFFF',
               textDecoration: 'none',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = '#EB0028';
-              e.currentTarget.style.color = '#FFFFFF';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-              e.currentTarget.style.color = '#F3F4F6';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
             }}
           >
             <MapPin size={15} color="#EB0028" />
             <span style={{ fontWeight: 700 }}>{EVENT_DETAILS.venue.name}</span>
           </a>
-        </div>
+        </motion.div>
 
-        {/* Action Buttons (Full width on mobile) */}
-        <div
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -261,7 +275,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           }}
           className="hero-buttons-container"
         >
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={onOpenRegister}
             className="btn btn-primary"
             style={{
@@ -270,11 +286,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               fontWeight: 800,
             }}
           >
-            <span>Reserve Seat (₦10,000)</span>
+            <span>Reserve Pass (From ₦10,000)</span>
             <ArrowRight size={18} />
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={onExploreSpeakers}
             className="btn btn-secondary"
             style={{
@@ -284,21 +302,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             }}
           >
             <Play size={14} fill="white" />
-            <span>Explore Speaker Unveils</span>
-          </button>
-        </div>
+            <span>Explore Speaker Drops</span>
+          </motion.button>
+        </motion.div>
 
-        {/* Live Countdown Grid (Optimized for 360px+ screens) */}
-        <div
+        {/* Live Countdown Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           style={{
             maxWidth: '600px',
             margin: '0 auto',
-            background: 'rgba(12, 12, 16, 0.85)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: 'rgba(14, 14, 20, 0.9)',
+            border: '1px solid rgba(235, 0, 40, 0.35)',
             borderRadius: '1rem',
             backdropFilter: 'blur(16px)',
             padding: '1.25rem 0.85rem',
-            boxShadow: '0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(235, 0, 40, 0.12)',
+            boxShadow: '0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(235, 0, 40, 0.18)',
           }}
         >
           <div
@@ -307,7 +328,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
-              color: '#9CA3AF',
+              color: '#D1D5DB',
               marginBottom: '0.85rem',
             }}
           >
@@ -327,11 +348,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               { label: 'MINS', value: timeLeft.minutes },
               { label: 'SECS', value: timeLeft.seconds },
             ].map((unit) => (
-              <div
+              <motion.div
                 key={unit.label}
+                whileHover={{ scale: 1.05 }}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.04)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '0.65rem',
                   padding: '0.65rem 0.25rem',
                   textAlign: 'center',
@@ -359,10 +381,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
                 >
                   {unit.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

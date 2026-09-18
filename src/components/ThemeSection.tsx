@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Sparkles, 
   Layers, 
@@ -8,14 +9,13 @@ import {
   Radio, 
   Target, 
   Disc, 
-  Award,
-  Scale,
-  Briefcase,
-  UtensilsCrossed,
-  Leaf,
-  ChevronLeft,
-  ChevronRight,
-  ArrowUpRight
+  Award, 
+  Scale, 
+  Briefcase, 
+  UtensilsCrossed, 
+  Leaf, 
+  ChevronLeft, 
+  ChevronRight 
 } from 'lucide-react';
 import { THEME_PILLARS } from '../data/eventData';
 
@@ -32,7 +32,7 @@ export const ThemeSection: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activePillarId, setActivePillarId] = useState<string>(THEME_PILLARS[0].id);
 
-  // Row 1 Thematic Items (Scrolling Left)
+  // Row 1 Thematic Items (Scrolling Left) - Pure TED Colors (Red & White)
   const rowOneItems: ThematicWordItem[] = [
     {
       id: 'w1',
@@ -46,16 +46,16 @@ export const ThemeSection: React.FC = () => {
       id: 'w2',
       word: 'EXCEEDING LIMITATIONS',
       subtext: 'Official 2026 Theme',
-      icon: <Zap size={20} color="#FFD700" />,
-      accentColor: '#FFD700',
+      icon: <Zap size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Event Theme',
     },
     {
       id: 'w3',
       word: 'FOOD, CRAFT & HERITAGE',
       subtext: 'Gastronomy & Living Traditions',
-      icon: <UtensilsCrossed size={20} color="#FFAB00" />,
-      accentColor: '#FFAB00',
+      icon: <UtensilsCrossed size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Pillar 2',
     },
     {
@@ -70,52 +70,52 @@ export const ThemeSection: React.FC = () => {
       id: 'w5',
       word: 'FASHION & CREATIVE ENTERPRISE',
       subtext: 'Wearable Culture & Global Design',
-      icon: <Layers size={20} color="#FF3366" />,
-      accentColor: '#FF3366',
+      icon: <Layers size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Pillar 3',
     },
     {
       id: 'w6',
       word: 'BUSINESS & CREATOR ECONOMY',
       subtext: 'Monetizing Cultural Capital',
-      icon: <Briefcase size={20} color="#10B981" />,
-      accentColor: '#10B981',
+      icon: <Briefcase size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Pillar 4',
     },
     {
       id: 'w7',
       word: 'TOPFAITH VANGUARD',
       subtext: 'Academic Distinction',
-      icon: <Award size={20} color="#A855F7" />,
-      accentColor: '#A855F7',
+      icon: <Award size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Host Heritage',
     },
     {
       id: 'w8',
       word: 'PARADIGM SHIFTERS',
       subtext: 'Transformative Thought',
-      icon: <Target size={20} color="#F59E0B" />,
-      accentColor: '#F59E0B',
+      icon: <Target size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Catalysts',
     },
   ];
 
-  // Row 2 Thematic Items (Scrolling Right)
+  // Row 2 Thematic Items (Scrolling Right) - Pure TED Colors (Red & White)
   const rowTwoItems: ThematicWordItem[] = [
     {
       id: 'w9',
       word: 'LAW, GOVERNANCE & JUSTICE',
       subtext: 'Institutional Integrity & Reform',
-      icon: <Scale size={20} color="#3B82F6" />,
-      accentColor: '#3B82F6',
+      icon: <Scale size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Pillar 5',
     },
     {
       id: 'w10',
       word: 'MIGRATION & DIASPORA',
       subtext: 'Transnational Global Networks',
-      icon: <Globe size={20} color="#8B5CF6" />,
-      accentColor: '#8B5CF6',
+      icon: <Globe size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Pillar 6',
     },
     {
@@ -130,24 +130,24 @@ export const ThemeSection: React.FC = () => {
       id: 'w12',
       word: 'ENVIRONMENT & SUSTAINABLE FUTURES',
       subtext: 'Indigenous Ecology & Living',
-      icon: <Leaf size={20} color="#00E676" />,
-      accentColor: '#00E676',
+      icon: <Leaf size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Pillar 7',
     },
     {
       id: 'w13',
       word: 'MIND, GROWTH & SELF-MASTERY',
       subtext: 'Inner Resilience & Leadership',
-      icon: <Sparkles size={20} color="#F59E0B" />,
-      accentColor: '#F59E0B',
+      icon: <Sparkles size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Pillar 8',
     },
     {
       id: 'w14',
       word: 'EXCLUSIVE ACCESS',
       subtext: 'Curated Delegate Cohort',
-      icon: <Target size={20} color="#10B981" />,
-      accentColor: '#10B981',
+      icon: <Target size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
       tag: 'Intimate Stage',
     },
     {
@@ -187,7 +187,7 @@ export const ThemeSection: React.FC = () => {
   };
 
   return (
-    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.75)', overflow: 'hidden' }}>
+    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.85)', overflow: 'hidden' }}>
       {/* Dynamic Ambient Background Glow */}
       <div
         className="animate-pulse-glow"
@@ -199,7 +199,7 @@ export const ThemeSection: React.FC = () => {
           width: '600px',
           height: '350px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.15) 0%, transparent 70%)',
           filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0,
@@ -208,7 +208,13 @@ export const ThemeSection: React.FC = () => {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3rem' }}
+        >
           <div className="section-badge animate-float">
             <Sparkles size={14} />
             <span>Theme 2026</span>
@@ -219,15 +225,19 @@ export const ThemeSection: React.FC = () => {
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             We explore boundary breakers, paradigm shifters, and defiant dreamers across culture, fashion, gastronomy, creator commerce, law, global diaspora, ecology, and personal mastery.
           </p>
-        </div>
+        </motion.div>
 
         {/* Central Quote Statement */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="glass-card"
           style={{
             padding: '2.25rem 2rem',
             marginBottom: '3rem',
-            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.12) 0%, rgba(18, 18, 24, 0.95) 100%)',
+            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.14) 0%, rgba(14, 14, 20, 0.96) 100%)',
             border: '1px solid rgba(235, 0, 40, 0.35)',
             boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(235, 0, 40, 0.15)',
           }}
@@ -250,7 +260,7 @@ export const ThemeSection: React.FC = () => {
               <span>Joshua Clifford, COTUS President &bull; 17th September, 2026</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Auto-playing, Horizontally Scrolling Infinite Loop Content Carousel */}
@@ -302,17 +312,17 @@ export const ThemeSection: React.FC = () => {
                           fontSize: '0.65rem',
                           fontWeight: 700,
                           color: item.accentColor,
-                          background: 'rgba(0, 0, 0, 0.4)',
+                          background: 'rgba(0, 0, 0, 0.5)',
                           padding: '0.15rem 0.5rem',
                           borderRadius: '9999px',
-                          border: `1px solid ${item.accentColor}30`,
+                          border: `1px solid ${item.accentColor}40`,
                         }}
                       >
                         {item.tag}
                       </span>
                     )}
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 500 }}>
+                  <span style={{ fontSize: '0.75rem', color: '#D1D5DB', fontWeight: 500 }}>
                     {item.subtext}
                   </span>
                 </div>
@@ -367,17 +377,17 @@ export const ThemeSection: React.FC = () => {
                           fontSize: '0.65rem',
                           fontWeight: 700,
                           color: item.accentColor,
-                          background: 'rgba(0, 0, 0, 0.4)',
+                          background: 'rgba(0, 0, 0, 0.5)',
                           padding: '0.15rem 0.5rem',
                           borderRadius: '9999px',
-                          border: `1px solid ${item.accentColor}30`,
+                          border: `1px solid ${item.accentColor}40`,
                         }}
                       >
                         {item.tag}
                       </span>
                     )}
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 500 }}>
+                  <span style={{ fontSize: '0.75rem', color: '#D1D5DB', fontWeight: 500 }}>
                     {item.subtext}
                   </span>
                 </div>
@@ -387,7 +397,7 @@ export const ThemeSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 8 Official Thematic Pillars: Sleek Animated Horizontal Interactive Showcase */}
+      {/* 8 Official Thematic Pillars: Animated Horizontal Interactive Showcase */}
       <div className="container">
         {/* Header & Controls */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -403,7 +413,8 @@ export const ThemeSection: React.FC = () => {
 
           {/* Navigation Scroll Buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => handleScroll('left')}
               className="btn btn-secondary"
               style={{
@@ -419,8 +430,9 @@ export const ThemeSection: React.FC = () => {
               aria-label="Scroll Pillars Left"
             >
               <ChevronLeft size={20} />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => handleScroll('right')}
               className="btn btn-secondary"
               style={{
@@ -436,7 +448,7 @@ export const ThemeSection: React.FC = () => {
               aria-label="Scroll Pillars Right"
             >
               <ChevronRight size={20} />
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -454,8 +466,9 @@ export const ThemeSection: React.FC = () => {
           {THEME_PILLARS.map((pillar, index) => {
             const isActive = activePillarId === pillar.id;
             return (
-              <button
+              <motion.button
                 key={`tab-${pillar.id}`}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToPillar(pillar.id)}
                 style={{
                   padding: '0.45rem 0.95rem',
@@ -463,9 +476,9 @@ export const ThemeSection: React.FC = () => {
                   fontSize: '0.78rem',
                   fontWeight: 700,
                   whiteSpace: 'nowrap',
-                  background: isActive ? pillar.accentColor : 'rgba(255, 255, 255, 0.05)',
-                  color: isActive ? '#FFFFFF' : '#A1A1AA',
-                  border: isActive ? `1px solid ${pillar.accentColor}` : '1px solid rgba(255, 255, 255, 0.1)',
+                  background: isActive ? '#EB0028' : 'rgba(255, 255, 255, 0.05)',
+                  color: '#FFFFFF',
+                  border: isActive ? '1px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.12)',
                   transition: 'all 0.25s ease',
                   cursor: 'pointer',
                   display: 'inline-flex',
@@ -475,7 +488,7 @@ export const ThemeSection: React.FC = () => {
               >
                 <span>{index + 1}.</span>
                 <span>{pillar.title.split('&')[0].trim()}</span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -488,12 +501,13 @@ export const ThemeSection: React.FC = () => {
           {THEME_PILLARS.map((pillar, index) => {
             const isActive = activePillarId === pillar.id;
             return (
-              <div
+              <motion.div
                 key={pillar.id}
                 id={`pillar-card-${pillar.id}`}
+                whileHover={{ y: -8, scale: 1.02 }}
                 className="pillar-horizontal-card"
                 style={{
-                  border: isActive ? `2px solid ${pillar.accentColor}` : `1px solid ${pillar.borderGlow}`,
+                  border: isActive ? '2px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
                   background: pillar.gradient,
                   transform: isActive ? 'scale(1.02)' : 'scale(1)',
                 }}
@@ -507,9 +521,9 @@ export const ThemeSection: React.FC = () => {
                         width: '36px',
                         height: '36px',
                         borderRadius: '10px',
-                        background: `${pillar.accentColor}25`,
-                        border: `1px solid ${pillar.accentColor}60`,
-                        color: pillar.accentColor,
+                        background: 'rgba(235, 0, 40, 0.18)',
+                        border: '1px solid rgba(235, 0, 40, 0.45)',
+                        color: '#EB0028',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -525,17 +539,17 @@ export const ThemeSection: React.FC = () => {
                       style={{
                         fontSize: '0.72rem',
                         fontWeight: 700,
-                        color: pillar.accentColor,
-                        background: 'rgba(0, 0, 0, 0.5)',
+                        color: '#FFFFFF',
+                        background: 'rgba(0, 0, 0, 0.6)',
                         padding: '0.25rem 0.65rem',
                         borderRadius: '9999px',
-                        border: `1px solid ${pillar.accentColor}40`,
+                        border: '1px solid rgba(235, 0, 40, 0.4)',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.3rem',
                       }}
                     >
-                      <Sparkles size={11} />
+                      <Sparkles size={11} color="#EB0028" />
                       <span>{pillar.metrics}</span>
                     </span>
                   </div>
@@ -553,7 +567,7 @@ export const ThemeSection: React.FC = () => {
                     {pillar.title}
                   </h4>
                   
-                  <div style={{ fontSize: '0.82rem', color: pillar.accentColor, fontWeight: 700, marginBottom: '0.85rem' }}>
+                  <div style={{ fontSize: '0.82rem', color: '#EB0028', fontWeight: 700, marginBottom: '0.85rem' }}>
                     {pillar.subtitle}
                   </div>
 
@@ -570,7 +584,7 @@ export const ThemeSection: React.FC = () => {
                         key={tag}
                         style={{
                           fontSize: '0.74rem',
-                          color: '#E4E4E7',
+                          color: '#F4F4F5',
                           background: 'rgba(255, 255, 255, 0.08)',
                           padding: '0.2rem 0.6rem',
                           borderRadius: '6px',
@@ -582,7 +596,7 @@ export const ThemeSection: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

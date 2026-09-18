@@ -736,5 +736,60 @@ button {
   pointer-events: none;
 }
 
+/* ====================================================
+   HORIZONTAL MOBILE / DESKTOP GRID CONTAINER STYLES
+   (For Passes & Registration AND Patrons & Partners)
+   ==================================================== */
 
+/* Desktop layout: Clean 2-column centered grid */
+.ticket-cards-container,
+.partners-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
 
+/* Mobile & Tablet layout: Smooth Horizontal Swipeable Carousel */
+@media (max-width: 860px) {
+  .ticket-cards-container,
+  .partners-cards-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 1.25rem;
+    padding: 0.5rem 1rem 1.5rem 1rem;
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+
+  .ticket-cards-container::-webkit-scrollbar,
+  .partners-cards-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticket-cards-container > *,
+  .partners-cards-container > * {
+    flex: 0 0 88vw !important;
+    max-width: 360px !important;
+    min-width: 280px !important;
+    scroll-snap-align: center;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Fix mobile badge/button spillover */
+.partner-actions,
+.partner-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, MessageSquare } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FAQ_ITEMS } from '../data/eventData';
 
 export const FAQSection: React.FC = () => {
@@ -13,7 +14,13 @@ export const FAQSection: React.FC = () => {
     <section id="faq" className="section-padding" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
+        >
           <div className="section-badge">
             <HelpCircle size={14} />
             <span>Got Questions?</span>
@@ -24,18 +31,23 @@ export const FAQSection: React.FC = () => {
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             Essential details regarding attendance, pass pricing, admission guidelines at The Law Auditorium, and event day procedures.
           </p>
-        </div>
+        </motion.div>
 
         {/* FAQ Accordion */}
         <div style={{ maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {FAQ_ITEMS.map((item) => {
+          {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openId === item.id;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
                 className="glass-card"
                 style={{
-                  border: isOpen ? '1px solid rgba(235, 0, 40, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  border: isOpen ? '1px solid rgba(235, 0, 40, 0.45)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: isOpen ? '0 10px 30px rgba(235, 0, 40, 0.12)' : 'none',
                   transition: 'all 0.3s ease',
                   overflow: 'hidden',
                 }}
@@ -52,12 +64,15 @@ export const FAQSection: React.FC = () => {
                     textAlign: 'left',
                     background: 'transparent',
                     color: '#FFFFFF',
+                    cursor: 'pointer',
                   }}
                 >
                   <span style={{ fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.4 }}>
                     {item.question}
                   </span>
-                  <div
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                     style={{
                       width: '32px',
                       height: '32px',
@@ -67,36 +82,49 @@ export const FAQSection: React.FC = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      transition: 'transform 0.3s ease, background 0.3s ease',
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                     }}
                   >
                     <ChevronDown size={18} color="#FFFFFF" />
-                  </div>
+                  </motion.div>
                 </button>
 
-                {isOpen && (
-                  <div
-                    style={{
-                      padding: '0 1.5rem 1.5rem 1.5rem',
-                      color: '#A1A1AA',
-                      fontSize: '0.95rem',
-                      lineHeight: 1.7,
-                      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-                      paddingTop: '1rem',
-                      animation: 'fadeIn 0.2s ease-out',
-                    }}
-                  >
-                    {item.answer}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div
+                        style={{
+                          padding: '0 1.5rem 1.5rem 1.5rem',
+                          color: '#D1D5DB',
+                          fontSize: '0.95rem',
+                          lineHeight: 1.7,
+                          borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                          paddingTop: '1rem',
+                        }}
+                      >
+                        {item.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Still have questions banner */}
-        <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{ textAlign: 'center', marginTop: '3.5rem' }}
+        >
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#9CA3AF', fontSize: '0.9rem' }}>
             <MessageSquare size={16} color="#EB0028" />
             <span>Have specific inquiries? Contact our team at{' '}
@@ -105,7 +133,7 @@ export const FAQSection: React.FC = () => {
               </a>
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -32,7 +32,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
     { label: 'About', href: '#about' },
     { label: 'Theme', href: '#theme' },
     { label: 'Speaker Reveal', href: '#speakers' },
-    { label: 'Schedule', href: '#schedule' },
     { label: 'Passes', href: '#tickets' },
     { label: 'Partners', href: '#partners' },
     { label: 'FAQ', href: '#faq' },

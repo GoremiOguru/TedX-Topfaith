@@ -44,8 +44,8 @@ export const THEME_PILLARS: ThemePillar[] = [
     description: "Exploring transmedia narratives, indigenous oral traditions, visual arts, and contemporary cultural software shaping the global imagination.",
     iconName: "Sparkles",
     accentColor: "#EB0028",
-    gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.25) 0%, rgba(20, 10, 15, 0.95) 100%)",
-    borderGlow: "rgba(235, 0, 40, 0.5)",
+    gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.22) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(235, 0, 40, 0.45)",
     tags: ["Transmedia Arts", "Oral Traditions", "Global Narratives"],
     metrics: "Authentic &bull; Borderless"
   },
@@ -55,9 +55,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Preserving gastronomy, artisanal crafts, and living traditions",
     description: "Celebrating African culinary sciences, indigenous food sovereignty, textile craftsmanship, and heritage preservation as vital economic and cultural forces.",
     iconName: "Award",
-    accentColor: "#FFAB00",
-    gradient: "linear-gradient(135deg, rgba(255, 171, 0, 0.22) 0%, rgba(25, 20, 10, 0.95) 100%)",
-    borderGlow: "rgba(255, 171, 0, 0.5)",
+    accentColor: "#FFFFFF",
+    gradient: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(255, 255, 255, 0.3)",
     tags: ["Culinary Heritage", "Artisanal Craft", "Food Sovereignty"],
     metrics: "Living Heritage"
   },
@@ -67,9 +67,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Building global creative powerhouses from African aesthetics",
     description: "Unlocking sustainable fashion ecosystems, wearable culture, spatial architecture, and multi-million dollar creative enterprises commanding international runways.",
     iconName: "Layers",
-    accentColor: "#FF3366",
-    gradient: "linear-gradient(135deg, rgba(255, 51, 102, 0.25) 0%, rgba(25, 10, 20, 0.95) 100%)",
-    borderGlow: "rgba(255, 51, 102, 0.5)",
+    accentColor: "#EB0028",
+    gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.22) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(235, 0, 40, 0.45)",
     tags: ["Wearable Culture", "Creative Enterprise", "Global Design"],
     metrics: "Design Power"
   },
@@ -79,9 +79,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Venture building, monetization, and new-era digital capital",
     description: "How African founders, content architects, and creative entrepreneurs are monetizing cultural capital, building resilient ventures, and redefining global markets.",
     iconName: "Zap",
-    accentColor: "#10B981",
-    gradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(10, 25, 18, 0.95) 100%)",
-    borderGlow: "rgba(16, 185, 129, 0.5)",
+    accentColor: "#FFFFFF",
+    gradient: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(255, 255, 255, 0.3)",
     tags: ["Creator Economy", "Venture Tenacity", "Cultural Capital"],
     metrics: "Venture Impact"
   },
@@ -91,9 +91,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Institutional integrity, constitutional rights, and legal reform",
     description: "Delivering world-class legal discourse from The Law Auditorium—shaping human rights, digital ethics, rule of law, and institutional accountability for future generations.",
     iconName: "Target",
-    accentColor: "#3B82F6",
-    gradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(10, 15, 25, 0.95) 100%)",
-    borderGlow: "rgba(59, 130, 246, 0.5)",
+    accentColor: "#EB0028",
+    gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.22) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(235, 0, 40, 0.45)",
     tags: ["Constitutional Law", "Civic Rights", "Justice Reform"],
     metrics: "Law & Justice"
   },
@@ -103,9 +103,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Border crossings, brain circulation, and transnational networks",
     description: "Connecting the global African diaspora, rethinking citizenship, cross-border remittance architecture, and advancing cultural diplomacy on the world stage.",
     iconName: "Globe",
-    accentColor: "#8B5CF6",
-    gradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.22) 0%, rgba(20, 15, 30, 0.95) 100%)",
-    borderGlow: "rgba(139, 92, 246, 0.5)",
+    accentColor: "#FFFFFF",
+    gradient: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(255, 255, 255, 0.3)",
     tags: ["Diaspora Diplomacy", "Brain Circulation", "Global Africa"],
     metrics: "Transnational Reach"
   },
@@ -115,9 +115,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Indigenous ecology, climate resilience, and regenerative living",
     description: "Championing ancestral environmental wisdom, native biodiversity conservation, regenerative agriculture, and sustainable habitat systems for future generations.",
     iconName: "Globe",
-    accentColor: "#00E676",
-    gradient: "linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(10, 25, 15, 0.95) 100%)",
-    borderGlow: "rgba(0, 230, 118, 0.5)",
+    accentColor: "#EB0028",
+    gradient: "linear-gradient(135deg, rgba(235, 0, 40, 0.22) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(235, 0, 40, 0.45)",
     tags: ["Indigenous Ecology", "Regenerative Living", "Climate Resilience"],
     metrics: "Planetary Impact"
   },
@@ -127,9 +127,9 @@ export const THEME_PILLARS: ThemePillar[] = [
     subtitle: "Inner resilience, mental stamina, and personal leadership",
     description: "Developing unshakeable psychological stamina, cognitive reframing, emotional intelligence, and radical self-mastery to exceed personal and societal limitations.",
     iconName: "Sparkles",
-    accentColor: "#F59E0B",
-    gradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(25, 20, 10, 0.95) 100%)",
-    borderGlow: "rgba(245, 158, 11, 0.5)",
+    accentColor: "#FFFFFF",
+    gradient: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(14, 14, 20, 0.95) 100%)",
+    borderGlow: "rgba(255, 255, 255, 0.3)",
     tags: ["Self-Mastery", "Mental Resilience", "Personal Growth"],
     metrics: "Inner Greatness"
   }
@@ -153,7 +153,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Food, Craft & Heritage",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating culinary innovators, gastronomy researchers, and living craft masters. Official speaker drop coming soon.",
-    silhouetteColor: "#FFAB00",
+    silhouetteColor: "#FFFFFF",
     revealed: false
   },
   {
@@ -163,7 +163,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Fashion & Creative Enterprise",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating fashion architects, wearable culture innovators, and creative founders. Official speaker drop coming soon.",
-    silhouetteColor: "#FF3366",
+    silhouetteColor: "#EB0028",
     revealed: false
   },
   {
@@ -173,7 +173,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Business & Creator Economy",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating venture leaders, creator economy pioneers, and market disruptors. Official speaker drop coming soon.",
-    silhouetteColor: "#10B981",
+    silhouetteColor: "#FFFFFF",
     revealed: false
   },
   {
@@ -183,7 +183,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Law, Governance & Justice",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating distinguished jurists, legal scholars, and governance reformers for The Law Auditorium stage.",
-    silhouetteColor: "#3B82F6",
+    silhouetteColor: "#EB0028",
     revealed: false
   },
   {
@@ -193,7 +193,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Migration, Diaspora & Society",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating transnational thinkers, diaspora leaders, and cross-border ambassadors. Official speaker drop coming soon.",
-    silhouetteColor: "#8B5CF6",
+    silhouetteColor: "#FFFFFF",
     revealed: false
   },
   {
@@ -203,7 +203,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Environment & Sustainability",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating indigenous ecological advocates, sustainability pioneers, and climate resilience leaders.",
-    silhouetteColor: "#00E676",
+    silhouetteColor: "#EB0028",
     revealed: false
   },
   {
@@ -213,7 +213,7 @@ export const SPEAKER_TEASERS: SpeakerTeaser[] = [
     category: "Mind, Growth & Self-Mastery",
     status: "CONFIDENTIAL REVIEW",
     curatorialNote: "Curating human potential coaches, cognitive psychologists, and transformative leaders. Official speaker drop coming soon.",
-    silhouetteColor: "#F59E0B",
+    silhouetteColor: "#FFFFFF",
     revealed: false
   }
 ];

@@ -1,14 +1,66 @@
-import React from 'react';
-import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PARTNERS_DATA } from '../data/eventData';
 
 export const SponsorsSection: React.FC = () => {
+  const [activeMobileCard, setActiveMobileCard] = useState<number>(0);
+
+  const partners = [
+    {
+      id: 'host',
+      name: PARTNERS_DATA.host.name,
+      title: PARTNERS_DATA.host.title,
+      logo: PARTNERS_DATA.host.logo,
+      url: PARTNERS_DATA.host.url,
+      description: PARTNERS_DATA.host.description,
+      badge: 'Host Campus • Mkpatak',
+      badgeIcon: <Building2 size={13} />,
+      accentColor: '#EB0028',
+      buttonText: 'Visit University Site',
+    },
+    {
+      id: 'producer',
+      name: PARTNERS_DATA.producer.name,
+      title: PARTNERS_DATA.producer.title,
+      logo: PARTNERS_DATA.producer.logo,
+      url: PARTNERS_DATA.producer.url || 'https://thecentrestagecompany.com',
+      description: PARTNERS_DATA.producer.description,
+      badge: 'Global Consultant • Executive Producer',
+      badgeIcon: <Globe2 size={13} />,
+      accentColor: '#EB0028',
+      buttonText: 'Visit Centrestage',
+    },
+  ];
+
   return (
-    <section id="partners" className="section-padding" style={{ position: 'relative', background: 'rgba(10, 10, 14, 0.55)' }}>
-      <div className="container">
+    <section id="partners" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.75)', overflow: 'hidden' }}>
+      {/* Background ambient lighting */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          right: '-10%',
+          width: '450px',
+          height: '450px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(235, 0, 40, 0.1) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <div className="section-badge">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3rem' }}
+        >
+          <div className="section-badge animate-float">
             <Award size={14} />
             <span>Leadership & Production</span>
           </div>
@@ -18,170 +70,170 @@ export const SponsorsSection: React.FC = () => {
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University and world-class executive consulting with The Centrestage Company.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Horizontal Patrons & Partners Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3.5rem' }}>
-          {/* Partner 1: Topfaith University (Horizontal Banner) */}
+        {/* Patrons & Partners: Desktop 2-Column Grid / Mobile Horizontal Swipe Carousel */}
+        <div className="partners-showcase-wrapper" style={{ marginBottom: '3.5rem' }}>
           <div
-            className="glass-card"
-            style={{
-              padding: '1.75rem 2rem',
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1.5rem',
-              border: '1px solid rgba(59, 130, 246, 0.25)',
-              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(12, 12, 18, 0.95) 100%)',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.5)',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.25)';
+            className="partners-cards-container"
+            onScroll={(e) => {
+              const target = e.currentTarget;
+              const scrollPercent = target.scrollLeft / (target.scrollWidth - target.clientWidth || 1);
+              setActiveMobileCard(scrollPercent > 0.5 ? 1 : 0);
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: '1 1 500px', minWidth: '280px' }}>
-              <div
+            {partners.map((partner, index) => (
+              <motion.div
+                key={partner.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                whileHover={{ y: -6 }}
+                className="glass-card partner-showcase-card"
                 style={{
-                  background: '#FFFFFF',
-                  padding: '0.6rem 1rem',
-                  borderRadius: '12px',
+                  padding: '2rem',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  flexShrink: 0,
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  border: '1px solid rgba(235, 0, 40, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.08) 0%, rgba(14, 14, 20, 0.95) 100%)',
+                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.6)',
+                  boxSizing: 'border-box',
                 }}
               >
-                <img
-                  src={PARTNERS_DATA.host.logo}
-                  alt={PARTNERS_DATA.host.name}
-                  style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
-                />
-              </div>
+                <div>
+                  {/* Top Row: Logo & Strategic Tag */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                    <div
+                      style={{
+                        background: '#FFFFFF',
+                        padding: '0.5rem 0.85rem',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+                      />
+                    </div>
 
-              <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontWeight: 800, color: '#60A5FA', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem' }}>
-                  <Building2 size={12} />
-                  <span>{PARTNERS_DATA.host.title}</span>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#EB0028',
+                        background: 'rgba(235, 0, 40, 0.12)',
+                        padding: '0.3rem 0.75rem',
+                        borderRadius: '9999px',
+                        border: '1px solid rgba(235, 0, 40, 0.35)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {partner.id === 'host' ? 'Host Institution' : 'Strategic Partner'}
+                    </span>
+                  </div>
+
+                  {/* Title & Role */}
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      fontSize: '0.74rem',
+                      fontWeight: 800,
+                      color: '#FFFFFF',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      marginBottom: '0.45rem',
+                    }}
+                  >
+                    {partner.badgeIcon}
+                    <span>{partner.title}</span>
+                  </div>
+
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem', lineHeight: 1.3 }}>
+                    {partner.name}
+                  </h3>
+
+                  <p style={{ color: '#D1D5DB', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                    {partner.description}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>
-                  {PARTNERS_DATA.host.name}
-                </h3>
-                <p style={{ color: '#D1D5DB', fontSize: '0.88rem', lineHeight: 1.55, maxWidth: '620px' }}>
-                  {PARTNERS_DATA.host.description}
-                </p>
-              </div>
-            </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-              <span style={{ fontSize: '0.75rem', color: '#93C5FD', fontWeight: 700, padding: '0.45rem 0.85rem', background: 'rgba(59, 130, 246, 0.12)', borderRadius: '9999px', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
-                Host Campus &bull; Mkpatak
-              </span>
-              <a
-                href={PARTNERS_DATA.host.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{ padding: '0.55rem 1.15rem', fontSize: '0.82rem', minHeight: '38px', width: 'auto' }}
-              >
-                <span>Visit Portal</span>
-                <ExternalLink size={13} />
-              </a>
-            </div>
+                {/* Bottom Actions */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '1.25rem' }}>
+                  <div
+                    style={{
+                      fontSize: '0.78rem',
+                      color: '#E4E4E7',
+                      fontWeight: 600,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    <Sparkles size={12} color="#EB0028" style={{ flexShrink: 0 }} />
+                    <span>{partner.badge}</span>
+                  </div>
+
+                  <a
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      fontSize: '0.86rem',
+                      fontWeight: 700,
+                      boxSizing: 'border-box',
+                      minHeight: '42px',
+                    }}
+                  >
+                    <span>{partner.buttonText}</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Partner 2: The Centrestage Company (Horizontal Banner) */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '1.75rem 2rem',
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1.5rem',
-              border: '1px solid rgba(235, 0, 40, 0.3)',
-              background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(12, 12, 18, 0.95) 100%)',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.5)',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.borderColor = 'rgba(235, 0, 40, 0.55)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'rgba(235, 0, 40, 0.3)';
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: '1 1 500px', minWidth: '280px' }}>
+          {/* Mobile Swipe Dots */}
+          <div className="mobile-carousel-dots" style={{ display: 'none', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem' }}>
+            {partners.map((_, i) => (
               <div
+                key={i}
                 style={{
-                  background: '#FFFFFF',
-                  padding: '0.5rem 0.85rem',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  flexShrink: 0,
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                  width: activeMobileCard === i ? '24px' : '8px',
+                  height: '8px',
+                  borderRadius: '9999px',
+                  background: activeMobileCard === i ? '#EB0028' : 'rgba(255, 255, 255, 0.2)',
+                  transition: 'all 0.3s ease',
                 }}
-              >
-                <img
-                  src={PARTNERS_DATA.producer.logo}
-                  alt={PARTNERS_DATA.producer.name}
-                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
-                />
-              </div>
-
-              <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontWeight: 800, color: '#FFD700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem' }}>
-                  <Globe2 size={12} />
-                  <span>{PARTNERS_DATA.producer.title}</span>
-                </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>
-                  {PARTNERS_DATA.producer.name}
-                </h3>
-                <p style={{ color: '#D1D5DB', fontSize: '0.88rem', lineHeight: 1.55, maxWidth: '620px' }}>
-                  {PARTNERS_DATA.producer.description}
-                </p>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-              <span style={{ fontSize: '0.75rem', color: '#FFD700', fontWeight: 700, padding: '0.45rem 0.85rem', background: 'rgba(255, 215, 0, 0.1)', borderRadius: '9999px', border: '1px solid rgba(255, 215, 0, 0.3)' }}>
-                Global Consultant &bull; Executive Producer
-              </span>
-              <a
-                href={PARTNERS_DATA.producer.url || "https://thecentrestagecompany.com"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{ padding: '0.55rem 1.15rem', fontSize: '0.82rem', minHeight: '38px', width: 'auto' }}
-              >
-                <span>Visit Agency</span>
-                <ArrowRight size={13} />
-              </a>
-            </div>
+              />
+            ))}
           </div>
         </div>
 
         {/* Responsive Advertisement & Official Partnership Desk */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="glass-card sponsor-ad-card"
           style={{
-            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.14) 0%, rgba(18, 18, 26, 0.96) 100%)',
+            background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.14) 0%, rgba(14, 14, 20, 0.96) 100%)',
             border: '1px solid rgba(235, 0, 40, 0.4)',
             boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(235, 0, 40, 0.2)',
           }}
@@ -307,11 +359,49 @@ export const SponsorsSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
-        /* MOBILE VIEW (Default: < 900px) */
+        /* MOBILE VIEW (< 768px): Horizontal Swipe Carousel */
+        @media (max-width: 767px) {
+          .partners-cards-container {
+            display: flex !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            gap: 1rem !important;
+            padding: 0.5rem 0.25rem 1rem 0.25rem !important;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+          }
+          .partners-cards-container::-webkit-scrollbar {
+            display: none !important;
+          }
+          .partner-showcase-card {
+            flex: 0 0 calc(100vw - 2.5rem) !important;
+            max-width: 350px !important;
+            scroll-snap-align: center !important;
+            box-sizing: border-box !important;
+          }
+          .mobile-carousel-dots {
+            display: flex !important;
+          }
+        }
+
+        /* DESKTOP VIEW (>= 768px): 2-Column Vertical Grid */
+        @media (min-width: 768px) {
+          .partners-cards-container {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2rem !important;
+          }
+          .partner-showcase-card {
+            flex: unset !important;
+            max-width: 100% !important;
+          }
+        }
+
+        /* AD CARD LAYOUT */
         .sponsor-ad-card {
           max-width: 980px;
           margin: 0 auto;
@@ -365,7 +455,6 @@ export const SponsorsSection: React.FC = () => {
           text-align: center;
         }
 
-        /* DESKTOP VIEW (>= 900px): Restore Side-by-Side Pitch on Left & Form on Right */
         @media (min-width: 900px) {
           .sponsor-ad-card {
             padding: 3.5rem 3rem;

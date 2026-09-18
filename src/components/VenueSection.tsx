@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Users, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { VENUE_GALLERY, EVENT_DETAILS } from '../data/eventData';
 
 export const VenueSection: React.FC = () => {
@@ -22,7 +23,13 @@ export const VenueSection: React.FC = () => {
     <section id="venue" className="section-padding" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
+        >
           <div className="section-badge">
             <MapPin size={14} />
             <span>The Host Venue</span>
@@ -33,10 +40,14 @@ export const VenueSection: React.FC = () => {
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             An architecturally distinguished amphitheater on the Topfaith University campus, acoustically engineered for crystal-clear talk delivery to a curated cohort of seated delegates.
           </p>
-        </div>
+        </motion.div>
 
         {/* Featured Main Showcase Viewer */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="glass-card"
           style={{
             overflow: 'hidden',
@@ -55,17 +66,18 @@ export const VenueSection: React.FC = () => {
             }}
             onClick={() => setLightboxOpen(true)}
           >
-            <img
+            <motion.img
+              key={activeVenue.image}
               src={activeVenue.image}
               alt={activeVenue.title}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                transition: 'transform 0.6s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
             />
 
             {/* Gradient Mask */}
@@ -100,7 +112,9 @@ export const VenueSection: React.FC = () => {
             </div>
 
             {/* Lightbox Expand Trigger */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               onClick={(e) => {
                 e.stopPropagation();
                 setLightboxOpen(true);
@@ -123,7 +137,7 @@ export const VenueSection: React.FC = () => {
               aria-label="View Fullscreen"
             >
               <Maximize2 size={18} />
-            </button>
+            </motion.button>
 
             {/* Bottom Caption Details */}
             <div
@@ -155,8 +169,10 @@ export const VenueSection: React.FC = () => {
             }}
           >
             {VENUE_GALLERY.map((item, index) => (
-              <button
+              <motion.button
                 key={item.id}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => setActiveImageIndex(index)}
                 style={{
                   position: 'relative',
@@ -167,6 +183,8 @@ export const VenueSection: React.FC = () => {
                   opacity: activeImageIndex === index ? 1 : 0.6,
                   transition: 'all 0.25s ease',
                   padding: 0,
+                  cursor: 'pointer',
+                  background: 'transparent',
                 }}
               >
                 <img
@@ -188,14 +206,21 @@ export const VenueSection: React.FC = () => {
                     {item.badge}
                   </span>
                 </div>
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Venue Amenities & Location Info */}
         <div className="grid-3" style={{ gap: '1.5rem' }}>
-          <div className="glass-card" style={{ padding: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="glass-card"
+            style={{ padding: '2rem' }}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
               <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Compass size={20} color="#EB0028" />
@@ -218,9 +243,16 @@ export const VenueSection: React.FC = () => {
               <Navigation size={14} />
               <span>Open in Google Maps</span>
             </a>
-          </div>
+          </motion.div>
 
-          <div className="glass-card" style={{ padding: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="glass-card"
+            style={{ padding: '2rem' }}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
               <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Users size={20} color="#EB0028" />
@@ -233,12 +265,19 @@ export const VenueSection: React.FC = () => {
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
               In compliance with TED's university license standards, attendance is strictly capped to ensure an intimate, high-impact delegate experience.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="glass-card" style={{ padding: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="glass-card"
+            style={{ padding: '2rem' }}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ShieldCheck size={20} color="#60A5FA" />
+              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ShieldCheck size={20} color="#EB0028" />
               </div>
               <div>
                 <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Production & Security</h4>
@@ -248,155 +287,167 @@ export const VenueSection: React.FC = () => {
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
               Executive production overseen by The Centrestage Company alongside Topfaith campus security and protocol teams.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Centered Fullscreen Lightbox Modal (Mobile & Desktop Fixed) */}
-      {lightboxOpen && (
-        <div className="lightbox-overlay" onClick={() => setLightboxOpen(false)}>
-          <div
-            className="lightbox-card"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lightbox-overlay"
+            onClick={() => setLightboxOpen(false)}
           >
-            {/* Top Modal Navigation Header */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '1rem 1.25rem',
-                background: 'rgba(12, 12, 16, 0.98)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-              }}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="lightbox-card"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    padding: '0.25rem 0.65rem',
-                    borderRadius: '9999px',
-                    background: 'rgba(235, 0, 40, 0.15)',
-                    border: '1px solid rgba(235, 0, 40, 0.4)',
-                    color: '#FF4A61',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    flexShrink: 0,
-                  }}
-                >
-                  <Sparkles size={11} />
-                  <span>{activeVenue.badge}</span>
-                </div>
-                <span
-                  style={{
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
-                    color: '#FFFFFF',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  {activeVenue.title}
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-                <span style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 600 }}>
-                  {activeImageIndex + 1} / {VENUE_GALLERY.length}
-                </span>
-                <button
-                  onClick={() => setLightboxOpen(false)}
-                  style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: '#FFFFFF',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                  }}
-                  aria-label="Close Lightbox"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-            </div>
-
-            {/* Main Centered Image Frame with Prev/Next Controls */}
-            <div className="lightbox-img-wrap">
-              <button
-                onClick={handlePrevImage}
-                className="lightbox-nav-btn lightbox-nav-prev"
-                aria-label="Previous Image"
-              >
-                <ChevronLeft size={22} />
-              </button>
-
-              <img
-                src={activeVenue.image}
-                alt={activeVenue.title}
+              {/* Top Modal Navigation Header */}
+              <div
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  background: '#000000',
-                  userSelect: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '1rem 1.25rem',
+                  background: 'rgba(12, 12, 16, 0.98)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                 }}
-              />
-
-              <button
-                onClick={handleNextImage}
-                className="lightbox-nav-btn lightbox-nav-next"
-                aria-label="Next Image"
               >
-                <ChevronRight size={22} />
-              </button>
-            </div>
-
-            {/* Bottom Caption & Thumbnail Switcher */}
-            <div
-              style={{
-                padding: '1rem 1.25rem',
-                background: 'rgba(12, 12, 16, 0.98)',
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-              }}
-            >
-              <p style={{ color: '#D1D5DB', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>
-                {activeVenue.caption}
-              </p>
-
-              {/* Quick Jump Thumbnails */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
-                {VENUE_GALLERY.map((item, idx) => (
-                  <button
-                    key={`lightbox-thumb-${item.id}`}
-                    onClick={() => setActiveImageIndex(idx)}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
+                  <div
                     style={{
-                      height: '46px',
-                      borderRadius: '6px',
-                      overflow: 'hidden',
-                      border: activeImageIndex === idx ? '2px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.1)',
-                      opacity: activeImageIndex === idx ? 1 : 0.5,
-                      transition: 'all 0.2s ease',
-                      padding: 0,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: '9999px',
+                      background: 'rgba(235, 0, 40, 0.15)',
+                      border: '1px solid rgba(235, 0, 40, 0.4)',
+                      color: '#FF4A61',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      flexShrink: 0,
                     }}
                   >
-                    <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <Sparkles size={11} />
+                    <span>{activeVenue.badge}</span>
+                  </div>
+                  <span
+                    style={{
+                      fontSize: '0.88rem',
+                      fontWeight: 700,
+                      color: '#FFFFFF',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {activeVenue.title}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+                  <span style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 600 }}>
+                    {activeImageIndex + 1} / {VENUE_GALLERY.length}
+                  </span>
+                  <button
+                    onClick={() => setLightboxOpen(false)}
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '50%',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#FFFFFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                    }}
+                    aria-label="Close Lightbox"
+                  >
+                    <X size={18} />
                   </button>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+
+              {/* Main Centered Image Frame with Prev/Next Controls */}
+              <div className="lightbox-img-wrap">
+                <button
+                  onClick={handlePrevImage}
+                  className="lightbox-nav-btn lightbox-nav-prev"
+                  aria-label="Previous Image"
+                >
+                  <ChevronLeft size={22} />
+                </button>
+
+                <img
+                  src={activeVenue.image}
+                  alt={activeVenue.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    background: '#000000',
+                    userSelect: 'none',
+                  }}
+                />
+
+                <button
+                  onClick={handleNextImage}
+                  className="lightbox-nav-btn lightbox-nav-next"
+                  aria-label="Next Image"
+                >
+                  <ChevronRight size={22} />
+                </button>
+              </div>
+
+              {/* Bottom Caption & Thumbnail Switcher */}
+              <div
+                style={{
+                  padding: '1rem 1.25rem',
+                  background: 'rgba(12, 12, 16, 0.98)',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                }}
+              >
+                <p style={{ color: '#D1D5DB', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>
+                  {activeVenue.caption}
+                </p>
+
+                {/* Quick Jump Thumbnails */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                  {VENUE_GALLERY.map((item, idx) => (
+                    <button
+                      key={`lightbox-thumb-${item.id}`}
+                      onClick={() => setActiveImageIndex(idx)}
+                      style={{
+                        height: '46px',
+                        borderRadius: '6px',
+                        overflow: 'hidden',
+                        border: activeImageIndex === idx ? '2px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.1)',
+                        opacity: activeImageIndex === idx ? 1 : 0.5,
+                        transition: 'all 0.2s ease',
+                        padding: 0,
+                        cursor: 'pointer',
+                        background: 'transparent',
+                      }}
+                    >
+                      <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
-

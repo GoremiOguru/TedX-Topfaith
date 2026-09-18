@@ -5,7 +5,6 @@ import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { ThemeSection } from './components/ThemeSection';
 import { SpeakersSection } from './components/SpeakersSection';
-import { ScheduleSection } from './components/ScheduleSection';
 import { VenueSection } from './components/VenueSection';
 import { TicketSection } from './components/TicketSection';
 import { SponsorsSection } from './components/SponsorsSection';
@@ -59,9 +58,6 @@ export const App: React.FC = () => {
 
       {/* Speakers Unveiling Section */}
       <SpeakersSection />
-
-      {/* Agenda & Schedule */}
-      <ScheduleSection />
 
       {/* Passes & Tickets */}
       <TicketSection onSelectTier={(tierId) => handleOpenRegister(tierId)} />
