@@ -2,7 +2,15 @@ export interface SpeakerTeaser {
   id: string;
   field: string;
   codename: string;
-  category: 'Tech & AI' | 'Global Leadership' | 'Creative Arts' | 'Science & Health' | 'Student Innovator';
+  category:
+    | 'Arts, Culture & Storytelling'
+    | 'Food, Craft & Heritage'
+    | 'Fashion & Creative Enterprise'
+    | 'Business & Creator Economy'
+    | 'Law, Governance & Justice'
+    | 'Migration, Diaspora & Society'
+    | 'Environment & Sustainability'
+    | 'Mind, Growth & Self-Mastery';
   status: string;
   curatorialNote: string;
   silhouetteColor: string;

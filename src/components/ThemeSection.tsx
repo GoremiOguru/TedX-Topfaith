@@ -5,16 +5,19 @@ import {
   Flame, 
   Zap, 
   Globe, 
-  Lightbulb, 
-  Rocket, 
   Compass, 
   Radio, 
   Target, 
-  Cpu, 
   Disc, 
   Award,
-  ArrowUpRight
+  Scale,
+  Palette,
+  Briefcase,
+  UtensilsCrossed,
+  HeartHandshake,
+  Leaf
 } from 'lucide-react';
+import { THEME_PILLARS } from '../data/eventData';
 
 interface ThematicWordItem {
   id: string;
@@ -30,11 +33,11 @@ export const ThemeSection: React.FC = () => {
   const rowOneItems: ThematicWordItem[] = [
     {
       id: 'w1',
-      word: 'IDEAS WORTH SPREADING',
-      subtext: 'The Global TED Creed',
-      icon: <Flame size={20} color="#EB0028" />,
+      word: 'ARTS, CULTURE & STORYTELLING',
+      subtext: 'Global Transmedia Narratives',
+      icon: <Sparkles size={20} color="#EB0028" />,
       accentColor: '#EB0028',
-      tag: 'TED Creed',
+      tag: 'Pillar 1',
     },
     {
       id: 'w2',
@@ -46,6 +49,14 @@ export const ThemeSection: React.FC = () => {
     },
     {
       id: 'w3',
+      word: 'FOOD, CRAFT & HERITAGE',
+      subtext: 'Gastronomy & Living Traditions',
+      icon: <UtensilsCrossed size={20} color="#FFAB00" />,
+      accentColor: '#FFAB00',
+      tag: 'Pillar 2',
+    },
+    {
+      id: 'w4',
       word: 'THE RED DOT STAGE',
       subtext: 'The Iconic 18-Min Circle',
       icon: <Disc size={20} color="#EB0028" />,
@@ -53,28 +64,20 @@ export const ThemeSection: React.FC = () => {
       tag: 'TED Symbol',
     },
     {
-      id: 'w4',
-      word: 'RADICAL INGENUITY',
-      subtext: 'Indigenous Engineering',
-      icon: <Cpu size={20} color="#60A5FA" />,
-      accentColor: '#60A5FA',
-      tag: 'Innovation',
-    },
-    {
       id: 'w5',
-      word: 'BREAKING CEILINGS',
-      subtext: 'Defying Conventional Boundaries',
-      icon: <Rocket size={20} color="#FF3366" />,
+      word: 'FASHION & CREATIVE ENTERPRISE',
+      subtext: 'Wearable Culture & Global Design',
+      icon: <Layers size={20} color="#FF3366" />,
       accentColor: '#FF3366',
-      tag: 'Mindset',
+      tag: 'Pillar 3',
     },
     {
       id: 'w6',
-      word: 'AFRICAN EXCELLENCE',
-      subtext: 'Global Vanguard from Nigeria',
-      icon: <Globe size={20} color="#00E676" />,
-      accentColor: '#00E676',
-      tag: 'Impact',
+      word: 'BUSINESS & CREATOR ECONOMY',
+      subtext: 'Monetizing Cultural Capital',
+      icon: <Briefcase size={20} color="#10B981" />,
+      accentColor: '#10B981',
+      tag: 'Pillar 4',
     },
     {
       id: 'w7',
@@ -98,19 +101,19 @@ export const ThemeSection: React.FC = () => {
   const rowTwoItems: ThematicWordItem[] = [
     {
       id: 'w9',
-      word: 'DEFIANT DREAMS',
-      subtext: 'Refusing the Impossible',
-      icon: <Sparkles size={20} color="#FF3366" />,
-      accentColor: '#FF3366',
-      tag: 'Vision',
+      word: 'LAW, GOVERNANCE & JUSTICE',
+      subtext: 'Institutional Integrity & Reform',
+      icon: <Scale size={20} color="#3B82F6" />,
+      accentColor: '#3B82F6',
+      tag: 'Pillar 5',
     },
     {
       id: 'w10',
-      word: 'BORDERLESS IMPACT',
-      subtext: 'Local Roots to Global Echo',
-      icon: <Compass size={20} color="#3B82F6" />,
-      accentColor: '#3B82F6',
-      tag: 'Reach',
+      word: 'MIGRATION & DIASPORA',
+      subtext: 'Transnational Global Networks',
+      icon: <Globe size={20} color="#8B5CF6" />,
+      accentColor: '#8B5CF6',
+      tag: 'Pillar 6',
     },
     {
       id: 'w11',
@@ -122,14 +125,22 @@ export const ThemeSection: React.FC = () => {
     },
     {
       id: 'w12',
-      word: 'LIMITLESS HORIZONS',
-      subtext: 'Discovery & Research',
-      icon: <Lightbulb size={20} color="#FBBF24" />,
-      accentColor: '#FBBF24',
-      tag: 'Future',
+      word: 'ENVIRONMENT & SUSTAINABLE FUTURES',
+      subtext: 'Indigenous Ecology & Living',
+      icon: <Leaf size={20} color="#00E676" />,
+      accentColor: '#00E676',
+      tag: 'Pillar 7',
     },
     {
       id: 'w13',
+      word: 'MIND, GROWTH & SELF-MASTERY',
+      subtext: 'Inner Resilience & Leadership',
+      icon: <Sparkles size={20} color="#F59E0B" />,
+      accentColor: '#F59E0B',
+      tag: 'Pillar 8',
+    },
+    {
+      id: 'w14',
       word: 'STRICTLY 200 SEATS',
       subtext: 'The Law Auditorium Quota',
       icon: <Target size={20} color="#10B981" />,
@@ -137,20 +148,12 @@ export const ThemeSection: React.FC = () => {
       tag: 'Intimate Stage',
     },
     {
-      id: 'w14',
-      word: 'TRANSFORMATIVE DIALOGUE',
-      subtext: 'Catalyzing Next Era Solutions',
-      icon: <Layers size={20} color="#EC4899" />,
-      accentColor: '#EC4899',
-      tag: 'Discourse',
-    },
-    {
       id: 'w15',
-      word: 'YOUTH AUDACITY',
-      subtext: 'Student Innovator Stage',
-      icon: <Zap size={20} color="#F97316" />,
-      accentColor: '#F97316',
-      tag: 'Catalyst',
+      word: 'IDEAS WORTH SPREADING',
+      subtext: 'The Global TED Creed',
+      icon: <Flame size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
+      tag: 'TED Creed',
     },
     {
       id: 'w16',
@@ -175,7 +178,7 @@ export const ThemeSection: React.FC = () => {
             TRANSCEND: <span className="highlight">Exceeding Limitations</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            We explore the boundary breakers, the paradigm shifters, and the defiant dreamers who refuse to accept “impossible” as an answer. TRANSCEND is our declaration that the next era of global impact is forged through African ingenuity and fearless curiosity.
+            We explore the boundary breakers, the paradigm shifters, and the defiant dreamers who refuse to accept “impossible” as an answer across arts, culture, fashion, culinary heritage, creator commerce, law, global diaspora, ecology, and personal mastery.
           </p>
         </div>
 
@@ -212,12 +215,11 @@ export const ThemeSection: React.FC = () => {
       </div>
 
       {/* Auto-playing, Horizontally Scrolling Infinite Loop Content Carousel */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%', marginBottom: '2.5rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%', marginBottom: '3rem' }}>
         
         {/* Carousel Row 1: Leftward Infinite Scroll */}
         <div className="marquee-container">
           <div className="marquee-row marquee-left">
-            {/* Duplicated for seamless infinite loop */}
             {[...rowOneItems, ...rowOneItems].map((item, idx) => (
               <div
                 key={`row1-${item.id}-${idx}`}
@@ -283,7 +285,6 @@ export const ThemeSection: React.FC = () => {
         {/* Carousel Row 2: Rightward Infinite Scroll */}
         <div className="marquee-container">
           <div className="marquee-row marquee-right">
-            {/* Duplicated for seamless infinite loop */}
             {[...rowTwoItems, ...rowTwoItems].map((item, idx) => (
               <div
                 key={`row2-${item.id}-${idx}`}
@@ -347,50 +348,84 @@ export const ThemeSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Thematic Pillars Compact Banner */}
+      {/* 8 Official Thematic Pillars Grid Showcase */}
       <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#EB0028', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            THE 8 PILLARS OF TRANSCENDENCE
+          </div>
+        </div>
+
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
             gap: '1rem',
-            padding: '1.25rem',
-            background: 'rgba(12, 12, 16, 0.7)',
-            borderRadius: '1rem',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
           }}
         >
-          {[
-            { title: 'Tech Breakthroughs', desc: 'Frontier AI & Indigenous Engineering', color: '#EB0028' },
-            { title: 'Afro-Futurism & Arts', desc: 'Creative Power on Global Stages', color: '#FF3366' },
-            { title: 'Planetary Systems', desc: 'Ecological & Sustainable Innovation', color: '#00E676' },
-            { title: 'Youth Leadership', desc: 'Audacious Solutions & Global Policy', color: '#FFAB00' },
-          ].map((pillar, i) => (
+          {THEME_PILLARS.map((pillar) => (
             <div
-              key={i}
+              key={pillar.id}
+              className="glass-card"
               style={{
+                padding: '1.25rem',
+                borderRadius: '12px',
+                border: `1px solid ${pillar.borderGlow}`,
+                background: pillar.gradient,
                 display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.75rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.borderColor = pillar.accentColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = pillar.borderGlow;
               }}
             >
-              <div
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: pillar.color,
-                  boxShadow: `0 0 10px ${pillar.color}`,
-                  flexShrink: 0,
-                }}
-              />
               <div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF' }}>{pillar.title}</div>
-                <div style={{ fontSize: '0.72rem', color: '#9CA3AF' }}>{pillar.desc}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                  <span
+                    style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      color: pillar.accentColor,
+                      background: 'rgba(0, 0, 0, 0.4)',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '9999px',
+                      border: `1px solid ${pillar.accentColor}30`,
+                    }}
+                  >
+                    {pillar.metrics}
+                  </span>
+                </div>
+
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem', lineHeight: 1.3 }}>
+                  {pillar.title}
+                </h4>
+                <p style={{ fontSize: '0.82rem', color: '#D1D5DB', lineHeight: 1.5, marginBottom: '0.85rem' }}>
+                  {pillar.description}
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.75rem' }}>
+                {pillar.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontSize: '0.72rem',
+                      color: '#A1A1AA',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    #{tag}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
@@ -399,4 +434,5 @@ export const ThemeSection: React.FC = () => {
     </section>
   );
 };
+
 

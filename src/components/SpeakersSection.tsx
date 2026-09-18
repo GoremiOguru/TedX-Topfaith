@@ -269,7 +269,7 @@ export const SpeakersSection: React.FC = () => {
             </p>
 
             <a
-              href="mailto:speakers@tedxtopfaithuni.com?subject=Speaker%20Audition%20Pitch%20-%20TEDxTopfaithUniversity"
+              href="mailto:freshjoshcliff@gmail.com?subject=Speaker%20Audition%20Pitch%20-%20TEDxTopfaithUniversity"
               className="btn btn-secondary"
               style={{ padding: '0.75rem 1.35rem', fontSize: '0.88rem' }}
             >

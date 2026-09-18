@@ -51,7 +51,7 @@ export const AboutSection: React.FC = () => {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {[
                   'Independently organized under official TED license',
-                  'Multidisciplinary focus: Tech & AI, Global Leadership, Science, Arts',
+                  'Multidisciplinary focus across arts, law, fashion, food heritage, enterprise & self-mastery',
                   'Zero commercial pitches, 100% intellectual passion',
                   'Strictly 200 seats for intimate, high-octane delegate networking'
                 ].map((item, idx) => (
