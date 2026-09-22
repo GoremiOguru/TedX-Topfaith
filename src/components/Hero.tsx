@@ -74,12 +74,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
               fetchPriority="high"
             />
             <div className="mobile-stage-overlay" />
-            <div className="mobile-stage-badge">
-              <span className="live-dot" />
-              <span>THE LAW AUDITORIUM STAGE</span>
-            </div>
             <div className="mobile-stage-caption">
-              <span style={{ color: '#EB0028', fontWeight: 800 }}>● OFFICIAL SPEAKER CARPET</span>
+              <span style={{ color: '#EB0028', fontWeight: 800 }}>● OFFICIAL STAGE</span>
               <span style={{ color: '#FFFFFF', fontWeight: 700 }}> &bull; Topfaith Campus</span>
             </div>
           </div>
