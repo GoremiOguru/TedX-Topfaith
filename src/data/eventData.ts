@@ -280,14 +280,22 @@ export const SCHEDULE_ITEMS: ScheduleItem[] = [
 export const VENUE_GALLERY: VenueGalleryItem[] = [
   {
     id: "v1",
-    title: "The Law Auditorium Grand Arena",
-    caption: "The majestic main auditorium featuring acoustically tuned architectural tiers, sweeping stage visibility, and state-of-the-art audiovisual rigging.",
+    title: "The Law Auditorium Grand Arena & TED Stage",
+    caption: "The majestic main auditorium and signature TED stage featuring acoustically tuned architectural tiers, elevated vantage points, and state-of-the-art audiovisual rigging.",
+    category: "Auditorium",
+    image: "/what_the_hall_looks_like_part3.jpeg",
+    badge: "Official TED Stage"
+  },
+  {
+    id: "v2",
+    title: "Main Stage Arena Vantage",
+    caption: "Sweeping view of the stage from the delegate concourse, engineered for crystal-clear presentation visibility.",
     category: "Auditorium",
     image: "/what_the_hall_looks_like.jpeg",
     badge: "Main Stage Arena"
   },
   {
-    id: "v2",
+    id: "v3",
     title: "Grand Lobby & Registration Foyer",
     caption: "The pristine, glass-adorned reception foyer where delegates gather for check-in, media interviews, and interactive partner pavilions.",
     category: "Lobby",
@@ -295,20 +303,12 @@ export const VENUE_GALLERY: VenueGalleryItem[] = [
     badge: "Reception & Media"
   },
   {
-    id: "v3",
+    id: "v4",
     title: "Tiered Delegate Seating",
     caption: "Plush, high-comfort auditorium seating designed for immersive viewing and clear sightlines from every angle.",
     category: "Seating",
     image: "/what_the_hall_looks_like_part2.jpeg",
     badge: "Plush Tiered Seating"
-  },
-  {
-    id: "v4",
-    title: "Panoramic Production Deck",
-    caption: "Elevated vantage point housing 4K broadcast cameras, live audio capture, and multi-angle broadcast consoles.",
-    category: "Stage",
-    image: "/what_the_hall_looks_like_part3.jpeg",
-    badge: "Broadcast Deck"
   }
 ];
 

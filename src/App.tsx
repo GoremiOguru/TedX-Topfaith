@@ -47,9 +47,6 @@ export const App: React.FC = () => {
         onExploreSpeakers={handleExploreSpeakers}
       />
 
-      {/* Venue Showcase (Moved to the Top of the Webpage) */}
-      <VenueSection />
-
       {/* About Section */}
       <AboutSection />
 
@@ -58,6 +55,9 @@ export const App: React.FC = () => {
 
       {/* Speakers Unveiling Section */}
       <SpeakersSection />
+
+      {/* Venue Showcase */}
+      <VenueSection />
 
       {/* Passes & Tickets */}
       <TicketSection onSelectTier={(tierId) => handleOpenRegister(tierId)} />

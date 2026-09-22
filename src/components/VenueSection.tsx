@@ -70,9 +70,9 @@ export const VenueSection: React.FC = () => {
               key={activeVenue.image}
               src={activeVenue.image}
               alt={activeVenue.title}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0.8 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
               style={{
                 width: '100%',
                 height: '100%',
