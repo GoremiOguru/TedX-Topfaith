@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, ArrowRight, Play, Flame, Sparkles, Clock } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Play, Flame, Sparkles, Clock, Volume2 } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
 
 interface HeroProps {
@@ -41,8 +41,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
 
   return (
     <section className="tedx-hero-section">
-      {/* Immersive TED Stage Photo Background (what_the_hall_looks_like_part3.jpeg) */}
-      <div className="tedx-hero-bg-container">
+      {/* Desktop Full-Bleed Background Backdrop */}
+      <div className="tedx-hero-bg-container desktop-only">
         <img
           src="/what_the_hall_looks_like_part3.jpeg"
           alt="TEDxTopfaithUniversity Law Auditorium Stage"
@@ -50,21 +50,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           fetchPriority="high"
           loading="eager"
         />
-
-        {/* Cinematic Gradient Overlays: Clear on stage area (top/mid), dark only at bottom for typography */}
         <div className="tedx-hero-gradient-overlay" />
       </div>
 
-      {/* Floating Stage Identifier Badge */}
-      <div className="tedx-stage-tag">
+      {/* Floating Stage Identifier Badge for Desktop */}
+      <div className="tedx-stage-tag desktop-only">
         <span className="live-dot" />
         <span>THE LAW AUDITORIUM • TOPFAITH</span>
       </div>
 
-      {/* Hero Content Container (Placed in the lower portion so the stage shines above) */}
+      {/* Hero Content Container */}
       <div className="container tedx-hero-content-wrapper">
         <div className="tedx-hero-inner">
-          
+
+          {/* =========================================================
+              MOBILE DEDICATED STAGE SHOWCASE (FITS 100% ON SCREEN)
+              ========================================================= */}
+          <div className="mobile-stage-card mobile-only">
+            <img
+              src="/what_the_hall_looks_like_part3.jpeg"
+              alt="The Law Auditorium TED Stage Arena"
+              className="mobile-stage-img"
+              fetchPriority="high"
+            />
+            <div className="mobile-stage-overlay" />
+            <div className="mobile-stage-badge">
+              <span className="live-dot" />
+              <span>THE LAW AUDITORIUM STAGE</span>
+            </div>
+            <div className="mobile-stage-caption">
+              <span style={{ color: '#EB0028', fontWeight: 800 }}>● OFFICIAL SPEAKER CARPET</span>
+              <span style={{ color: '#FFFFFF', fontWeight: 700 }}> &bull; Topfaith Campus</span>
+            </div>
+          </div>
+
           {/* Top Badges */}
           <div className="tedx-hero-badges-row">
             <div className="section-badge" style={{ margin: 0 }}>
@@ -89,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             </div>
           </div>
 
-          {/* Subtitle / Mission */}
+          {/* Subtitle / Mission (Shown gracefully on desktop, compact on mobile) */}
           <p className="tedx-hero-desc">
             Join visionary thinkers, innovators, and industry leaders at the Law Auditorium for ideas that challenge the boundaries of human potential.
           </p>
@@ -156,94 +175,84 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
       </div>
 
       <style>{`
+        /* -------------------------------------------
+           MOBILE FIRST LAYOUT (Everything fits nicely)
+           ------------------------------------------- */
         .tedx-hero-section {
           position: relative;
-          min-height: 100vh;
           min-height: 100svh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
-          padding-top: clamp(330px, 56vh, 480px); /* Unveils the speaker carpet and 3D letters on mobile */
-          padding-bottom: 2.25rem;
+          justify-content: center;
+          padding-top: 4.8rem;
+          padding-bottom: 1.5rem;
           overflow: hidden;
           background-color: #060608;
         }
 
-        @media (min-width: 900px) {
-          .tedx-hero-section {
-            min-height: 105vh;
-            padding-top: 55vh; /* Places entire hero block right below the 3D stage letters */
-            padding-bottom: 3.25rem;
-          }
+        .desktop-only {
+          display: none !important;
         }
 
-        .tedx-hero-bg-container {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
+        .mobile-only {
+          display: block !important;
+        }
+
+        /* Mobile Stage Showcase Card */
+        .mobile-stage-card {
+          position: relative;
+          width: 100%;
+          height: clamp(170px, 26vh, 220px);
+          border-radius: 1rem;
           overflow: hidden;
+          margin-bottom: 0.85rem;
+          border: 1px solid rgba(235, 0, 40, 0.45);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(235, 0, 40, 0.25);
+          background: #0E0E14;
         }
 
-        .tedx-hero-bg-image {
+        .mobile-stage-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center top; /* Keeps the projector screen, stage lights, & red carpet in crisp focus */
+          object-position: center 20%;
           display: block;
-          filter: contrast(1.08) brightness(0.98);
-          transform: scale(1.01);
         }
 
-        @media (min-width: 900px) {
-          .tedx-hero-bg-image {
-            object-position: center 3%;
-          }
-        }
-
-        /* Gradient overlay: Crystal clear across projector screen, stage floor, & speaker red carpet, darkening where text sits */
-        .tedx-hero-gradient-overlay {
+        .mobile-stage-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(6, 6, 9, 0.35) 0%,
-            rgba(6, 6, 9, 0) 12%,
-            rgba(6, 6, 9, 0.04) 44%,
-            rgba(6, 6, 9, 0.76) 56%,
-            rgba(6, 6, 9, 0.98) 74%,
-            #060608 100%
-          );
+          background: linear-gradient(180deg, rgba(6, 6, 9, 0.2) 0%, rgba(6, 6, 9, 0.1) 40%, rgba(6, 6, 9, 0.85) 100%);
           pointer-events: none;
         }
 
-        .tedx-stage-tag {
+        .mobile-stage-badge {
           position: absolute;
-          top: 4.8rem;
-          right: 1.25rem;
+          top: 0.6rem;
+          left: 0.6rem;
           display: inline-flex;
           align-items: center;
-          gap: 0.45rem;
-          background: rgba(6, 6, 9, 0.75);
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          padding: 0.35rem 0.85rem;
+          gap: 0.35rem;
+          background: rgba(6, 6, 9, 0.8);
+          border: 1px solid rgba(235, 0, 40, 0.5);
+          backdrop-filter: blur(8px);
+          padding: 0.25rem 0.6rem;
           border-radius: 9999px;
-          font-size: 0.7rem;
-          font-weight: 700;
-          letter-spacing: 0.06em;
-          color: #F4F4F5;
-          z-index: 2;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+          font-size: 0.62rem;
+          font-weight: 800;
+          letter-spacing: 0.04em;
+          color: #FFFFFF;
         }
 
-        @media (max-width: 640px) {
-          .tedx-stage-tag {
-            top: 4.5rem;
-            right: 0.75rem;
-            font-size: 0.62rem;
-            padding: 0.25rem 0.6rem;
-          }
+        .mobile-stage-caption {
+          position: absolute;
+          bottom: 0.5rem;
+          left: 0.75rem;
+          right: 0.75rem;
+          font-size: 0.68rem;
+          display: flex;
+          align-items: center;
+          text-shadow: 0 2px 6px rgba(0,0,0,0.9);
         }
 
         .tedx-hero-content-wrapper {
@@ -264,17 +273,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          gap: 0.45rem;
-          margin-bottom: 0.6rem;
+          gap: 0.4rem;
+          margin-bottom: 0.45rem;
         }
 
         .tedx-hero-status-pill {
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          padding: 0.25rem 0.65rem;
+          gap: 0.3rem;
+          padding: 0.2rem 0.55rem;
           border-radius: 9999px;
-          font-size: 0.7rem;
+          font-size: 0.68rem;
           font-weight: 700;
           background: rgba(235, 0, 40, 0.15);
           border: 1px solid rgba(235, 0, 40, 0.4);
@@ -282,17 +291,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         }
 
         .tedx-hero-title-group {
-          margin-bottom: 0.65rem;
+          margin-bottom: 0.45rem;
         }
 
         .tedx-hero-main-title {
-          font-size: clamp(2rem, 6.5vw, 4.2rem);
+          font-size: clamp(1.8rem, 6.2vw, 4.2rem);
           font-weight: 900;
           line-height: 1.05;
           letter-spacing: -0.035em;
           color: #FFFFFF;
           text-transform: none;
-          text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 0, 0, 0.85);
+          text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95);
         }
 
         .brand-suffix {
@@ -304,9 +313,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          gap: 0.4rem 0.55rem;
-          margin-top: 0.35rem;
-          font-size: clamp(0.95rem, 3.2vw, 1.55rem);
+          gap: 0.35rem 0.5rem;
+          margin-top: 0.25rem;
+          font-size: clamp(0.9rem, 3vw, 1.55rem);
           font-weight: 800;
           letter-spacing: -0.01em;
           text-transform: uppercase;
@@ -327,33 +336,38 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         }
 
         .tedx-hero-desc {
-          font-size: clamp(0.86rem, 2vw, 1.05rem);
+          font-size: clamp(0.82rem, 1.8vw, 1.05rem);
           color: #D1D5DB;
-          line-height: 1.5;
-          margin-bottom: 1.15rem;
+          line-height: 1.45;
+          margin-bottom: 0.75rem;
           max-width: 620px;
-          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+        }
+
+        @media (max-width: 640px) {
+          .tedx-hero-desc {
+            display: none; /* Keeps mobile viewport strictly 100vh fit */
+          }
         }
 
         .tedx-hero-meta-row {
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          gap: 0.45rem;
-          margin-bottom: 1.4rem;
+          gap: 0.4rem;
+          margin-bottom: 0.9rem;
         }
 
         .tedx-meta-item {
           display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
+          gap: 0.35rem;
           background: rgba(18, 18, 24, 0.8);
           border: 1px solid rgba(255, 255, 255, 0.15);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          padding: 0.38rem 0.75rem;
+          padding: 0.32rem 0.65rem;
           border-radius: 9999px;
-          font-size: 0.78rem;
+          font-size: 0.74rem;
           font-weight: 600;
           color: #F4F4F5;
         }
@@ -371,7 +385,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         .tedx-hero-bottom-grid {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.75rem;
           width: 100%;
         }
 
@@ -386,7 +400,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         .tedx-hero-cta-buttons {
           display: flex;
           flex-direction: column;
-          gap: 0.6rem;
+          gap: 0.5rem;
           width: 100%;
         }
 
@@ -398,15 +412,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         }
 
         .tedx-hero-primary-btn {
-          padding: 0.8rem 1.35rem;
-          font-size: 0.92rem;
+          padding: 0.75rem 1.25rem;
+          font-size: 0.88rem;
           font-weight: 800;
           border-radius: 9999px;
         }
 
         .tedx-hero-secondary-btn {
-          padding: 0.8rem 1.25rem;
-          font-size: 0.88rem;
+          padding: 0.75rem 1.15rem;
+          font-size: 0.85rem;
           font-weight: 600;
           border-radius: 9999px;
           background: rgba(255, 255, 255, 0.08);
@@ -417,12 +431,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         .tedx-hero-countdown-strip {
           display: inline-flex;
           align-items: center;
-          gap: 0.55rem;
+          gap: 0.5rem;
           background: rgba(14, 14, 20, 0.85);
           border: 1px solid rgba(235, 0, 40, 0.35);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          padding: 0.35rem 0.7rem;
+          padding: 0.3rem 0.65rem;
           border-radius: 9999px;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(235, 0, 40, 0.15);
           width: fit-content;
@@ -432,7 +446,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           display: flex;
           align-items: center;
           gap: 0.35rem;
-          font-size: 0.62rem;
+          font-size: 0.6rem;
           font-weight: 800;
           letter-spacing: 0.08em;
           color: #A1A1AA;
@@ -441,7 +455,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         .countdown-digits-wrapper {
           display: flex;
           align-items: center;
-          gap: 0.3rem;
+          gap: 0.25rem;
         }
 
         .countdown-digit-pill {
@@ -449,22 +463,95 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           align-items: baseline;
           gap: 2px;
           background: rgba(255, 255, 255, 0.06);
-          padding: 0.18rem 0.4rem;
+          padding: 0.16rem 0.36rem;
           border-radius: 0.35rem;
         }
 
         .digit-val {
           font-family: 'Space Grotesk', sans-serif;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           font-weight: 800;
           color: #FFFFFF;
           line-height: 1;
         }
 
         .digit-unit {
-          font-size: 0.58rem;
+          font-size: 0.55rem;
           font-weight: 700;
           color: #EB0028;
+        }
+
+        /* -------------------------------------------
+           DESKTOP VIEW (900px+ Full Bleed Cinematic)
+           ------------------------------------------- */
+        @media (min-width: 900px) {
+          .desktop-only {
+            display: block !important;
+          }
+
+          .mobile-only {
+            display: none !important;
+          }
+
+          .tedx-hero-section {
+            min-height: 105vh;
+            justify-content: flex-end;
+            padding-top: 55vh; /* Starts hero text below stage floor & 3D letters */
+            padding-bottom: 3.25rem;
+          }
+
+          .tedx-hero-bg-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+          }
+
+          .tedx-hero-bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 3%;
+            display: block;
+            filter: contrast(1.08) brightness(0.98);
+            transform: scale(1.01);
+          }
+
+          .tedx-hero-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(6, 6, 9, 0.35) 0%,
+              rgba(6, 6, 9, 0) 12%,
+              rgba(6, 6, 9, 0.04) 44%,
+              rgba(6, 6, 9, 0.76) 56%,
+              rgba(6, 6, 9, 0.98) 74%,
+              #060608 100%
+            );
+            pointer-events: none;
+          }
+
+          .tedx-stage-tag {
+            position: absolute;
+            top: 4.8rem;
+            right: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(6, 6, 9, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: #F4F4F5;
+            z-index: 2;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+          }
         }
       `}</style>
     </section>
