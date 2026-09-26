@@ -128,13 +128,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           {/* Action Buttons & Countdown */}
           <div className="tedx-hero-bottom-grid">
             <div className="tedx-hero-cta-buttons">
-              <button
-                onClick={onOpenRegister}
+              <a
+                href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary tedx-hero-primary-btn"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                  textDecoration: 'none',
+                }}
               >
                 <span>Reserve Pass (From ₦10,000)</span>
                 <ArrowRight size={16} />
-              </button>
+              </a>
 
               <button
                 onClick={onExploreSpeakers}

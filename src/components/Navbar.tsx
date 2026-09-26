@@ -156,19 +156,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
             </div>
 
             {/* Header Get Pass Button */}
-            <button
-              onClick={() => onOpenRegister()}
+            <a
+              href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary"
               style={{
                 padding: '0.5rem 1rem',
                 fontSize: '0.82rem',
                 minHeight: '38px',
                 width: 'auto',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.4rem',
+                textDecoration: 'none',
               }}
             >
               <Ticket size={14} />
               <span>Get Pass</span>
-            </button>
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -256,17 +263,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               <MapPin size={15} color="#EB0028" />
               <span>{EVENT_DETAILS.venue.name}, {EVENT_DETAILS.venue.city}</span>
             </div>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenRegister();
-              }}
+            <a
+              href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
               className="btn btn-primary"
-              style={{ width: '100%', padding: '0.9rem', fontSize: '1rem' }}
+              style={{
+                width: '100%',
+                padding: '0.9rem',
+                fontSize: '1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                textDecoration: 'none',
+              }}
             >
               <Ticket size={18} />
               <span>Reserve Pass (₦10,000)</span>
-            </button>
+            </a>
           </div>
         </div>
       )}

@@ -1,0 +1,22 @@
+{
+  "name": "TEDxTopfaithUniversity | TRANSCEND",
+  "short_name": "TEDxTopfaith",
+  "description": "Official website for TEDxTopfaithUniversity 2026 at The Law Auditorium, Topfaith University, Mkpatak, Akwa Ibom State, Nigeria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060608",
+  "theme_color": "#EB0028",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/tedxtopfaithlogo(black).png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/tedxtopfaithlogo(black).png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

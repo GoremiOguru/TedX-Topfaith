@@ -29,8 +29,9 @@ export const EVENT_DETAILS = {
     { value: "100%", label: "Ideas Worth Spreading", suffix: "" }
   ],
   socials: {
+    tiktok: "https://tiktok.com/@tedxtopfaithuniversity",
+    instagram: "https://www.instagram.com/tedxtopfaithuniversity?stkn=MTh6a2tienEyY3luYw==",
     twitter: "https://x.com/TEDxTopfaithUni",
-    instagram: "https://instagram.com/tedxtopfaithuni",
     linkedin: "https://linkedin.com/company/tedxtopfaithuni",
     youtube: "https://youtube.com/@tedx"
   }
@@ -395,6 +396,13 @@ export const PARTNERS_DATA = {
     logo: "/logo.png",
     url: "https://topfaith.edu.ng",
     description: "A premier private university fostering academic excellence, character building, research innovation, and global competitiveness."
+  },
+  tickethub: {
+    name: "Ticket Hub",
+    title: "Official Ticket & Payment Partner",
+    logo: "/TU Ticket hub.jpeg",
+    url: "https://tu-ticket-generator-app.vercel.app/",
+    description: "Official ticket generator and payment processing partner handling ticket sales, pass distribution, and payment processing for TEDxTopfaithUniversity."
   },
   producer: {
     name: "The Centrestage Company",

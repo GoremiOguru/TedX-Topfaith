@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
             marginBottom: '4rem',
           }}
         >
-          {/* Col 1: Brand & Mandatory TEDx Statement */}
+          {/* Col 1: Brand, Mandatory Statement & Social Links */}
           <div>
             <div style={{ marginBottom: '1.25rem' }}>
               <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            <p style={{ color: '#9CA3AF', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+            <p style={{ color: '#9CA3AF', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.25rem' }}>
               {EVENT_DETAILS.theme} &mdash; {EVENT_DETAILS.tagline}. Igniting transformative ideas at Topfaith University, Mkpatak, Akwa Ibom State, Nigeria.
             </p>
 
@@ -76,9 +76,70 @@ export const Footer: React.FC = () => {
                 background: 'rgba(255, 255, 255, 0.02)',
                 border: '1px solid rgba(255, 255, 255, 0.05)',
                 lineHeight: 1.5,
+                marginBottom: '1.25rem',
               }}
             >
               <strong style={{ color: '#EB0028' }}>Official TED License:</strong> This independent TEDx event is operated under license from TED.
+            </div>
+
+            {/* Official Social Media Links */}
+            <div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.65rem' }}>
+                Follow Official Channels
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+                <a
+                  href={EVENT_DETAILS.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.45rem 0.85rem',
+                    borderRadius: '9999px',
+                    background: 'rgba(235, 0, 40, 0.12)',
+                    border: '1px solid rgba(235, 0, 40, 0.35)',
+                    color: '#FFFFFF',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EB0028" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                  <span>Instagram</span>
+                </a>
+
+                <a
+                  href={EVENT_DETAILS.socials.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.45rem 0.85rem',
+                    borderRadius: '9999px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
+                    color: '#FFFFFF',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#FFFFFF">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.22V8.2a6.34 6.34 0 0 0-5.1 6.16 6.34 6.34 0 1 0 10.74-4.56 8.35 8.35 0 0 0 4.47 1.28V7.63a4.85 4.85 0 0 1-.02-.94z"/>
+                  </svg>
+                  <span>TikTok</span>
+                </a>
+              </div>
             </div>
           </div>
 

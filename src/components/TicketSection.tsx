@@ -168,16 +168,28 @@ export const TicketSection: React.FC<TicketSectionProps> = ({ onSelectTier }) =>
                     <span>Strict limit: Early reservation advised</span>
                   </div>
 
-                  <motion.button
+                  <motion.a
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => onSelectTier(tier.id)}
+                    href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`btn ${tier.popular ? 'btn-primary' : 'btn-secondary'}`}
-                    style={{ width: '100%', padding: '0.95rem', fontSize: '0.98rem' }}
+                    style={{
+                      width: '100%',
+                      padding: '0.95rem',
+                      fontSize: '0.98rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      textDecoration: 'none',
+                      boxSizing: 'border-box',
+                    }}
                   >
-                    <span>Select {tier.name}</span>
+                    <span>Get {tier.name}</span>
                     <ArrowRight size={16} />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </motion.div>
             ))}

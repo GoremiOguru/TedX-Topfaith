@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck, Ticket } from 'lucide-react';
 import { PARTNERS_DATA } from '../data/eventData';
 
 export const SponsorsSection: React.FC = () => {
@@ -18,6 +18,18 @@ export const SponsorsSection: React.FC = () => {
       badgeIcon: <Building2 size={13} />,
       accentColor: '#EB0028',
       buttonText: 'Visit University Site',
+    },
+    {
+      id: 'tickethub',
+      name: PARTNERS_DATA.tickethub.name,
+      title: PARTNERS_DATA.tickethub.title,
+      logo: PARTNERS_DATA.tickethub.logo,
+      url: PARTNERS_DATA.tickethub.url,
+      description: PARTNERS_DATA.tickethub.description,
+      badge: 'Official Ticket & Payment Partner',
+      badgeIcon: <Ticket size={13} />,
+      accentColor: '#EB0028',
+      buttonText: 'Visit Ticket Hub',
     },
     {
       id: 'producer',
@@ -62,24 +74,24 @@ export const SponsorsSection: React.FC = () => {
         >
           <div className="section-badge animate-float">
             <Award size={14} />
-            <span>Leadership & Production</span>
+            <span>Leadership, Ticketing & Production</span>
           </div>
           <h2 className="section-title">
             Patrons & <span className="highlight">Partners</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University and world-class executive consulting with The Centrestage Company.
+            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University, official ticket payment processing by Ticket Hub, and world-class executive consulting with The Centrestage Company.
           </p>
         </motion.div>
 
-        {/* Patrons & Partners: Desktop 2-Column Grid / Mobile Horizontal Swipe Carousel */}
+        {/* Patrons & Partners: Desktop 3-Column Grid / Mobile Horizontal Swipe Carousel */}
         <div className="partners-showcase-wrapper" style={{ marginBottom: '3.5rem' }}>
           <div
             className="partners-cards-container"
             onScroll={(e) => {
               const target = e.currentTarget;
               const scrollPercent = target.scrollLeft / (target.scrollWidth - target.clientWidth || 1);
-              setActiveMobileCard(scrollPercent > 0.5 ? 1 : 0);
+              setActiveMobileCard(Math.min(Math.floor(scrollPercent * partners.length), partners.length - 1));
             }}
           >
             {partners.map((partner, index) => (
@@ -388,12 +400,23 @@ export const SponsorsSection: React.FC = () => {
           }
         }
 
-        /* DESKTOP VIEW (>= 768px): 2-Column Vertical Grid */
-        @media (min-width: 768px) {
+        /* DESKTOP VIEW (>= 768px): 3-Column Vertical Grid */
+        @media (min-width: 768px) and (max-width: 1023px) {
           .partners-cards-container {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem !important;
+            gap: 1.5rem !important;
+          }
+          .partner-showcase-card {
+            flex: unset !important;
+            max-width: 100% !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .partners-cards-container {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 1.5rem !important;
           }
           .partner-showcase-card {
             flex: unset !important;

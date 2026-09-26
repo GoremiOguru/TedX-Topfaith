@@ -12,15 +12,14 @@ import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
 
+export const TICKET_HUB_URL = 'https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit';
+
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string>('student-pass');
 
-  const handleOpenRegister = (tierId?: string) => {
-    if (tierId) {
-      setSelectedTierId(tierId);
-    }
-    setIsRegisterOpen(true);
+  const handleOpenRegister = (_tierId?: string) => {
+    window.open(TICKET_HUB_URL, '_blank', 'noopener,noreferrer');
   };
 
   const handleExploreSpeakers = () => {
@@ -60,7 +59,7 @@ export const App: React.FC = () => {
       <VenueSection />
 
       {/* Passes & Tickets */}
-      <TicketSection onSelectTier={(tierId) => handleOpenRegister(tierId)} />
+      <TicketSection onSelectTier={(_tierId) => handleOpenRegister()} />
 
       {/* Patrons & Sponsors */}
       <SponsorsSection />
@@ -83,8 +82,10 @@ export const App: React.FC = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => handleOpenRegister()}
+        <a
+          href={TICKET_HUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn btn-primary"
           style={{
             padding: '0.65rem 1.35rem',
@@ -92,11 +93,16 @@ export const App: React.FC = () => {
             minHeight: '42px',
             width: 'auto',
             borderRadius: '9999px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.4rem',
+            textDecoration: 'none',
           }}
         >
           <Ticket size={15} />
           <span>Get Pass</span>
-        </button>
+        </a>
       </div>
 
       {/* Registration & Digital Pass Modal */}
