@@ -8,6 +8,29 @@ export const SpeakersSection: React.FC = () => {
   const [activeTeaser, setActiveTeaser] = useState<SpeakerTeaser | null>(null);
   const [notifyEmail, setNotifyEmail] = useState<string>('');
   const [notified, setNotified] = useState<boolean>(false);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftPos, setScrollLeftPos] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!wrapperRef.current) return;
+    setIsMouseDown(true);
+    setStartX(e.pageX - wrapperRef.current.offsetLeft);
+    setScrollLeftPos(wrapperRef.current.scrollLeft);
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isMouseDown || !wrapperRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - wrapperRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    wrapperRef.current.scrollLeft = scrollLeftPos - walk;
+  };
 
   const handleNotify = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +87,14 @@ export const SpeakersSection: React.FC = () => {
       </div>
 
       {/* Auto-Looping Infinite Horizontal Speaker Carousel */}
-      <div className="speaker-carousel-wrapper">
+      <div
+        ref={wrapperRef}
+        className="speaker-carousel-wrapper"
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeaveOrUp}
+        onMouseUp={handleMouseLeaveOrUp}
+        onMouseMove={handleMouseMove}
+      >
         <div className="speaker-carousel-track">
           {duplicatedTeasers.map((teaser, index) => (
             <motion.div

@@ -401,7 +401,7 @@ export const PARTNERS_DATA = {
     name: "Ticket Hub",
     title: "Official Ticket & Payment Partner",
     logo: "/TU Ticket hub.jpeg",
-    url: "https://tu-ticket-generator-app.vercel.app/",
+    url: "https://www.tu-tickethub.me",
     description: "Official ticket generator and payment processing partner handling ticket sales, pass distribution, and payment processing for TEDxTopfaithUniversity."
   },
   producer: {

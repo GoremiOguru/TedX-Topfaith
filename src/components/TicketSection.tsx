@@ -171,7 +171,7 @@ export const TicketSection: React.FC<TicketSectionProps> = ({ onSelectTier }) =>
                   <motion.a
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+                    href="https://www.tu-tickethub.me/tickets/generate/cmucxi20e000004jqv644ttit"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`btn ${tier.popular ? 'btn-primary' : 'btn-secondary'}`}

@@ -31,6 +31,30 @@ interface ThematicWordItem {
 export const ThemeSection: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activePillarId, setActivePillarId] = useState<string>(THEME_PILLARS[0].id);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftPos, setScrollLeftPos] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsMouseDown(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeftPos(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isMouseDown || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeftPos - walk;
+  };
+
+  const duplicatedPillars = [...THEME_PILLARS, ...THEME_PILLARS];
 
   // Row 1 Thematic Items (Scrolling Left) - Pure TED Colors (Red & White)
   const rowOneItems: ThematicWordItem[] = [
@@ -402,7 +426,7 @@ export const ThemeSection: React.FC = () => {
         {/* Header & Controls */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.5rem' }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 800, color: '#EB0028', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 800, color: '#FF5266', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               <Zap size={13} />
               <span>THE 8 PILLARS OF TRANSCENDENCE</span>
             </div>
@@ -493,112 +517,141 @@ export const ThemeSection: React.FC = () => {
           })}
         </div>
 
-        {/* Horizontal Card Track */}
+        {/* Auto-Looping Infinite Horizontal 8 Pillars Carousel with Drag & Swipe */}
         <div
           ref={scrollContainerRef}
           className="pillars-horizontal-wrapper"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeaveOrUp}
+          onMouseUp={handleMouseLeaveOrUp}
+          onMouseMove={handleMouseMove}
         >
-          {THEME_PILLARS.map((pillar, index) => {
-            const isActive = activePillarId === pillar.id;
-            return (
-              <motion.div
-                key={pillar.id}
-                id={`pillar-card-${pillar.id}`}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="pillar-horizontal-card"
-                style={{
-                  border: isActive ? '2px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
-                  background: pillar.gradient,
-                  transform: isActive ? 'scale(1.02)' : 'scale(1)',
-                }}
-                onClick={() => setActivePillarId(pillar.id)}
-              >
-                <div>
-                  {/* Card Header: Number & Badge */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                    <div
-                      style={{
-                        width: '36px',
-                        height: '36px',
-                        borderRadius: '10px',
-                        background: 'rgba(235, 0, 40, 0.18)',
-                        border: '1px solid rgba(235, 0, 40, 0.45)',
-                        color: '#EB0028',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 900,
-                        fontSize: '0.85rem',
-                        fontFamily: 'Space Grotesk',
-                      }}
-                    >
-                      0{index + 1}
-                    </div>
-
-                    <span
-                      style={{
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        color: '#FFFFFF',
-                        background: 'rgba(0, 0, 0, 0.6)',
-                        padding: '0.25rem 0.65rem',
-                        borderRadius: '9999px',
-                        border: '1px solid rgba(235, 0, 40, 0.4)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.3rem',
-                      }}
-                    >
-                      <Sparkles size={11} color="#EB0028" />
-                      <span>{pillar.metrics}</span>
-                    </span>
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h4
-                    style={{
-                      fontSize: '1.25rem',
-                      fontWeight: 800,
-                      color: '#FFFFFF',
-                      marginBottom: '0.45rem',
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {pillar.title}
-                  </h4>
-                  
-                  <div style={{ fontSize: '0.82rem', color: '#EB0028', fontWeight: 700, marginBottom: '0.85rem' }}>
-                    {pillar.subtitle}
-                  </div>
-
-                  <p style={{ fontSize: '0.86rem', color: '#D1D5DB', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                    {pillar.description}
-                  </p>
-                </div>
-
-                {/* Bottom Tags */}
-                <div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1rem' }}>
-                    {pillar.tags.map((tag) => (
-                      <span
-                        key={tag}
+          <div className="pillars-auto-track">
+            {duplicatedPillars.map((pillar, index) => {
+              const realIndex = index % THEME_PILLARS.length;
+              const isActive = activePillarId === pillar.id;
+              return (
+                <motion.div
+                  key={`${pillar.id}-${index}`}
+                  id={`pillar-card-${pillar.id}`}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="pillar-horizontal-card"
+                  style={{
+                    border: isActive ? '2px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
+                    background: pillar.gradient,
+                    transform: isActive ? 'scale(1.02)' : 'scale(1)',
+                  }}
+                  onClick={() => setActivePillarId(pillar.id)}
+                >
+                  <div>
+                    {/* Card Header: Number & Badge */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                      <div
                         style={{
-                          fontSize: '0.74rem',
-                          color: '#F4F4F5',
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          padding: '0.2rem 0.6rem',
-                          borderRadius: '6px',
-                          fontWeight: 500,
+                          width: '36px',
+                          height: '36px',
+                          borderRadius: '10px',
+                          background: 'rgba(235, 0, 40, 0.18)',
+                          border: '1px solid rgba(235, 0, 40, 0.45)',
+                          color: '#EB0028',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 900,
+                          fontSize: '0.85rem',
+                          fontFamily: 'Space Grotesk',
                         }}
                       >
-                        #{tag}
+                        0{realIndex + 1}
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          color: '#FFFFFF',
+                          background: 'rgba(0, 0, 0, 0.6)',
+                          padding: '0.25rem 0.65rem',
+                          borderRadius: '9999px',
+                          border: '1px solid rgba(235, 0, 40, 0.4)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.3rem',
+                        }}
+                      >
+                        <Sparkles size={11} color="#EB0028" />
+                        <span>{pillar.metrics}</span>
                       </span>
-                    ))}
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <h4
+                      style={{
+                        fontSize: '1.25rem',
+                        fontWeight: 800,
+                        color: '#FFFFFF',
+                        marginBottom: '0.6rem',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {pillar.title}
+                    </h4>
+                    
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      className="animated-subtitle-badge"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        fontSize: '0.83rem',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.35) 0%, rgba(18, 18, 26, 0.95) 100%)',
+                        border: '1px solid rgba(255, 90, 110, 0.45)',
+                        padding: '0.45rem 0.85rem',
+                        borderRadius: '10px',
+                        marginBottom: '0.9rem',
+                        lineHeight: 1.4,
+                        backdropFilter: 'blur(12px)',
+                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(235, 0, 40, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.25)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <Sparkles size={14} color="#FF4D61" className="animate-pulse" style={{ flexShrink: 0 }} />
+                      <span style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>{pillar.subtitle}</span>
+                    </motion.div>
+
+                    <p style={{ fontSize: '0.86rem', color: '#D1D5DB', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                      {pillar.description}
+                    </p>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+
+                  {/* Bottom Tags */}
+                  <div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1rem' }}>
+                      {pillar.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          style={{
+                            fontSize: '0.74rem',
+                            color: '#F4F4F5',
+                            background: 'rgba(255, 255, 255, 0.08)',
+                            padding: '0.2rem 0.6rem',
+                            borderRadius: '6px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

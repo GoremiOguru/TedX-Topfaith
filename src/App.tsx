@@ -12,7 +12,7 @@ import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
 
-export const TICKET_HUB_URL = 'https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit';
+export const TICKET_HUB_URL = 'https://www.tu-tickethub.me/tickets/generate/cmucxi20e000004jqv644ttit';
 
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);

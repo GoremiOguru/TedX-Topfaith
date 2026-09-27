@@ -155,28 +155,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               <span>Nov 21, 2026</span>
             </div>
 
-            {/* Header Get Pass Button */}
-            <a
-              href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              style={{
-                padding: '0.5rem 1rem',
-                fontSize: '0.82rem',
-                minHeight: '38px',
-                width: 'auto',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.4rem',
-                textDecoration: 'none',
-              }}
-            >
-              <Ticket size={14} />
-              <span>Get Pass</span>
-            </a>
-
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -264,10 +242,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               <span>{EVENT_DETAILS.venue.name}, {EVENT_DETAILS.venue.city}</span>
             </div>
             <a
-              href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
+              href="#tickets"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#tickets');
+              }}
               className="btn btn-primary"
               style={{
                 width: '100%',
@@ -281,7 +260,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               }}
             >
               <Ticket size={18} />
-              <span>Reserve Pass (₦10,000)</span>
+              <span>View Passes & Tickets</span>
             </a>
           </div>
         </div>

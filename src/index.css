@@ -563,12 +563,21 @@ button {
    SPEAKER AUTO-LOOPING CAROUSEL
    ==================================================== */
 .speaker-carousel-wrapper {
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
   position: relative;
   width: 100%;
   mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
   padding: 1rem 0 2.5rem 0;
+  cursor: grab;
+}
+
+.speaker-carousel-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .speaker-carousel-track {
@@ -577,10 +586,6 @@ button {
   gap: 1.75rem;
   animation: scrollSpeakers 38s linear infinite;
   will-change: transform;
-}
-
-.speaker-carousel-wrapper:hover .speaker-carousel-track {
-  animation-play-state: paused;
 }
 
 @keyframes scrollSpeakers {
@@ -610,13 +615,63 @@ button {
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 1rem 0.25rem 2rem 0.25rem;
-  display: flex;
-  gap: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 0.25rem 2.5rem 0.25rem;
+  cursor: grab;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
 }
 
 .pillars-horizontal-wrapper::-webkit-scrollbar {
   display: none;
+}
+
+.pillars-auto-track {
+  display: flex;
+  width: max-content;
+  gap: 1.75rem;
+  animation: scrollPillarsTrack 42s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scrollPillarsTrack {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animated-subtitle-badge::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: badgeShimmer 5s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes badgeShimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  25% {
+    transform: translateX(100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
 }
 
 .pillar-horizontal-card {

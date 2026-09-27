@@ -129,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           <div className="tedx-hero-bottom-grid">
             <div className="tedx-hero-cta-buttons">
               <a
-                href="https://tu-ticket-generator-app.vercel.app/tickets/generate/cmucxi20e000004jqv644ttit"
+                href="https://www.tu-tickethub.me/tickets/generate/cmucxi20e000004jqv644ttit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary tedx-hero-primary-btn"
