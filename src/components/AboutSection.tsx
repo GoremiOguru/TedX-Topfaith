@@ -249,7 +249,7 @@ export const AboutSection: React.FC = () => {
                 World-Class Production Architecture
               </h3>
               <p style={{ color: '#D1D5DB', fontSize: '0.94rem', marginBottom: '1.25rem', lineHeight: 1.7 }}>
-                Executive consulting and staging curated in partnership with <strong style={{ color: '#FFFFFF' }}>The Centrestage Company</strong>, applying international TED broadcast benchmarks, multi-camera 4K cinematography, and immersive stage craft.
+                Executive consulting and staging curated in partnership with <strong style={{ color: '#FFFFFF' }}>The CentreStage Company</strong>, applying international TED broadcast benchmarks, multi-camera 4K cinematography, and immersive stage craft.
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {[
@@ -280,22 +280,22 @@ export const AboutSection: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <img
                   src="/the_centrestage_company_logo.jpg"
-                  alt="The Centrestage Company"
+                  alt="The CentreStage Company"
                   style={{ height: '36px', width: 'auto', borderRadius: '8px', objectFit: 'contain' }}
                 />
                 <div>
-                  <div style={{ fontWeight: 700, color: '#FFFFFF', fontSize: '0.92rem' }}>The Centrestage Company</div>
+                  <div style={{ fontWeight: 700, color: '#FFFFFF', fontSize: '0.92rem' }}>The CentreStage Company</div>
                   <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Executive Producer & Consultant</div>
                 </div>
               </div>
               <a
-                href="https://thecentrestagecompany.com"
+                href="https://thecentrestagehq.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
                 style={{ padding: '0.45rem 0.95rem', fontSize: '0.8rem', minHeight: '34px', width: 'auto' }}
               >
-                <span>Visit Centrestage</span>
+                <span>Visit CentreStage</span>
                 <ExternalLink size={12} />
               </a>
             </div>

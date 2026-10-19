@@ -153,7 +153,7 @@ export const Footer: React.FC = () => {
               <li><a href="#theme" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Theme: Transcend</a></li>
               <li><a href="#speakers" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Speaker Unveils</a></li>
               <li><a href="#venue" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>The Law Auditorium</a></li>
-              <li><a href="#partners" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Partners & The Centrestage Co.</a></li>
+              <li><a href="#partners" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Partners & The CentreStage Co.</a></li>
               <li><a href="#tickets" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Reserve Delegate Pass</a></li>
             </ul>
           </div>
@@ -171,9 +171,9 @@ export const Footer: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-              <img src="/the_centrestage_company_logo.jpg" alt="The Centrestage Company" style={{ height: '30px', borderRadius: '4px' }} />
+              <img src="/the_centrestage_company_logo.jpg" alt="The CentreStage Company" style={{ height: '30px', borderRadius: '4px' }} />
               <div style={{ fontSize: '0.75rem', color: '#D1D5DB' }}>
-                <div style={{ fontWeight: 700, color: '#FFFFFF' }}>The Centrestage Company</div>
+                <div style={{ fontWeight: 700, color: '#FFFFFF' }}>The CentreStage Company</div>
                 <div>Global Consultant & Producer</div>
               </div>
             </div>

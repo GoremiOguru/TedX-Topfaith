@@ -281,11 +281,11 @@ export const VenueSection: React.FC = () => {
               </div>
               <div>
                 <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Production & Security</h4>
-                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>The Centrestage Company</div>
+                <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>The CentreStage Company</div>
               </div>
             </div>
             <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Executive production overseen by The Centrestage Company alongside Topfaith campus security and protocol teams.
+              Executive production overseen by The CentreStage Company alongside Topfaith campus security and protocol teams.
             </p>
           </motion.div>
         </div>

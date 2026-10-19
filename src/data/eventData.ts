@@ -384,7 +384,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id: "faq-5",
     question: "Who is producing and consulting for this event?",
-    answer: "TEDxTopfaithUniversity is produced in strategic partnership with The Centrestage Company as our Global Consultant & Producer, hosted on the prestigious campus of Topfaith University.",
+    answer: "TEDxTopfaithUniversity is produced in strategic partnership with The CentreStage Company as our Global Consultant & Producer, hosted on the prestigious campus of Topfaith University.",
     category: "General"
   }
 ];
@@ -405,10 +405,10 @@ export const PARTNERS_DATA = {
     description: "Official ticket generator and payment processing partner handling ticket sales, pass distribution, and payment processing for TEDxTopfaithUniversity."
   },
   producer: {
-    name: "The Centrestage Company",
+    name: "The CentreStage Company",
     title: "Global Consultant & Producer",
     logo: "/the_centrestage_company_logo.jpg",
-    url: "https://thecentrestagecompany.com",
+    url: "https://thecentrestagehq.com",
     description: "World-class live event producers, branding strategists, and executive experience architects consulting for landmark global gatherings."
   }
 };

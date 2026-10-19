@@ -36,12 +36,12 @@ export const SponsorsSection: React.FC = () => {
       name: PARTNERS_DATA.producer.name,
       title: PARTNERS_DATA.producer.title,
       logo: PARTNERS_DATA.producer.logo,
-      url: PARTNERS_DATA.producer.url || 'https://thecentrestagecompany.com',
+      url: PARTNERS_DATA.producer.url || 'https://thecentrestagehq.com',
       description: PARTNERS_DATA.producer.description,
       badge: 'Global Consultant • Executive Producer',
       badgeIcon: <Globe2 size={13} />,
       accentColor: '#EB0028',
-      buttonText: 'Visit Centrestage',
+      buttonText: 'Visit CentreStage',
     },
   ];
 
@@ -80,7 +80,7 @@ export const SponsorsSection: React.FC = () => {
             Patrons & <span className="highlight">Partners</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University, official ticket payment processing by Ticket Hub, and world-class executive consulting with The Centrestage Company.
+            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University, official ticket payment processing by Ticket Hub, and world-class executive consulting with The CentreStage Company.
           </p>
         </motion.div>
 
