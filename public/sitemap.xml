@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tedxtopfaith.com/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,50 +11,17 @@
       <image:title>TEDxTopfaithUniversity Official Logo</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://tedxtopfaith.com/tedxtopfaithlogo(white).png</image:loc>
+      <image:title>TEDxTopfaithUniversity White Badge</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://tedxtopfaith.com/what_the_hall_looks_like_part3.jpeg</image:loc>
       <image:title>The Law Auditorium TED Stage Arena</image:title>
     </image:image>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#about</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#theme</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#speakers</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#venue</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#tickets</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#partners</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tedxtopfaith.com/#faq</loc>
-    <lastmod>2026-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tedxtopfaith.com/law_auditorium_lobby.jpeg</image:loc>
+      <image:title>Topfaith University Law Auditorium Lobby</image:title>
+    </image:image>
   </url>
 </urlset>
+
