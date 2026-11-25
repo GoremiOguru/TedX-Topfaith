@@ -76,6 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              alignItems: 'flex-start',
               justifyContent: 'center',
               textDecoration: 'none',
               transition: 'opacity 0.2s ease',
@@ -218,14 +219,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <img src="/tedxtopfaithlogo(white).png" alt="TEDxTopfaithUniversity" style={{ height: '24px', width: 'auto' }} />
-                <span style={{ fontSize: '0.5rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '2px' }}>
-                  x = an independently organized TED event
-                </span>
-              </div>
-              <span style={{ fontSize: '0.72rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>SAT, DEC 5</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <span style={{ fontSize: '0.72rem', color: '#9CA3AF', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                Menu &bull; Transcend 2026
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>
+                <Calendar size={12} color="#EB0028" />
+                <span>SAT, DEC 5</span>
+              </span>
             </div>
 
             {/* Navigation Links */}
