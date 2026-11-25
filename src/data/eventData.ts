@@ -1,4 +1,7 @@
-import type { SpeakerTeaser, ScheduleItem, ThemePillar, VenueGalleryItem, TicketTier, FAQItem } from '../types';
+import type { SpeakerTeaser, ScheduleItem, ThemePillar, VenueGalleryItem, FAQItem } from '../types';
+
+// Official TEDxTopfaithUniversity 2026 Free Registration Google Form URL
+export const REGISTRATION_FORM_URL = 'https://forms.gle/soW6UQZSsDRbfR7S7';
 
 export const EVENT_DETAILS = {
   name: "TEDxTopfaithUniversity",
@@ -7,11 +10,11 @@ export const EVENT_DETAILS = {
   tagline: "Exceeding Limitations",
   fullTheme: "TRANSCEND: Exceeding Limitations",
   description: "Bridging indigenous heritage, cultural power, creative enterprise, and transformative governance with global resonance. An intense, high-impact gathering of fearless creators, jurists, culinary artists, diaspora voices, and student catalysts exceeding all limitations.",
-  date: "Saturday November 21, 2026",
-  dateFormatted: "Saturday, November 21st, 2026",
+  date: "Saturday December 5, 2026",
+  dateFormatted: "Saturday, December 5th, 2026",
   time: "09:00 AM - 12:00 PM (WAT)",
   durationText: "3 Hours of Pure Transformation",
-  isoDate: "2026-11-21T09:00:00+01:00",
+  isoDate: "2026-12-05T09:00:00+01:00",
   venue: {
     name: "The Law Auditorium",
     institution: "Topfaith University",
@@ -25,7 +28,7 @@ export const EVENT_DETAILS = {
   stats: [
     { value: "Curated", label: "Exclusive Quota", suffix: "" },
     { value: "3", label: "Hours of Power (9AM - 12PM)", suffix: "h" },
-    { value: "Sat, Nov 21", label: "Event Date 2026", suffix: "" },
+    { value: "Sat, Dec 5", label: "Event Date 2026", suffix: "" },
     { value: "100%", label: "Ideas Worth Spreading", suffix: "" }
   ],
   socials: {
@@ -313,67 +316,24 @@ export const VENUE_GALLERY: VenueGalleryItem[] = [
   }
 ];
 
-export const TICKET_TIERS: TicketTier[] = [
-  {
-    id: "student-pass",
-    name: "Student / Delegate Pass",
-    badge: "Standard Delegate Pass",
-    price: 10000,
-    originalPrice: 15000,
-    currency: "₦",
-    description: "Official access pass for university students, young innovators, researchers, and emerging changemakers.",
-    features: [
-      "Access to all 3 hours of live TEDx Talks",
-      "Official Digital Delegate Badge & Verified QR Code",
-      "TEDxTopfaith Official Delegate Kit & Keepsakes",
-      "Morning Artisan Brew & Red Carpet Photo Session",
-      "Post-Event 4K Talk Vault & Certificate of Attendance"
-    ],
-    popular: true,
-    color: "#EB0028",
-    totalSeats: 170,
-    spotsLeft: 170
-  },
-  {
-    id: "vip-executive",
-    name: "VIP / Executive Pass",
-    badge: "Exclusive VIP Access",
-    price: 25000,
-    currency: "₦",
-    description: "Premium VIP pass exclusively for faculty executives, corporate patrons, visionary founders, and special guests.",
-    features: [
-      "Front-Row VIP Reserved Seating in The Law Auditorium",
-      "Access to Private VIP Speaker Lounge & Refreshments",
-      "Executive Post-Event Networking with Speakers & VC",
-      "Deluxe TEDxTopfaith Commemorative Keepsake Gift Box",
-      "Dedicated Campus VIP Parking & Concierge Escort",
-      "Special Recognition in the Official Event Brochure"
-    ],
-    popular: false,
-    color: "#D97706",
-    totalSeats: 10,
-    spotsLeft: 10
-  }
-];
-
 export const FAQ_ITEMS: FAQItem[] = [
   {
     id: "faq-1",
     question: "What is TEDxTopfaithUniversity?",
-    answer: "TEDxTopfaithUniversity is an independently organized, officially licensed TED event hosted at Topfaith University, Mkpatak on Saturday, November 21st, 2026. Guided by the theme 'TRANSCEND: Exceeding Limitations', it features a curated 3-hour power lineup (9:00 AM - 12:00 PM) of world-changing ideas.",
+    answer: "TEDxTopfaithUniversity is an independently organized, officially licensed TED event hosted at Topfaith University, Mkpatak on Saturday, December 5th, 2026. Guided by the theme 'TRANSCEND: Exceeding Limitations', it features a curated 3-hour power lineup (9:00 AM - 12:00 PM) of world-changing ideas.",
     category: "General"
   },
   {
     id: "faq-2",
     question: "Where is the event venue and what is the admission policy?",
-    answer: "The event is held at The Law Auditorium, Topfaith University Campus, Mkpatak, Akwa Ibom State. Admission is strictly curated and managed under official TED university license guidelines. Registration is mandatory and passes are allocated on a first-confirmed basis.",
+    answer: "The event is held at The Law Auditorium, Topfaith University Campus, Mkpatak, Akwa Ibom State. Admission is managed under official TED university license guidelines. Advance online registration is mandatory and seats are allocated on a first-registered basis.",
     category: "Event Day"
   },
   {
     id: "faq-3",
-    question: "How much are tickets and what does the pass cover?",
-    answer: "The Student/Delegate Pass is ₦10,000 and the VIP/Executive Pass is ₦25,000. Both passes provide full live access to all talks, the official delegate kit, morning refreshments, verified attendance certificate, and media assets.",
-    category: "Tickets"
+    question: "Is admission free and how do I register?",
+    answer: "Yes! Admission to TEDxTopfaithUniversity 2026 is completely free — no tickets are being sold. However, all attendees must complete the official online registration form ahead of the event so our volunteers can confirm your seat at The Law Auditorium check-in desk.",
+    category: "Registration"
   },
   {
     id: "faq-4",
@@ -396,13 +356,6 @@ export const PARTNERS_DATA = {
     logo: "/logo.png",
     url: "https://topfaith.edu.ng",
     description: "A premier private university fostering academic excellence, character building, research innovation, and global competitiveness."
-  },
-  tickethub: {
-    name: "Ticket Hub",
-    title: "Official Ticket & Payment Partner",
-    logo: "/TU Ticket hub.jpeg",
-    url: "https://www.tu-tickethub.me",
-    description: "Official ticket generator and payment processing partner handling ticket sales, pass distribution, and payment processing for TEDxTopfaithUniversity."
   },
   producer: {
     name: "The CentreStage Company",

@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Lightbulb, Target, Compass, Award, CheckCircle, ExternalLink, Globe, Sparkles } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
+import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 export const AboutSection: React.FC = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section id="about" className="section-padding" style={{ position: 'relative', overflow: 'hidden', background: '#08080C' }}>
+    <section id="about" className="section-padding" style={{ position: 'relative', overflowX: 'clip', background: '#08080C' }}>
       <div className="container">
         {/* Section Header */}
         <motion.div
@@ -23,7 +26,7 @@ export const AboutSection: React.FC = () => {
             Where Curiosity Meets <span className="highlight">Global Impact</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            In the spirit of TED's mission, "Ideas Worth Spreading," TEDxTopfaithUniversity is an independently organized gathering bringing together visionary minds for 3 electrifying hours (9:00 AM &ndash; 12:00 PM) on Saturday, November 21st, 2026.
+            In the spirit of TED's mission, "Ideas Worth Spreading," TEDxTopfaithUniversity is an independently organized gathering bringing together visionary minds for 3 electrifying hours (9:00 AM &ndash; 12:00 PM) on Saturday, December 5th, 2026.
           </p>
         </motion.div>
 
@@ -116,7 +119,190 @@ export const AboutSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* 2-Column Campus & Strategic Production Grid */}
+        {/* 2-Column Campus & Strategic Production Grid (Mobile < 768px: 3D Sticky Stack | Desktop >= 768px: Grid-2) */}
+        {isMobile ? (
+          <div style={{ marginBottom: '4rem' }}>
+            <MobileStickyCardStack
+              baseTop={84}
+              offsetStep={16}
+              scaleStep={0.045}
+              gap="1.25rem"
+              items={[
+                <div
+                  key="about-host-mobile"
+                  className="glass-card"
+                  style={{
+                    padding: '2rem 1.65rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(14, 14, 20, 0.98) 100%)',
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.35rem 0.85rem',
+                        borderRadius: '9999px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        color: '#FFFFFF',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        marginBottom: '1.15rem',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                      }}
+                    >
+                      <Award size={14} color="#EB0028" />
+                      <span>THE HOST INSTITUTION</span>
+                    </div>
+                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.85rem', lineHeight: 1.25, color: '#FFFFFF', fontWeight: 800 }}>
+                      Topfaith University: Beacon of Innovation
+                    </h3>
+                    <p style={{ color: '#D1D5DB', fontSize: '0.92rem', marginBottom: '1.15rem', lineHeight: 1.7 }}>
+                      Situated in Mkpatak, Topfaith University stands at the vanguard of academic distinction, technological research, and character formation. With the prestigious Law Auditorium and smart campus infrastructure, Topfaith provides the ideal stage for transcendence.
+                    </p>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+                      {[
+                        'The Law Auditorium: World-class acoustic amphitheater',
+                        'Nurturing next-generation leaders, jurists, and entrepreneurs',
+                        'Serene, secure, and intellectually vibrant smart campus'
+                      ].map((item, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#F4F4F5', fontSize: '0.88rem' }}>
+                          <Compass size={16} color="#EB0028" style={{ flexShrink: 0 }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: '1.65rem',
+                      paddingTop: '1.25rem',
+                      borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: '0.75rem',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <img
+                        src="/logo.png"
+                        alt="Topfaith University"
+                        style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
+                      />
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#FFFFFF', fontSize: '0.9rem' }}>Topfaith University</div>
+                        <div style={{ fontSize: '0.78rem', color: '#9CA3AF' }}>Mkpatak, Akwa Ibom State</div>
+                      </div>
+                    </div>
+                    <a
+                      href="https://topfaith.edu.ng"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                      style={{ padding: '0.45rem 0.95rem', fontSize: '0.8rem', minHeight: '34px', width: 'auto' }}
+                    >
+                      <span>Visit University Site</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </div>,
+                <div
+                  key="about-production-mobile"
+                  className="glass-card"
+                  style={{
+                    padding: '2rem 1.65rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    border: '1px solid rgba(235, 0, 40, 0.35)',
+                    background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(14, 14, 20, 0.98) 100%)',
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.35rem 0.85rem',
+                        borderRadius: '9999px',
+                        background: 'rgba(235, 0, 40, 0.15)',
+                        color: '#EB0028',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        marginBottom: '1.15rem',
+                      }}
+                    >
+                      <Globe size={14} />
+                      <span>EXECUTIVE PRODUCTION</span>
+                    </div>
+                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.85rem', lineHeight: 1.25, color: '#FFFFFF', fontWeight: 800 }}>
+                      World-Class Production Architecture
+                    </h3>
+                    <p style={{ color: '#D1D5DB', fontSize: '0.92rem', marginBottom: '1.15rem', lineHeight: 1.7 }}>
+                      Executive consulting and staging curated in partnership with <strong style={{ color: '#FFFFFF' }}>The CentreStage Company</strong>, applying international TED broadcast benchmarks, multi-camera 4K cinematography, and immersive stage craft.
+                    </p>
+                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+                      {[
+                        '4K Ultra HD Broadcast & Multi-angle Capture',
+                        'Acoustically calibrated stage setup and lighting design',
+                        'Executive delegate curation and seamless guest protocol'
+                      ].map((item, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#F4F4F5', fontSize: '0.88rem' }}>
+                          <Sparkles size={16} color="#EB0028" style={{ flexShrink: 0 }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: '1.65rem',
+                      paddingTop: '1.25rem',
+                      borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: '0.75rem',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <img
+                        src="/the_centrestage_company_logo.jpg"
+                        alt="The CentreStage Company"
+                        style={{ height: '34px', width: 'auto', borderRadius: '8px', objectFit: 'contain' }}
+                      />
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#FFFFFF', fontSize: '0.9rem' }}>The CentreStage Company</div>
+                        <div style={{ fontSize: '0.78rem', color: '#9CA3AF' }}>Executive Producer & Consultant</div>
+                      </div>
+                    </div>
+                    <a
+                      href="https://thecentrestagehq.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                      style={{ padding: '0.45rem 0.95rem', fontSize: '0.8rem', minHeight: '34px', width: 'auto' }}
+                    >
+                      <span>Visit CentreStage</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </div>,
+              ]}
+            />
+          </div>
+        ) : (
         <div className="grid-2" style={{ alignItems: 'stretch', marginBottom: '4rem' }}>
           {/* Topfaith University Legacy Card */}
           <motion.div
@@ -301,6 +487,7 @@ export const AboutSection: React.FC = () => {
             </div>
           </motion.div>
         </div>
+        )}
 
         {/* 4 Impact Numbers Cards */}
         <div

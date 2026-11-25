@@ -70,7 +70,7 @@ export interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  category: 'General' | 'Tickets' | 'Event Day' | 'Speakers';
+  category: 'General' | 'Registration' | 'Event Day' | 'Speakers';
 }
 
 export interface RegistrationFormData {

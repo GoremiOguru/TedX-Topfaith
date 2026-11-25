@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck, Ticket } from 'lucide-react';
+import { Award, Sparkles, Building2, Globe2, Briefcase, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PARTNERS_DATA } from '../data/eventData';
+import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 export const SponsorsSection: React.FC = () => {
-  const [activeMobileCard, setActiveMobileCard] = useState<number>(0);
+  const isMobile = useIsMobile();
 
   const partners = [
     {
@@ -18,18 +19,6 @@ export const SponsorsSection: React.FC = () => {
       badgeIcon: <Building2 size={13} />,
       accentColor: '#EB0028',
       buttonText: 'Visit University Site',
-    },
-    {
-      id: 'tickethub',
-      name: PARTNERS_DATA.tickethub.name,
-      title: PARTNERS_DATA.tickethub.title,
-      logo: PARTNERS_DATA.tickethub.logo,
-      url: PARTNERS_DATA.tickethub.url,
-      description: PARTNERS_DATA.tickethub.description,
-      badge: 'Official Ticket & Payment Partner',
-      badgeIcon: <Ticket size={13} />,
-      accentColor: '#EB0028',
-      buttonText: 'Visit Ticket Hub',
     },
     {
       id: 'producer',
@@ -46,7 +35,7 @@ export const SponsorsSection: React.FC = () => {
   ];
 
   return (
-    <section id="partners" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.75)', overflow: 'hidden' }}>
+    <section id="partners" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.75)', overflowX: 'clip' }}>
       {/* Background ambient lighting */}
       <div
         style={{
@@ -74,26 +63,142 @@ export const SponsorsSection: React.FC = () => {
         >
           <div className="section-badge animate-float">
             <Award size={14} />
-            <span>Leadership, Ticketing & Production</span>
+            <span>Leadership & Production</span>
           </div>
           <h2 className="section-title">
             Patrons & <span className="highlight">Partners</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University, official ticket payment processing by Ticket Hub, and world-class executive consulting with The CentreStage Company.
+            TEDxTopfaithUniversity 2026 is convened through the visionary backing of Topfaith University and world-class executive consulting with The CentreStage Company.
           </p>
         </motion.div>
 
-        {/* Patrons & Partners: Desktop 3-Column Grid / Mobile Horizontal Swipe Carousel */}
+        {/* Patrons & Partners: Mobile (< 768px) 3D Sticky Stack | Desktop (>= 768px) Balanced 2-Column Grid */}
         <div className="partners-showcase-wrapper" style={{ marginBottom: '3.5rem' }}>
-          <div
-            className="partners-cards-container"
-            onScroll={(e) => {
-              const target = e.currentTarget;
-              const scrollPercent = target.scrollLeft / (target.scrollWidth - target.clientWidth || 1);
-              setActiveMobileCard(Math.min(Math.floor(scrollPercent * partners.length), partners.length - 1));
-            }}
-          >
+          {isMobile ? (
+            <MobileStickyCardStack
+              baseTop={84}
+              offsetStep={16}
+              scaleStep={0.045}
+              gap="1.25rem"
+              items={partners.map((partner) => (
+                <div
+                  key={`mobile-${partner.id}`}
+                  className="glass-card"
+                  style={{
+                    padding: '1.85rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    border: '1px solid rgba(235, 0, 40, 0.35)',
+                    background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(14, 14, 20, 0.98) 100%)',
+                    boxSizing: 'border-box',
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1.35rem', flexWrap: 'wrap' }}>
+                      <div
+                        style={{
+                          background: '#FFFFFF',
+                          padding: '0.5rem 0.85rem',
+                          borderRadius: '10px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <img
+                          src={partner.logo}
+                          alt={partner.name}
+                          style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+                        />
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          color: '#EB0028',
+                          background: 'rgba(235, 0, 40, 0.12)',
+                          padding: '0.3rem 0.75rem',
+                          borderRadius: '9999px',
+                          border: '1px solid rgba(235, 0, 40, 0.35)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                        }}
+                      >
+                        {partner.id === 'host' ? 'Host Institution' : 'Strategic Partner'}
+                      </span>
+                    </div>
+
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                        color: '#FFFFFF',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        marginBottom: '0.45rem',
+                      }}
+                    >
+                      {partner.badgeIcon}
+                      <span>{partner.title}</span>
+                    </div>
+
+                    <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.7rem', lineHeight: 1.3 }}>
+                      {partner.name}
+                    </h3>
+
+                    <p style={{ color: '#D1D5DB', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.35rem' }}>
+                      {partner.description}
+                    </p>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '1.15rem' }}>
+                    <div
+                      style={{
+                        fontSize: '0.78rem',
+                        color: '#E4E4E7',
+                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        wordBreak: 'break-word',
+                      }}
+                    >
+                      <Sparkles size={12} color="#EB0028" style={{ flexShrink: 0 }} />
+                      <span>{partner.badge}</span>
+                    </div>
+
+                    <a
+                      href={partner.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                      style={{
+                        width: '100%',
+                        padding: '0.75rem 1rem',
+                        fontSize: '0.86rem',
+                        fontWeight: 700,
+                        boxSizing: 'border-box',
+                        minHeight: '42px',
+                      }}
+                    >
+                      <span>{partner.buttonText}</span>
+                      <ArrowRight size={14} />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            />
+          ) : (
+          <div className="partners-cards-container">
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.id}
@@ -219,22 +324,7 @@ export const SponsorsSection: React.FC = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Mobile Swipe Dots */}
-          <div className="mobile-carousel-dots" style={{ display: 'none', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem' }}>
-            {partners.map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  width: activeMobileCard === i ? '24px' : '8px',
-                  height: '8px',
-                  borderRadius: '9999px',
-                  background: activeMobileCard === i ? '#EB0028' : 'rgba(255, 255, 255, 0.2)',
-                  transition: 'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
+          )}
         </div>
 
         {/* Responsive Advertisement & Official Partnership Desk */}
@@ -400,23 +490,14 @@ export const SponsorsSection: React.FC = () => {
           }
         }
 
-        /* DESKTOP VIEW (>= 768px): 3-Column Vertical Grid */
-        @media (min-width: 768px) and (max-width: 1023px) {
+        /* DESKTOP VIEW (>= 768px): Balanced 2-Column Grid */
+        @media (min-width: 768px) {
           .partners-cards-container {
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 1.5rem !important;
-          }
-          .partner-showcase-card {
-            flex: unset !important;
-            max-width: 100% !important;
-          }
-        }
-        @media (min-width: 1024px) {
-          .partners-cards-container {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 1.5rem !important;
+            gap: 1.75rem !important;
+            max-width: 900px !important;
+            margin: 0 auto !important;
           }
           .partner-showcase-card {
             flex: unset !important;

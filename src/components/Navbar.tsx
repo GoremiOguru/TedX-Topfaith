@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Ticket, Calendar, MapPin, ExternalLink } from 'lucide-react';
-import { EVENT_DETAILS } from '../data/eventData';
+import { Menu, X, Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { EVENT_DETAILS, REGISTRATION_FORM_URL } from '../data/eventData';
 
 interface NavbarProps {
   onOpenRegister: (tierId?: string) => void;
@@ -32,7 +32,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
     { label: 'About', href: '#about' },
     { label: 'Theme', href: '#theme' },
     { label: 'Speaker Reveal', href: '#speakers' },
-    { label: 'Passes', href: '#tickets' },
     { label: 'Partners', href: '#partners' },
     { label: 'FAQ', href: '#faq' },
   ];
@@ -152,8 +151,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               className="event-pill"
             >
               <Calendar size={13} color="#EB0028" />
-              <span>Nov 21, 2026</span>
+              <span>Dec 5, 2026</span>
             </div>
+
+            {/* Desktop-only Register CTA */}
+            <a
+              href={REGISTRATION_FORM_URL || '#'}
+              target={REGISTRATION_FORM_URL ? '_blank' : undefined}
+              rel={REGISTRATION_FORM_URL ? 'noopener noreferrer' : undefined}
+              className="btn btn-primary event-pill"
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.42rem 0.95rem',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                minHeight: '34px',
+                borderRadius: '9999px',
+                textDecoration: 'none',
+              }}
+            >
+              <span>Register</span>
+              <ArrowRight size={13} />
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -204,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
                   x = an independently organized TED event
                 </span>
               </div>
-              <span style={{ fontSize: '0.72rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>SAT, NOV 21</span>
+              <span style={{ fontSize: '0.72rem', color: '#EB0028', fontWeight: 700, letterSpacing: '0.05em' }}>SAT, DEC 5</span>
             </div>
 
             {/* Navigation Links */}
@@ -242,11 +263,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
               <span>{EVENT_DETAILS.venue.name}, {EVENT_DETAILS.venue.city}</span>
             </div>
             <a
-              href="#tickets"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#tickets');
-              }}
+              href={REGISTRATION_FORM_URL || '#'}
+              target={REGISTRATION_FORM_URL ? '_blank' : undefined}
+              rel={REGISTRATION_FORM_URL ? 'noopener noreferrer' : undefined}
+              onClick={() => setMobileMenuOpen(false)}
               className="btn btn-primary"
               style={{
                 width: '100%',
@@ -259,8 +279,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
                 textDecoration: 'none',
               }}
             >
-              <Ticket size={18} />
-              <span>View Passes & Tickets</span>
+              <span>Register Now (Free)</span>
+              <ArrowRight size={18} />
             </a>
           </div>
         </div>

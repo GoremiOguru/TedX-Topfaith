@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Mic2, Lock, Info, Bell, CheckCircle2, X } from 'lucide-react';
 import { SPEAKER_TEASERS, EVENT_DETAILS } from '../data/eventData';
 import type { SpeakerTeaser } from '../types';
+import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 export const SpeakersSection: React.FC = () => {
+  const isMobile = useIsMobile();
   const [activeTeaser, setActiveTeaser] = useState<SpeakerTeaser | null>(null);
   const [notifyEmail, setNotifyEmail] = useState<string>('');
   const [notified, setNotified] = useState<boolean>(false);
@@ -47,7 +49,7 @@ export const SpeakersSection: React.FC = () => {
   const duplicatedTeasers = [...SPEAKER_TEASERS, ...SPEAKER_TEASERS];
 
   return (
-    <section id="speakers" className="section-padding" style={{ position: 'relative', overflow: 'hidden', background: '#070709' }}>
+    <section id="speakers" className="section-padding" style={{ position: 'relative', overflowX: 'clip', background: '#070709' }}>
       {/* Background ambient lighting */}
       <div
         style={{
@@ -86,7 +88,92 @@ export const SpeakersSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Auto-Looping Infinite Horizontal Speaker Carousel */}
+      {/* Mobile (< 768px): 3D Sticky Stacked Cards Deck | Desktop (>= 768px): Infinite Horizontal Speaker Carousel */}
+      {isMobile ? (
+        <div className="container">
+          <MobileStickyCardStack
+            baseTop={78}
+            offsetStep={10}
+            scaleStep={0.022}
+            gap="1.25rem"
+            items={SPEAKER_TEASERS.map((teaser) => (
+              <div
+                key={`mobile-${teaser.id}`}
+                className="glass-card"
+                onClick={() => setActiveTeaser(teaser)}
+                style={{
+                  padding: '1.75rem 1.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  border: '1px solid rgba(235, 0, 40, 0.35)',
+                  background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.1) 0%, rgba(14, 14, 20, 0.98) 100%)',
+                  cursor: 'pointer',
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.15rem' }}>
+                    <div
+                      style={{
+                        width: '42px',
+                        height: '42px',
+                        borderRadius: '10px',
+                        background: 'rgba(235, 0, 40, 0.15)',
+                        border: '1px solid rgba(235, 0, 40, 0.4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Lock size={18} color="#EB0028" />
+                    </div>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 800,
+                        color: '#EB0028',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        background: 'rgba(235, 0, 40, 0.12)',
+                        padding: '0.3rem 0.7rem',
+                        borderRadius: '9999px',
+                        border: '1px solid rgba(235, 0, 40, 0.3)',
+                      }}
+                    >
+                      CONFIDENTIAL
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.45rem', lineHeight: 1.3 }}>
+                    {teaser.codename}
+                  </h3>
+                  <div style={{ fontSize: '0.86rem', color: '#D1D5DB', fontWeight: 600, marginBottom: '0.75rem' }}>
+                    {teaser.field}
+                  </div>
+
+                  <p style={{ color: '#A1A1AA', fontSize: '0.85rem', lineHeight: 1.55, marginBottom: '1.25rem' }}>
+                    {teaser.curatorialNote}
+                  </p>
+                </div>
+
+                <div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveTeaser(teaser);
+                    }}
+                    className="btn btn-secondary"
+                    style={{ width: '100%', padding: '0.65rem', fontSize: '0.84rem', minHeight: '40px' }}
+                  >
+                    <Info size={14} />
+                    <span>View Pillar Details</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          />
+        </div>
+      ) : (
       <div
         ref={wrapperRef}
         className="speaker-carousel-wrapper"
@@ -175,6 +262,7 @@ export const SpeakersSection: React.FC = () => {
           ))}
         </div>
       </div>
+      )}
 
       {/* Speaker Reveal Alerts Submissions Callout Banner */}
       <div className="container" style={{ marginTop: '3.5rem' }}>

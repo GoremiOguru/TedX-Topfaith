@@ -18,6 +18,7 @@ import {
   ChevronRight 
 } from 'lucide-react';
 import { THEME_PILLARS } from '../data/eventData';
+import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 interface ThematicWordItem {
   id: string;
@@ -29,6 +30,7 @@ interface ThematicWordItem {
 }
 
 export const ThemeSection: React.FC = () => {
+  const isMobile = useIsMobile();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activePillarId, setActivePillarId] = useState<string>(THEME_PILLARS[0].id);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -185,7 +187,7 @@ export const ThemeSection: React.FC = () => {
     {
       id: 'w16',
       word: 'UNSTOPPABLE MOMENTUM',
-      subtext: 'November 21st, 2026',
+      subtext: 'December 5th, 2026',
       icon: <Flame size={20} color="#EB0028" />,
       accentColor: '#EB0028',
       tag: 'Date with Destiny',
@@ -204,6 +206,14 @@ export const ThemeSection: React.FC = () => {
 
   const scrollToPillar = (id: string) => {
     setActivePillarId(id);
+    if (isMobile) {
+      const mobileEl = document.getElementById(`pillar-card-mobile-${id}`);
+      if (mobileEl) {
+        const top = mobileEl.getBoundingClientRect().top + window.pageYOffset - 92;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+      return;
+    }
     const element = document.getElementById(`pillar-card-${id}`);
     if (element && scrollContainerRef.current) {
       element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -211,7 +221,7 @@ export const ThemeSection: React.FC = () => {
   };
 
   return (
-    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.85)', overflow: 'hidden' }}>
+    <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.85)', overflowX: 'clip' }}>
       {/* Dynamic Ambient Background Glow */}
       <div
         className="animate-pulse-glow"
@@ -242,6 +252,19 @@ export const ThemeSection: React.FC = () => {
           <div className="section-badge animate-float">
             <Sparkles size={14} />
             <span>Theme 2026</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
+            <img
+              src="/TEDX44.png"
+              alt="TRANSCEND — Exceeding Limitations Official Event Logo"
+              style={{
+                height: 'clamp(72px, 13vw, 130px)',
+                width: 'auto',
+                maxWidth: '90%',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 10px 30px rgba(235, 0, 40, 0.35))',
+              }}
+            />
           </div>
           <h2 className="section-title">
             TRANSCEND: <span className="highlight">Exceeding Limitations</span>
@@ -435,7 +458,8 @@ export const ThemeSection: React.FC = () => {
             </h3>
           </div>
 
-          {/* Navigation Scroll Buttons */}
+          {/* Navigation Scroll Buttons (Desktop only) */}
+          {!isMobile && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <motion.button
               whileTap={{ scale: 0.9 }}
@@ -474,6 +498,7 @@ export const ThemeSection: React.FC = () => {
               <ChevronRight size={20} />
             </motion.button>
           </div>
+          )}
         </div>
 
         {/* Quick-Jump Interactive Tab Pills Bar */}
@@ -517,7 +542,125 @@ export const ThemeSection: React.FC = () => {
           })}
         </div>
 
-        {/* Auto-Looping Infinite Horizontal 8 Pillars Carousel with Drag & Swipe */}
+        {/* Mobile (< 768px): 3D Sticky Stacked Cards Deck | Desktop (>= 768px): Auto-Looping Horizontal Carousel */}
+        {isMobile ? (
+          <MobileStickyCardStack
+            baseTop={78}
+            offsetStep={10}
+            scaleStep={0.022}
+            gap="1.25rem"
+            itemIds={THEME_PILLARS.map((p) => `pillar-card-mobile-${p.id}`)}
+            items={THEME_PILLARS.map((pillar, realIndex) => {
+              const isActive = activePillarId === pillar.id;
+              return (
+                <div
+                  key={`mobile-${pillar.id}`}
+                  className="glass-card"
+                  style={{
+                    padding: '1.65rem',
+                    borderRadius: '1.15rem',
+                    border: isActive ? '1.5px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
+                    background: pillar.gradient,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                  onClick={() => setActivePillarId(pillar.id)}
+                >
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem' }}>
+                      <div
+                        style={{
+                          width: '36px',
+                          height: '36px',
+                          borderRadius: '10px',
+                          background: 'rgba(235, 0, 40, 0.18)',
+                          border: '1px solid rgba(235, 0, 40, 0.45)',
+                          color: '#EB0028',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 900,
+                          fontSize: '0.85rem',
+                          fontFamily: 'Space Grotesk',
+                        }}
+                      >
+                        0{realIndex + 1}
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          color: '#FFFFFF',
+                          background: 'rgba(0, 0, 0, 0.6)',
+                          padding: '0.25rem 0.65rem',
+                          borderRadius: '9999px',
+                          border: '1px solid rgba(235, 0, 40, 0.4)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.3rem',
+                        }}
+                      >
+                        <Sparkles size={11} color="#EB0028" />
+                        <span>{pillar.metrics}</span>
+                      </span>
+                    </div>
+
+                    <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.6rem', lineHeight: 1.3 }}>
+                      {pillar.title}
+                    </h4>
+
+                    <div
+                      className="animated-subtitle-badge"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.35) 0%, rgba(18, 18, 26, 0.95) 100%)',
+                        border: '1px solid rgba(255, 90, 110, 0.45)',
+                        padding: '0.42rem 0.8rem',
+                        borderRadius: '10px',
+                        marginBottom: '0.85rem',
+                        lineHeight: 1.4,
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <Sparkles size={13} color="#FF4D61" style={{ flexShrink: 0 }} />
+                      <span>{pillar.subtitle}</span>
+                    </div>
+
+                    <p style={{ fontSize: '0.86rem', color: '#D1D5DB', lineHeight: 1.6, marginBottom: '1.15rem' }}>
+                      {pillar.description}
+                    </p>
+                  </div>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '0.9rem' }}>
+                    {pillar.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        style={{
+                          fontSize: '0.73rem',
+                          color: '#F4F4F5',
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          padding: '0.2rem 0.6rem',
+                          borderRadius: '6px',
+                          fontWeight: 500,
+                        }}
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          />
+        ) : (
         <div
           ref={scrollContainerRef}
           className="pillars-horizontal-wrapper"
@@ -653,6 +796,7 @@ export const ThemeSection: React.FC = () => {
             })}
           </div>
         </div>
+        )}
       </div>
     </section>
   );

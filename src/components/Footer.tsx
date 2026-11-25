@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowUp, Send, CheckCircle2, ExternalLink } from 'lucide-react';
-import { EVENT_DETAILS } from '../data/eventData';
+import { ArrowUp, Send, CheckCircle2 } from 'lucide-react';
+import { EVENT_DETAILS, REGISTRATION_FORM_URL } from '../data/eventData';
 
 export const Footer: React.FC = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -42,11 +42,17 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand, Mandatory Statement & Social Links */}
           <div>
             <div style={{ marginBottom: '1.25rem' }}>
-              <a href="#" style={{ display: 'inline-block', textDecoration: 'none' }}>
+              <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap', textDecoration: 'none' }}>
                 <img
                   src="/tedxtopfaithlogo(white).png"
                   alt="TEDxTopfaithUniversity"
                   style={{ height: '36px', width: 'auto', objectFit: 'contain', display: 'block' }}
+                />
+                <span style={{ width: '1px', height: '28px', background: 'rgba(255, 255, 255, 0.18)', display: 'inline-block' }} />
+                <img
+                  src="/TEDX44.png"
+                  alt="TRANSCEND — Exceeding Limitations"
+                  style={{ height: '38px', width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
               </a>
               <div
@@ -154,7 +160,18 @@ export const Footer: React.FC = () => {
               <li><a href="#speakers" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Speaker Unveils</a></li>
               <li><a href="#venue" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>The Law Auditorium</a></li>
               <li><a href="#partners" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Partners & The CentreStage Co.</a></li>
-              <li><a href="#tickets" style={{ transition: 'color 0.2s ease' }} onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}>Reserve Delegate Pass</a></li>
+              <li>
+                <a
+                  href={REGISTRATION_FORM_URL || '#'}
+                  target={REGISTRATION_FORM_URL ? '_blank' : undefined}
+                  rel={REGISTRATION_FORM_URL ? 'noopener noreferrer' : undefined}
+                  style={{ transition: 'color 0.2s ease' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#FFFFFF')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#A1A1AA')}
+                >
+                  Register for Event (Free)
+                </a>
+              </li>
             </ul>
           </div>
 

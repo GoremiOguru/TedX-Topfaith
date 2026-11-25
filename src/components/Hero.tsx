@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, ArrowRight, Play, Flame, Sparkles, Clock, Volume2 } from 'lucide-react';
-import { EVENT_DETAILS } from '../data/eventData';
+import { Calendar, MapPin, ArrowRight, Play, Flame, Sparkles, Clock } from 'lucide-react';
+import { EVENT_DETAILS, REGISTRATION_FORM_URL } from '../data/eventData';
 
 interface HeroProps {
   onOpenRegister: () => void;
@@ -8,7 +8,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers }) => {
-  // Live Countdown Timer to Nov 21, 2026
+  // Live Countdown Timer to Dec 5, 2026
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -97,10 +97,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
             <h1 className="tedx-hero-main-title">
               TEDx<span className="brand-suffix">TopfaithUniversity</span>
             </h1>
-            <div className="tedx-hero-theme-subtitle">
-              <span className="theme-highlight">TRANSCEND</span>
-              <span className="theme-dash">&mdash;</span>
-              <span className="theme-tagline">Exceeding Limitations</span>
+            <div className="tedx-hero-event-logo-wrap">
+              <img
+                src="/TEDX44.png"
+                alt="TRANSCEND — Exceeding Limitations Official Event Logo"
+                className="tedx-hero-event-logo"
+              />
             </div>
           </div>
 
@@ -113,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           <div className="tedx-hero-meta-row">
             <div className="tedx-meta-item">
               <Calendar size={13} color="#EB0028" />
-              <span>Sat, Nov 21, 2026</span>
+              <span>Sat, Dec 5, 2026</span>
             </div>
             <div className="tedx-meta-item">
               <Clock size={13} color="#EB0028" />
@@ -129,9 +131,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
           <div className="tedx-hero-bottom-grid">
             <div className="tedx-hero-cta-buttons">
               <a
-                href="https://www.tu-tickethub.me/tickets/generate/cmucxi20e000004jqv644ttit"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={REGISTRATION_FORM_URL || '#'}
+                target={REGISTRATION_FORM_URL ? '_blank' : undefined}
+                rel={REGISTRATION_FORM_URL ? 'noopener noreferrer' : undefined}
                 className="btn btn-primary tedx-hero-primary-btn"
                 style={{
                   display: 'inline-flex',
@@ -141,7 +143,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
                   textDecoration: 'none',
                 }}
               >
-                <span>Reserve Pass (From ₦10,000)</span>
+                <span>Register Now (Free)</span>
                 <ArrowRight size={16} />
               </a>
 
@@ -312,6 +314,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRegister, onExploreSpeakers })
         .brand-suffix {
           font-weight: 800;
           color: #FFFFFF;
+        }
+
+        .tedx-hero-event-logo-wrap {
+          margin-top: 0.45rem;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .tedx-hero-event-logo {
+          height: clamp(54px, 11vw, 108px);
+          width: auto;
+          max-width: min(360px, 82vw);
+          object-fit: contain;
+          display: block;
+          filter: drop-shadow(0 6px 22px rgba(235, 0, 40, 0.35));
         }
 
         .tedx-hero-theme-subtitle {

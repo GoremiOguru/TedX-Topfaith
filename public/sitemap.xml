@@ -7,6 +7,10 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
+      <image:loc>https://tedxtopfaith.com/TEDX44.png</image:loc>
+      <image:title>TEDxTopfaithUniversity TRANSCEND Official Event Logo</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://tedxtopfaith.com/tedxtopfaithlogo(black).png</image:loc>
       <image:title>TEDxTopfaithUniversity Official Logo</image:title>
     </image:image>

@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
-import { Ticket, Calendar } from 'lucide-react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { ThemeSection } from './components/ThemeSection';
 import { SpeakersSection } from './components/SpeakersSection';
 import { VenueSection } from './components/VenueSection';
-import { TicketSection } from './components/TicketSection';
 import { SponsorsSection } from './components/SponsorsSection';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
-import { RegistrationModal } from './components/RegistrationModal';
-
-export const TICKET_HUB_URL = 'https://www.tu-tickethub.me/tickets/generate/cmucxi20e000004jqv644ttit';
+import { REGISTRATION_FORM_URL } from './data/eventData';
 
 export const App: React.FC = () => {
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [selectedTierId, setSelectedTierId] = useState<string>('student-pass');
-
-  const handleOpenRegister = (_tierId?: string) => {
-    window.open(TICKET_HUB_URL, '_blank', 'noopener,noreferrer');
+  const handleOpenRegister = () => {
+    if (REGISTRATION_FORM_URL) {
+      window.open(REGISTRATION_FORM_URL, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const handleExploreSpeakers = () => {
@@ -42,7 +37,7 @@ export const App: React.FC = () => {
 
       {/* Hero Section */}
       <Hero
-        onOpenRegister={() => handleOpenRegister()}
+        onOpenRegister={handleOpenRegister}
         onExploreSpeakers={handleExploreSpeakers}
       />
 
@@ -58,9 +53,6 @@ export const App: React.FC = () => {
       {/* Venue Showcase */}
       <VenueSection />
 
-      {/* Passes & Tickets */}
-      <TicketSection onSelectTier={(_tierId) => handleOpenRegister()} />
-
       {/* Patrons & Sponsors */}
       <SponsorsSection />
 
@@ -69,48 +61,6 @@ export const App: React.FC = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Mobile Sticky Bottom CTA Bar */}
-      <div className="mobile-bottom-bar">
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ fontSize: '0.72rem', color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: '3px' }}>
-            <Calendar size={11} color="#EB0028" />
-            <span>Nov 21 &bull; Limited Passes</span>
-          </div>
-          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#FFFFFF' }}>
-            From ₦10,000
-          </div>
-        </div>
-
-        <a
-          href={TICKET_HUB_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary"
-          style={{
-            padding: '0.65rem 1.35rem',
-            fontSize: '0.88rem',
-            minHeight: '42px',
-            width: 'auto',
-            borderRadius: '9999px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.4rem',
-            textDecoration: 'none',
-          }}
-        >
-          <Ticket size={15} />
-          <span>Get Pass</span>
-        </a>
-      </div>
-
-      {/* Registration & Digital Pass Modal */}
-      <RegistrationModal
-        isOpen={isRegisterOpen}
-        initialTierId={selectedTierId}
-        onClose={() => setIsRegisterOpen(false)}
-      />
     </div>
   );
 };

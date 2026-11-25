@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { MapPin, Navigation, Maximize2, X, Compass, ShieldCheck, Users, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VENUE_GALLERY, EVENT_DETAILS } from '../data/eventData';
+import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 export const VenueSection: React.FC = () => {
+  const isMobile = useIsMobile();
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
 
@@ -20,7 +22,7 @@ export const VenueSection: React.FC = () => {
   };
 
   return (
-    <section id="venue" className="section-padding" style={{ position: 'relative' }}>
+    <section id="venue" className="section-padding" style={{ position: 'relative', overflowX: 'clip' }}>
       <div className="container">
         {/* Section Header */}
         <motion.div
@@ -211,7 +213,69 @@ export const VenueSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Venue Amenities & Location Info */}
+        {/* Venue Amenities & Location Info: Mobile (< 768px) 3D Sticky Stack | Desktop (>= 768px) 3-Col Grid */}
+        {isMobile ? (
+          <MobileStickyCardStack
+            baseTop={84}
+            offsetStep={14}
+            scaleStep={0.04}
+            gap="1.25rem"
+            items={[
+              <div key="venue-campus" className="glass-card" style={{ padding: '1.85rem', background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.08) 0%, rgba(14, 14, 20, 0.98) 100%)', border: '1px solid rgba(255, 255, 255, 0.14)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Compass size={20} color="#EB0028" />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Topfaith University Campus</h4>
+                    <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Mkpatak, Essien Udim LGA</div>
+                  </div>
+                </div>
+                <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                  Located in the serene educational haven of Mkpatak, easily accessible via regional transit corridors with dedicated security checkpoints.
+                </p>
+                <a
+                  href={EVENT_DETAILS.venue.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-red"
+                  style={{ width: '100%', padding: '0.65rem', fontSize: '0.85rem' }}
+                >
+                  <Navigation size={14} />
+                  <span>Open in Google Maps</span>
+                </a>
+              </div>,
+              <div key="venue-quota" className="glass-card" style={{ padding: '1.85rem', background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(14, 14, 20, 0.98) 100%)', border: '1px solid rgba(255, 255, 255, 0.14)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Users size={20} color="#EB0028" />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Strict License Quota</h4>
+                    <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Intimate & Immersive</div>
+                  </div>
+                </div>
+                <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                  In compliance with TED's university license standards, attendance is strictly capped to ensure an intimate, high-impact delegate experience.
+                </p>
+              </div>,
+              <div key="venue-security" className="glass-card" style={{ padding: '1.85rem', background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.08) 0%, rgba(14, 14, 20, 0.98) 100%)', border: '1px solid rgba(235, 0, 40, 0.3)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(235, 0, 40, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ShieldCheck size={20} color="#EB0028" />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>Production & Security</h4>
+                    <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>The CentreStage Company</div>
+                  </div>
+                </div>
+                <p style={{ color: '#A1A1AA', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                  Executive production overseen by The CentreStage Company alongside Topfaith campus security and protocol teams.
+                </p>
+              </div>,
+            ]}
+          />
+        ) : (
         <div className="grid-3" style={{ gap: '1.5rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -289,6 +353,7 @@ export const VenueSection: React.FC = () => {
             </p>
           </motion.div>
         </div>
+        )}
       </div>
 
       {/* Centered Fullscreen Lightbox Modal (Mobile & Desktop Fixed) */}
