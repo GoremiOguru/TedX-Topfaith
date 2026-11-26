@@ -106,7 +106,7 @@ export const AboutSection: React.FC = () => {
             >
               {[
                 'Independently organized under official TED license',
-                'Multidisciplinary focus across 8 transcendent pillars',
+                'Multidisciplinary voices united by ideas worth spreading',
                 'Zero commercial pitches, 100% intellectual passion',
                 'Curated delegate cohort for intimate networking',
               ].map((item, idx) => (

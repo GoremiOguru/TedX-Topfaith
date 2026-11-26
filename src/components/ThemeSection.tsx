@@ -1,24 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Sparkles, 
-  Layers, 
-  Flame, 
-  Zap, 
-  Globe, 
-  Radio, 
-  Target, 
-  Disc, 
-  Award, 
-  Scale, 
-  Briefcase, 
-  UtensilsCrossed, 
-  Leaf, 
-  ChevronLeft, 
-  ChevronRight 
+import {
+  Sparkles,
+  Layers,
+  Flame,
+  Zap,
+  Globe,
+  Radio,
+  Target,
+  Disc,
+  Award,
+  Lightbulb,
+  Compass,
+  Mic2,
 } from 'lucide-react';
-import { THEME_PILLARS } from '../data/eventData';
-import { MobileStickyCardStack, useIsMobile } from './MobileStickyCardStack';
 
 interface ThematicWordItem {
   id: string;
@@ -30,62 +25,18 @@ interface ThematicWordItem {
 }
 
 export const ThemeSection: React.FC = () => {
-  const isMobile = useIsMobile();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [activePillarId, setActivePillarId] = useState<string>(THEME_PILLARS[0].id);
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeftPos, setScrollLeftPos] = useState(0);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsMouseDown(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeftPos(scrollContainerRef.current.scrollLeft);
-  };
-
-  const handleMouseLeaveOrUp = () => {
-    setIsMouseDown(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isMouseDown || !scrollContainerRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeftPos - walk;
-  };
-
-  const duplicatedPillars = [...THEME_PILLARS, ...THEME_PILLARS];
-
   // Row 1 Thematic Items (Scrolling Left) - Pure TED Colors (Red & White)
   const rowOneItems: ThematicWordItem[] = [
     {
       id: 'w1',
-      word: 'ARTS, CULTURE & STORYTELLING',
-      subtext: 'Global Transmedia Narratives',
-      icon: <Sparkles size={20} color="#EB0028" />,
-      accentColor: '#EB0028',
-      tag: 'Pillar 1',
-    },
-    {
-      id: 'w2',
       word: 'EXCEEDING LIMITATIONS',
       subtext: 'Official 2026 Theme',
-      icon: <Zap size={20} color="#FFFFFF" />,
-      accentColor: '#FFFFFF',
+      icon: <Zap size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
       tag: 'Event Theme',
     },
     {
-      id: 'w3',
-      word: 'FOOD, CRAFT & HERITAGE',
-      subtext: 'Gastronomy & Living Traditions',
-      icon: <UtensilsCrossed size={20} color="#EB0028" />,
-      accentColor: '#EB0028',
-      tag: 'Pillar 2',
-    },
-    {
-      id: 'w4',
+      id: 'w2',
       word: 'THE RED DOT STAGE',
       subtext: 'The Iconic 18-Min Circle',
       icon: <Disc size={20} color="#EB0028" />,
@@ -93,23 +44,15 @@ export const ThemeSection: React.FC = () => {
       tag: 'TED Symbol',
     },
     {
-      id: 'w5',
-      word: 'FASHION & CREATIVE ENTERPRISE',
-      subtext: 'Wearable Culture & Global Design',
-      icon: <Layers size={20} color="#FFFFFF" />,
+      id: 'w3',
+      word: 'BOLD PERSPECTIVES',
+      subtext: 'Challenging Assumptions',
+      icon: <Lightbulb size={20} color="#FFFFFF" />,
       accentColor: '#FFFFFF',
-      tag: 'Pillar 3',
+      tag: 'Mindset',
     },
     {
-      id: 'w6',
-      word: 'BUSINESS & CREATOR ECONOMY',
-      subtext: 'Monetizing Cultural Capital',
-      icon: <Briefcase size={20} color="#EB0028" />,
-      accentColor: '#EB0028',
-      tag: 'Pillar 4',
-    },
-    {
-      id: 'w7',
+      id: 'w4',
       word: 'TOPFAITH VANGUARD',
       subtext: 'Academic Distinction',
       icon: <Award size={20} color="#FFFFFF" />,
@@ -117,35 +60,27 @@ export const ThemeSection: React.FC = () => {
       tag: 'Host Heritage',
     },
     {
-      id: 'w8',
+      id: 'w5',
       word: 'PARADIGM SHIFTERS',
       subtext: 'Transformative Thought',
       icon: <Target size={20} color="#EB0028" />,
       accentColor: '#EB0028',
       tag: 'Catalysts',
     },
+    {
+      id: 'w6',
+      word: 'THE LAW AUDITORIUM',
+      subtext: 'Topfaith University, Mkpatak',
+      icon: <Compass size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
+      tag: 'Official Venue',
+    },
   ];
 
   // Row 2 Thematic Items (Scrolling Right) - Pure TED Colors (Red & White)
   const rowTwoItems: ThematicWordItem[] = [
     {
-      id: 'w9',
-      word: 'LAW, GOVERNANCE & JUSTICE',
-      subtext: 'Institutional Integrity & Reform',
-      icon: <Scale size={20} color="#FFFFFF" />,
-      accentColor: '#FFFFFF',
-      tag: 'Pillar 5',
-    },
-    {
-      id: 'w10',
-      word: 'MIGRATION & DIASPORA',
-      subtext: 'Transnational Global Networks',
-      icon: <Globe size={20} color="#EB0028" />,
-      accentColor: '#EB0028',
-      tag: 'Pillar 6',
-    },
-    {
-      id: 'w11',
+      id: 'w7',
       word: '3 HOURS OF POWER',
       subtext: '9:00 AM – 12:00 PM (WAT)',
       icon: <Radio size={20} color="#EB0028" />,
@@ -153,31 +88,7 @@ export const ThemeSection: React.FC = () => {
       tag: 'Program',
     },
     {
-      id: 'w12',
-      word: 'ENVIRONMENT & SUSTAINABLE FUTURES',
-      subtext: 'Indigenous Ecology & Living',
-      icon: <Leaf size={20} color="#FFFFFF" />,
-      accentColor: '#FFFFFF',
-      tag: 'Pillar 7',
-    },
-    {
-      id: 'w13',
-      word: 'MIND, GROWTH & SELF-MASTERY',
-      subtext: 'Inner Resilience & Leadership',
-      icon: <Sparkles size={20} color="#EB0028" />,
-      accentColor: '#EB0028',
-      tag: 'Pillar 8',
-    },
-    {
-      id: 'w14',
-      word: 'EXCLUSIVE ACCESS',
-      subtext: 'Curated Delegate Cohort',
-      icon: <Target size={20} color="#FFFFFF" />,
-      accentColor: '#FFFFFF',
-      tag: 'Intimate Stage',
-    },
-    {
-      id: 'w15',
+      id: 'w8',
       word: 'IDEAS WORTH SPREADING',
       subtext: 'The Global TED Creed',
       icon: <Flame size={20} color="#EB0028" />,
@@ -185,40 +96,38 @@ export const ThemeSection: React.FC = () => {
       tag: 'TED Creed',
     },
     {
-      id: 'w16',
+      id: 'w9',
+      word: 'VOICES OF IMPACT',
+      subtext: 'Curated Live TEDx Talks',
+      icon: <Mic2 size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
+      tag: 'Main Stage',
+    },
+    {
+      id: 'w10',
+      word: 'GLOBAL RESONANCE',
+      subtext: 'Local Roots, Global Reach',
+      icon: <Globe size={20} color="#EB0028" />,
+      accentColor: '#EB0028',
+      tag: 'TEDx Network',
+    },
+    {
+      id: 'w11',
+      word: 'CURATED ACCESS',
+      subtext: 'Free Advance Registration',
+      icon: <Target size={20} color="#FFFFFF" />,
+      accentColor: '#FFFFFF',
+      tag: 'Intimate Stage',
+    },
+    {
+      id: 'w12',
       word: 'UNSTOPPABLE MOMENTUM',
       subtext: 'December 5th, 2026',
       icon: <Flame size={20} color="#EB0028" />,
       accentColor: '#EB0028',
-      tag: 'Date with Destiny',
+      tag: 'Save the Date',
     },
   ];
-
-  const handleScroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 360;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToPillar = (id: string) => {
-    setActivePillarId(id);
-    if (isMobile) {
-      const mobileEl = document.getElementById(`pillar-card-mobile-${id}`);
-      if (mobileEl) {
-        const top = mobileEl.getBoundingClientRect().top + window.pageYOffset - 92;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-      return;
-    }
-    const element = document.getElementById(`pillar-card-${id}`);
-    if (element && scrollContainerRef.current) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-  };
 
   return (
     <section id="theme" className="section-padding" style={{ position: 'relative', background: 'rgba(8, 8, 12, 0.85)', overflowX: 'clip' }}>
@@ -270,7 +179,7 @@ export const ThemeSection: React.FC = () => {
             TRANSCEND: <span className="highlight">Exceeding Limitations</span>
           </h2>
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            We explore boundary breakers, paradigm shifters, and defiant dreamers across culture, fashion, gastronomy, creator commerce, law, global diaspora, ecology, and personal mastery.
+            Celebrating boundary breakers, paradigm shifters, and bold thinkers whose ideas challenge assumptions, ignite growth, and inspire lasting change.
           </p>
         </motion.div>
 
@@ -310,9 +219,8 @@ export const ThemeSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Auto-playing, Horizontally Scrolling Infinite Loop Content Carousel */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', marginBottom: '3.5rem' }}>
-        
+      {/* Auto-playing, Horizontally Scrolling Infinite Loop Marquee */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
         {/* Carousel Row 1: Leftward Infinite Scroll */}
         <div className="marquee-container">
           <div className="marquee-row marquee-left">
@@ -442,361 +350,6 @@ export const ThemeSection: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* 8 Official Thematic Pillars: Animated Horizontal Interactive Showcase */}
-      <div className="container">
-        {/* Header & Controls */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.5rem' }}>
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 800, color: '#FF5266', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              <Zap size={13} />
-              <span>THE 8 PILLARS OF TRANSCENDENCE</span>
-            </div>
-            <h3 style={{ fontSize: 'clamp(1.25rem, 3vw, 1.85rem)', fontWeight: 800, color: '#FFFFFF', marginTop: '0.2rem' }}>
-              Explore The 8 Curated Domains
-            </h3>
-          </div>
-
-          {/* Navigation Scroll Buttons (Desktop only) */}
-          {!isMobile && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleScroll('left')}
-              className="btn btn-secondary"
-              style={{
-                width: '42px',
-                height: '42px',
-                minHeight: '42px',
-                padding: 0,
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              aria-label="Scroll Pillars Left"
-            >
-              <ChevronLeft size={20} />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleScroll('right')}
-              className="btn btn-secondary"
-              style={{
-                width: '42px',
-                height: '42px',
-                minHeight: '42px',
-                padding: 0,
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              aria-label="Scroll Pillars Right"
-            >
-              <ChevronRight size={20} />
-            </motion.button>
-          </div>
-          )}
-        </div>
-
-        {/* Quick-Jump Interactive Tab Pills Bar */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '0.5rem',
-            overflowX: 'auto',
-            paddingBottom: '0.75rem',
-            marginBottom: '1rem',
-            scrollbarWidth: 'none',
-          }}
-        >
-          {THEME_PILLARS.map((pillar, index) => {
-            const isActive = activePillarId === pillar.id;
-            return (
-              <motion.button
-                key={`tab-${pillar.id}`}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToPillar(pillar.id)}
-                style={{
-                  padding: '0.45rem 0.95rem',
-                  borderRadius: '9999px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  whiteSpace: 'nowrap',
-                  background: isActive ? '#EB0028' : 'rgba(255, 255, 255, 0.05)',
-                  color: '#FFFFFF',
-                  border: isActive ? '1px solid #EB0028' : '1px solid rgba(255, 255, 255, 0.12)',
-                  transition: 'all 0.25s ease',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                }}
-              >
-                <span>{index + 1}.</span>
-                <span>{pillar.title.split('&')[0].trim()}</span>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        {/* Mobile (< 768px): 3D Sticky Stacked Cards Deck | Desktop (>= 768px): Auto-Looping Horizontal Carousel */}
-        {isMobile ? (
-          <MobileStickyCardStack
-            baseTop={78}
-            offsetStep={10}
-            scaleStep={0.022}
-            gap="1.25rem"
-            itemIds={THEME_PILLARS.map((p) => `pillar-card-mobile-${p.id}`)}
-            items={THEME_PILLARS.map((pillar, realIndex) => {
-              const isActive = activePillarId === pillar.id;
-              return (
-                <div
-                  key={`mobile-${pillar.id}`}
-                  className="glass-card"
-                  style={{
-                    padding: '1.65rem',
-                    borderRadius: '1.15rem',
-                    border: isActive ? '1.5px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
-                    background: pillar.gradient,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                  onClick={() => setActivePillarId(pillar.id)}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem' }}>
-                      <div
-                        style={{
-                          width: '36px',
-                          height: '36px',
-                          borderRadius: '10px',
-                          background: 'rgba(235, 0, 40, 0.18)',
-                          border: '1px solid rgba(235, 0, 40, 0.45)',
-                          color: '#EB0028',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 900,
-                          fontSize: '0.85rem',
-                          fontFamily: 'Space Grotesk',
-                        }}
-                      >
-                        0{realIndex + 1}
-                      </div>
-
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          fontWeight: 700,
-                          color: '#FFFFFF',
-                          background: 'rgba(0, 0, 0, 0.6)',
-                          padding: '0.25rem 0.65rem',
-                          borderRadius: '9999px',
-                          border: '1px solid rgba(235, 0, 40, 0.4)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.3rem',
-                        }}
-                      >
-                        <Sparkles size={11} color="#EB0028" />
-                        <span>{pillar.metrics}</span>
-                      </span>
-                    </div>
-
-                    <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.6rem', lineHeight: 1.3 }}>
-                      {pillar.title}
-                    </h4>
-
-                    <div
-                      className="animated-subtitle-badge"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.45rem',
-                        fontSize: '0.82rem',
-                        fontWeight: 700,
-                        color: '#FFFFFF',
-                        background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.35) 0%, rgba(18, 18, 26, 0.95) 100%)',
-                        border: '1px solid rgba(255, 90, 110, 0.45)',
-                        padding: '0.42rem 0.8rem',
-                        borderRadius: '10px',
-                        marginBottom: '0.85rem',
-                        lineHeight: 1.4,
-                        position: 'relative',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      <Sparkles size={13} color="#FF4D61" style={{ flexShrink: 0 }} />
-                      <span>{pillar.subtitle}</span>
-                    </div>
-
-                    <p style={{ fontSize: '0.86rem', color: '#D1D5DB', lineHeight: 1.6, marginBottom: '1.15rem' }}>
-                      {pillar.description}
-                    </p>
-                  </div>
-
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '0.9rem' }}>
-                    {pillar.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        style={{
-                          fontSize: '0.73rem',
-                          color: '#F4F4F5',
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          padding: '0.2rem 0.6rem',
-                          borderRadius: '6px',
-                          fontWeight: 500,
-                        }}
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          />
-        ) : (
-        <div
-          ref={scrollContainerRef}
-          className="pillars-horizontal-wrapper"
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeaveOrUp}
-          onMouseUp={handleMouseLeaveOrUp}
-          onMouseMove={handleMouseMove}
-        >
-          <div className="pillars-auto-track">
-            {duplicatedPillars.map((pillar, index) => {
-              const realIndex = index % THEME_PILLARS.length;
-              const isActive = activePillarId === pillar.id;
-              return (
-                <motion.div
-                  key={`${pillar.id}-${index}`}
-                  id={`pillar-card-${pillar.id}`}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="pillar-horizontal-card"
-                  style={{
-                    border: isActive ? '2px solid #EB0028' : `1px solid ${pillar.borderGlow}`,
-                    background: pillar.gradient,
-                    transform: isActive ? 'scale(1.02)' : 'scale(1)',
-                  }}
-                  onClick={() => setActivePillarId(pillar.id)}
-                >
-                  <div>
-                    {/* Card Header: Number & Badge */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                      <div
-                        style={{
-                          width: '36px',
-                          height: '36px',
-                          borderRadius: '10px',
-                          background: 'rgba(235, 0, 40, 0.18)',
-                          border: '1px solid rgba(235, 0, 40, 0.45)',
-                          color: '#EB0028',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 900,
-                          fontSize: '0.85rem',
-                          fontFamily: 'Space Grotesk',
-                        }}
-                      >
-                        0{realIndex + 1}
-                      </div>
-
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          fontWeight: 700,
-                          color: '#FFFFFF',
-                          background: 'rgba(0, 0, 0, 0.6)',
-                          padding: '0.25rem 0.65rem',
-                          borderRadius: '9999px',
-                          border: '1px solid rgba(235, 0, 40, 0.4)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.3rem',
-                        }}
-                      >
-                        <Sparkles size={11} color="#EB0028" />
-                        <span>{pillar.metrics}</span>
-                      </span>
-                    </div>
-
-                    {/* Title & Subtitle */}
-                    <h4
-                      style={{
-                        fontSize: '1.25rem',
-                        fontWeight: 800,
-                        color: '#FFFFFF',
-                        marginBottom: '0.6rem',
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {pillar.title}
-                    </h4>
-                    
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="animated-subtitle-badge"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.45rem',
-                        fontSize: '0.83rem',
-                        fontWeight: 700,
-                        color: '#FFFFFF',
-                        background: 'linear-gradient(135deg, rgba(235, 0, 40, 0.35) 0%, rgba(18, 18, 26, 0.95) 100%)',
-                        border: '1px solid rgba(255, 90, 110, 0.45)',
-                        padding: '0.45rem 0.85rem',
-                        borderRadius: '10px',
-                        marginBottom: '0.9rem',
-                        lineHeight: 1.4,
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(235, 0, 40, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.25)',
-                        position: 'relative',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      <Sparkles size={14} color="#FF4D61" className="animate-pulse" style={{ flexShrink: 0 }} />
-                      <span style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>{pillar.subtitle}</span>
-                    </motion.div>
-
-                    <p style={{ fontSize: '0.86rem', color: '#D1D5DB', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                      {pillar.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom Tags */}
-                  <div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1rem' }}>
-                      {pillar.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          style={{
-                            fontSize: '0.74rem',
-                            color: '#F4F4F5',
-                            background: 'rgba(255, 255, 255, 0.08)',
-                            padding: '0.2rem 0.6rem',
-                            borderRadius: '6px',
-                            fontWeight: 500,
-                          }}
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-        )}
       </div>
     </section>
   );
